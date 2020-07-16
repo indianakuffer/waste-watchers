@@ -107,3 +107,6 @@ const User = new Schema(
 
 module.exports = mongoose.model('users', User)
 ```
+
+Brought to you by:
+![Team Don't Over ReactJS logo](https://i.imgur.com/RN00IOk.png)
