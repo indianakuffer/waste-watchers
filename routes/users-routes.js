@@ -3,10 +3,10 @@ const controllers = require("../controllers/users-controller")
 
 const router = Router()
 
-router.get('models/user', controllers.getUsers)
-router.get('/model/user:id', controllers.getUser)
-router.post('/model/user', controllers.createUser)
-router.put('/model/user:id', controllers.updateUser)
-router.delete('/model/user:id', controllers.deleteUser)
+router.get('/users', controllers.getUsers)
+router.get('/users/:id', controllers.getUser)
+router.post('/users', controllers.createUser)
+router.put('/users/:id', controllers.updateUser)
+router.delete('/users/:id', controllers.deleteUser)
 
 module.exports = router
