@@ -19,6 +19,7 @@ const getUser = async (req, res) => {
     if (user) {
       return res.json(user);
     }
+    res.status(404).json({ message: "User not found!" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -28,7 +29,7 @@ const createUser = async (req, res) => {
   try {
     const user = await new User(req.body);
     await user.save();
-    res.status(201), json(user);
+    res.status(201).json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
