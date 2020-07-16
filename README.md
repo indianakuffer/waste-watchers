@@ -1,4 +1,4 @@
-# Waste Watcher
+# Waste Watchers
 
 ## Overview
 
