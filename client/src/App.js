@@ -16,12 +16,12 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
-        <Route exact path="/account-signup" component={SignUp} />
-        <Route exact path="/account-signin" component={SignIn} />
-        <Route exact path="/account-info" component={AccountInfo} />
-        <Route exact path="/edit-account" component={EditAccount} />
-        <Route exact path="/delete-account" component={DeleteAccount} />
-        <Route exact path="/logger" component={Logger} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/account/:id/delete" component={DeleteAccount} />
+        <Route exact path="/account/:id/edit" component={EditAccount} />
+        <Route exact path="/account/:id" component={AccountInfo} />
+        <Route exact path="/log" component={Logger} />
         <Route exact path="/progress" component={Progress} />
       </Switch>
     </div>
