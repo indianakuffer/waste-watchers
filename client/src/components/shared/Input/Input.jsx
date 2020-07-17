@@ -1,9 +1,12 @@
 import React from 'react'
+import styled from 'styled-components'
 
-export default function Input() {
+const StyledInput = styled.input`
+  //css here
+`
+
+export default function Input(props) {
   return (
-    <div>
-
-    </div>
+    <StyledInput placeholder={props.placeholder}></StyledInput>
   )
 }
