@@ -1,9 +1,29 @@
-import React from 'react'
+import React from "react";
+import Button from "../shared/Button/Button";
+import styled from "styled-components";
 
-export default function NavMenu() {
+const ButtonContainer = styled.div`
+  background: #dadada;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  height: 160px;
+  width: 180px;
+`;
+
+
+
+export default function NavMenu(props) {
   return (
-    <div>
+    <ButtonContainer>
+      <Button
+        color="#5A83EC"
+        buttonText="Manage My Account"
+        buttonLink="/account/:id/edit"
+      />
 
-    </div>
-  )
+      <Button color="#FF7373" buttonText="Sign Out" buttonLink="/" />
+    </ButtonContainer>
+  );
 }
