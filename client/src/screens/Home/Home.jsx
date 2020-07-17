@@ -30,7 +30,7 @@ export default function Home() {
         buttonLink='/signup'
       />
       <Jumbotron
-        imageUrl='https://images.unsplash.com/photo-1488330890490-c291ecf62571?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+        imageUrl='https://images.unsplash.com/photo-1584275142335-7f7cc7ba6c23?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1356&q=80'
         color='#ff7373'
         quote='-Brian A., NYC'
         bigText={`"I feel bad for not participating in something so well designed."`}
