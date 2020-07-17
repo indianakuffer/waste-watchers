@@ -29,7 +29,7 @@ export default function Button(props) {
     <>
       {props.buttonLink ?
         <StyledLink to={props.buttonLink}>
-          <StyledButton color={props.color}>{props.buttonText}</StyledButton>
+          <StyledButton color={props.color} onClick={props.onClick}>{props.buttonText}</StyledButton>
         </StyledLink>
         :
         <StyledButton color={props.color}>{props.buttonText}</StyledButton>
