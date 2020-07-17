@@ -1,9 +1,9 @@
 import React from 'react'
 import Layout from '../../components/shared/Layout/Layout'
 
-export default function AccountInfo() {
+export default function AccountInfo(props) {
   return (
-    <Layout>
+    <Layout loggedIn={props.loggedIn}>
 
     </Layout>
   )

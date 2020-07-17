@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer'
 export default function Layout(props) {
   return (
     <>
-      <Nav />
+      <Nav loggedIn={props.loggedIn} />
       {props.children}
       <Footer />
     </>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./screens/Home/Home";
 import About from "./screens/About/About";
@@ -11,18 +11,20 @@ import Logger from "./screens/Logger/Logger";
 import Progress from "./screens/Progress/Progress";
 
 const App = () => {
+  let [loggedIn, setLoggedIn] = useState(null)
+
   return (
     <div className="app">
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/account/:id/delete" component={DeleteAccount} />
-        <Route exact path="/account/:id/edit" component={EditAccount} />
-        <Route exact path="/account/:id" component={AccountInfo} />
-        <Route exact path="/log" component={Logger} />
-        <Route exact path="/progress" component={Progress} />
+        <Route exact path="/" render={props => <Home loggedIn={loggedIn} />} />
+        <Route exact path="/about" render={props => <About loggedIn={loggedIn} />} />
+        <Route exact path="/signup" render={props => <SignUp loggedIn={loggedIn} />} />
+        <Route exact path="/signin" render={props => <SignIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
+        <Route exact path="/account/:id/delete" render={props => <DeleteAccount loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
+        <Route exact path="/account/:id/edit" render={props => <EditAccount loggedIn={loggedIn} />} />
+        <Route exact path="/account/:id" render={props => <AccountInfo loggedIn={loggedIn} />} />
+        <Route exact path="/log" render={props => <Logger loggedIn={loggedIn} />} />
+        <Route exact path="/progress" render={props => <Progress loggedIn={loggedIn} />} />
       </Switch>
     </div>
   );

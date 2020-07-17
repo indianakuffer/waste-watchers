@@ -1,9 +1,9 @@
 import React from 'react'
 import Layout from '../../components/shared/Layout/Layout'
 
-export default function Logger() {
+export default function Logger(props) {
   return (
-    <Layout>
+    <Layout loggedIn={props.loggedIn}>
 
     </Layout>
   )
