@@ -2,7 +2,7 @@ import React from 'react'
 import Layout from '../../components/shared/Layout/Layout'
 import Jumbotron from '../../components/shared/Jumbotron/Jumbotron'
 
-export default function Home() {
+export default function Home(props) {
   return (
     <Layout>
       <Jumbotron
