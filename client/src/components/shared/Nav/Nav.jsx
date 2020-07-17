@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import NavMenu from "../../NavMenu/NavMenu";
-
-
+// import { getUser } from '../../../services/users'
 
 const NavBar = styled.nav`
   background-color: #dadada;
@@ -58,18 +57,25 @@ const AccountButton = styled.button`
   height: 35px;
   width: 35px;
   border: none;
-  background-image: url("https://i.imgur.com/SUHhp7V.png");
+  background-image: url("${props => props.profileImg ? props.profileImg : 'https://i.imgur.com/SUHhp7V.png'}");
   background-position: center;
   margin-left: 10px;
 `;
 
-export default function Nav() {
-
+export default function Nav(props) {
   let [showNav, setShowNav] = useState(false)
-
+  // let [profileImg, setProfileImg] = useState('https://i.imgur.com/lp2jwK3.png')
   const toggleNavMenu = () => {
     setShowNav(!showNav)
   }
+
+  // useEffect(() => {
+  //   const helper = async (id) => {
+  //     const response = await getUser(id)
+  //     setProfileImg(response.accountInfo.profileImg)
+  //   }
+  //   if (props.loggedIn) helper(props.loggedIn)
+  // }, [props.loggedIn])
 
   return (
     <NavBar>
@@ -83,9 +89,9 @@ export default function Nav() {
         <Links to="/log">Log Recycling</Links>
         <Links to="/progress">My Progress</Links>
         <Links to="/about">About Us</Links>
-        <AccountButton onClick={toggleNavMenu} />
+        <AccountButton profileImg={props.profileImg} onClick={toggleNavMenu} />
       </LinksContainer>
-      {showNav && <NavMenu/>}
+      {showNav && <NavMenu loggedIn={props.loggedIn} toggleNavMenu={toggleNavMenu} />}
     </NavBar>
   );
 }
