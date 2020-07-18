@@ -16,34 +16,32 @@ const ScreenContainer = styled.div`
     width: 100%;
     height: 50%;
     z-index: -10;
-    background: url('https://i.imgur.com/JqlYCOL.png');
+    background: url("https://i.imgur.com/JqlYCOL.png");
     background-size: contain;
     background-repeat: no-repeat;
   }
-
-`
+`;
 
 const AccountDiv = styled.div`
-display: flex;
-flex-flow: column;
-align-items: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
 
-button {
-  margin: 10px 0;
-  font-size: 18px;
-}
-
-`
+  button {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+`;
 
 const TopImage = styled.div`
   top: 0;
-`
+`;
 
 const BottomImage = styled.div`
   bottom: 0;
   transform: scaleY(-1) scaleX(-1);
-`
-
+`;
 
 export default function AccountInfo(props) {
   return (
@@ -51,23 +49,21 @@ export default function AccountInfo(props) {
       <ScreenContainer>
         <TopImage className="squiggle" />
         <AccountDiv>
-        <h1>Manage My Account</h1>
-        <h3>Welcome, Dakota!</h3>
-      <Button
-        color="#5a83ec"
-        buttonText="Edit Account Information" />
-      <Button
-        color="#aeaeae"
-        buttonText="Settings"
-        buttonLink="#" />
+          <h1>Manage My Account</h1>
+          <h3>
+            Welcome, Dakota! <br /> What would you like to do next?{" "}
+          </h3>
+          <Button color="#5a83ec" buttonText="Edit Account Information" />
+          <Button color="#aeaeae" buttonText="Settings" buttonLink="#" />
 
-      <Button
-        color="#ff7373"
-        buttonText="Delete My Account"
-            buttonLink="/" />
-          </AccountDiv>
+          <Button
+            color="#ff7373"
+            buttonText="Delete My Account"
+            buttonLink="/"
+          />
+        </AccountDiv>
         <BottomImage className="squiggle" />
-        </ScreenContainer>
+      </ScreenContainer>
     </Layout>
   );
 }
