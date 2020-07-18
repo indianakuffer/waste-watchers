@@ -29,6 +29,11 @@ export default function DeleteAccount(props) {
     align-items: center;
     margin: 0;
     padding: 50px;
+
+    button {
+      margin: 10px 0;
+      box-shadow: 2px 6px rgba(127, 127, 127, 0.2);
+    }
   `;
 
   const TopSquiggle = styled.div`
