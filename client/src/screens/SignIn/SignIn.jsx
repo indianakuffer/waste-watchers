@@ -25,6 +25,10 @@ const ScreenContainer = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
   }
+  a {
+    font-size: 17px;
+    color: #838383;
+  }
 `
 const FormContainer = styled.form`
   display: flex;
@@ -32,6 +36,9 @@ const FormContainer = styled.form`
   align-items: center;
   .input-container {
     margin-bottom: 10px;
+  }
+  button {
+    margin-top: 50px;
   }
 `
 const TopImage = styled.div`
@@ -43,7 +50,13 @@ const BottomImage = styled.div`
 `
 const Prompt = styled.div`
   display: flex;
-
+  color: #838383;
+  font-size: 17px;
+  margin-top: 30px;
+  font-weight: bold;
+  a {
+    margin-left: 20px;
+  }
 `
 
 export default function SignIn(props) {
@@ -80,14 +93,14 @@ export default function SignIn(props) {
         <h1>Welcome Back!</h1>
         <FormContainer>
           <Input
-            placeholder='email'
+            placeholder='Email'
             name='email'
             onChange={handleChange}
             value={inputs.email}
             image={envelopeImage}
           />
           <Input
-            placeholder='password'
+            placeholder='Password'
             name='password'
             onChange={handleChange}
             value={inputs.password}
@@ -98,7 +111,6 @@ export default function SignIn(props) {
           <Button
             color='#31C96E'
             buttonText='Sign In'
-            buttonLink='/signin'
             onClick={handleSubmit}
           />
         </FormContainer>
