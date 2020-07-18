@@ -24,7 +24,7 @@ const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   text-decoration: none;
-
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 `
 
 export default function Button(props) {
@@ -35,7 +35,7 @@ export default function Button(props) {
           <StyledButton color={props.color} fontSize={props.fontSize} onClick={props.onClick}>{props.buttonText}</StyledButton>
         </StyledLink>
         :
-        <StyledButton color={props.color}>{props.buttonText}</StyledButton>
+        <StyledButton color={props.color} fontSize={props.fontSize} onClick={props.onClick}>{props.buttonText}</StyledButton>
       }
 
     </>

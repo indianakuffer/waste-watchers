@@ -18,7 +18,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" render={props => <Home loggedIn={loggedIn} />} />
         <Route exact path="/about" render={props => <About loggedIn={loggedIn} />} />
-        <Route exact path="/signup" render={props => <SignUp loggedIn={loggedIn} />} />
+        <Route exact path="/signup" render={props => <SignUp loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
         <Route exact path="/signin" render={props => <SignIn loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
         <Route exact path="/account/:id/delete" render={props => <DeleteAccount loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
         <Route exact path="/account/:id/edit" render={props => <EditAccount loggedIn={loggedIn} />} />

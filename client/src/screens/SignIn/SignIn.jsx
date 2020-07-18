@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import Button from '../../components/shared/Button/Button'
 import { Link, Redirect } from 'react-router-dom'
 import { getUsers } from '../../services/users'
+import envelopeImage from '../../images/input-icons/envelope.svg'
+import lockImage from '../../images/input-icons/lock.svg'
 
 const ScreenContainer = styled.div`
   position: relative;
@@ -23,11 +25,21 @@ const ScreenContainer = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
   }
+  a {
+    font-size: 17px;
+    color: #838383;
+  }
 `
 const FormContainer = styled.form`
   display: flex;
   flex-flow: column;
   align-items: center;
+  .input-container {
+    margin-bottom: 10px;
+  }
+  button {
+    margin-top: 50px;
+  }
 `
 const TopImage = styled.div`
   top: 0;
@@ -38,7 +50,13 @@ const BottomImage = styled.div`
 `
 const Prompt = styled.div`
   display: flex;
-
+  color: #838383;
+  font-size: 17px;
+  margin-top: 30px;
+  font-weight: bold;
+  a {
+    margin-left: 20px;
+  }
 `
 
 export default function SignIn(props) {
@@ -74,24 +92,25 @@ export default function SignIn(props) {
         <TopImage className='squiggle' />
         <h1>Welcome Back!</h1>
         <FormContainer>
-          <input
-            placeholder='email'
+          <Input
+            placeholder='Email'
             name='email'
             onChange={handleChange}
             value={inputs.email}
+            image={envelopeImage}
           />
-          <input
-            placeholder='password'
+          <Input
+            placeholder='Password'
             name='password'
             onChange={handleChange}
             value={inputs.password}
             type='password'
+            image={lockImage}
           />
           <a href='#'>Forgot password?</a>
           <Button
             color='#31C96E'
             buttonText='Sign In'
-            buttonLink='/signin'
             onClick={handleSubmit}
           />
         </FormContainer>
