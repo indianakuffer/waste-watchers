@@ -1,34 +1,34 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledInput = styled.input`
-width: 309px;
-  height: 45px;
-  border-radius: 5px;
+const InputContainer = styled.div`
   background-color: #dadada;
-  border: none;
-  position: relative;
-  //----- text -----// 
-  font-family: Nunito;
+  border-radius: 5px;
+  width: 309px;
+  height: 45px;
   font-size: 17px;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  display: flex;
+`
+const StyledInput = styled.input`
   color: #838383;
+  background-color: transparent;
+  border: none;
+  width: 100%;
 `
 const StyledImage = styled.img`
-position: absolute;
-top: 5px;
+  margin-left: 10px;
+  margin-right: 20px;
 `
 
 export default function Input(props) {
-  console.log(props.image)
   return (
     <>
-      <StyledInput placeholder={props.placeholder} type={props.type}></StyledInput>
-      <StyledImage src={props.image} />
+      <InputContainer className='input-container'>
+        <StyledImage src={props.image} />
+        <StyledInput placeholder={props.placeholder} type={props.type} onChange={props.onChange} name={props.name} value={props.value} />
+      </InputContainer>
+
     </>
   )
 }
