@@ -35,6 +35,13 @@ const AccountDiv = styled.div`
   }
 `;
 
+const UserPhoto = styled.img`
+margin: -10px;
+border-radius: 50%;
+background-color: transparent;
+
+`
+
 const TopImage = styled.div`
   top: 0;
 `;
@@ -44,6 +51,8 @@ const BottomImage = styled.div`
   transform: scaleY(-1) scaleX(-1);
 `;
 
+
+
 export default function AccountInfo(props) {
   return (
     <Layout loggedIn={props.loggedIn}>
@@ -51,8 +60,11 @@ export default function AccountInfo(props) {
         <TopImage className="squiggle" />
         <AccountDiv>
           <h1>Manage My Account</h1>
+          <UserPhoto src="https://i.imgur.com/UcwbCnR.png" />
           <h3>
-            Welcome, Dakota! <br /> What would you like to do next?{" "}
+            Welcome, Dakota!
+            <br />
+            What would you like to do next?{" "}
           </h3>
           <Button color="#5a83ec" buttonText="Edit Account Information" />
           <Button color="#aeaeae" buttonText="Settings" buttonLink="#" />
