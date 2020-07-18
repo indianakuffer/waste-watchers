@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../shared/Button/Button";
 import styled from "styled-components";
+import { Redirect } from 'react-router-dom'
 
 const ButtonContainer = styled.div`
   background: #dadada;
@@ -37,6 +38,15 @@ const CloseX = styled.button`
 `
 
 export default function NavMenu(props) {
+  let [signedOut, setSignedOut] = useState(false)
+
+  const signOut = () => {
+    props.setLoggedIn(null)
+    setSignedOut(true)
+  }
+
+  if (signedOut) return <Redirect to='/' />
+
   return (
     <ButtonContainer>
       <CloseX className='x' onClick={props.toggleNavMenu} />
@@ -50,7 +60,7 @@ export default function NavMenu(props) {
         <Button
           color="#FF7373"
           buttonText="Sign Out"
-          buttonLink="/"
+          onClick={signOut}
           fontSize='15px'
         />
       </>

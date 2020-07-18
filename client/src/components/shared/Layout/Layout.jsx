@@ -12,7 +12,7 @@ const Main = styled.main`
 export default function Layout(props) {
   return (
     <>
-      <Nav loggedIn={props.loggedIn} />
+      <Nav loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} />
       <Main>
         {props.children}
       </Main>

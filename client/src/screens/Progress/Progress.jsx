@@ -3,7 +3,7 @@ import Layout from '../../components/shared/Layout/Layout'
 
 export default function Progress(props) {
   return (
-    <Layout loggedIn={props.loggedIn}>
+    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
 
     </Layout>
   )

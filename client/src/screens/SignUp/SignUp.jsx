@@ -98,7 +98,7 @@ export default function SignUp(props) {
   if (submitted) return <Redirect to='/' />
 
   return (
-    <Layout loggedIn={props.loggedIn}>
+    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <ScreenContainer>
         <TopImage className='squiggle' />
         <h1>Get Started!</h1>
