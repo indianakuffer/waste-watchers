@@ -8,6 +8,7 @@ const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-flow: column;
+  z-index: 100;
   height: 180px;
   width: 180px;
   position: absolute;
@@ -43,7 +44,7 @@ export default function NavMenu(props) {
         <Button
           color="#5A83EC"
           buttonText="Manage My Account"
-          buttonLink="/account/:id/edit"
+          buttonLink={`/account/${props.loggedIn}/edit`}
           fontSize='15px'
         />
         <Button
