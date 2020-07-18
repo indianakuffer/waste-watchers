@@ -44,7 +44,7 @@ export default function NavMenu(props) {
         <Button
           color="#5A83EC"
           buttonText="Manage My Account"
-          buttonLink={`/account/${props.loggedIn}/edit`}
+          buttonLink={`/account/${props.loggedIn}`}
           fontSize='15px'
         />
         <Button
