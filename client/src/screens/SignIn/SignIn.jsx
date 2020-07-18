@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import Button from '../../components/shared/Button/Button'
 import { Link, Redirect } from 'react-router-dom'
 import { getUsers } from '../../services/users'
+import envelopeImage from '../../images/input-icons/envelope.svg'
+import lockImage from '../../images/input-icons/lock.svg'
 
 const ScreenContainer = styled.div`
   position: relative;
@@ -28,6 +30,9 @@ const FormContainer = styled.form`
   display: flex;
   flex-flow: column;
   align-items: center;
+  .input-container {
+    margin-bottom: 10px;
+  }
 `
 const TopImage = styled.div`
   top: 0;
@@ -74,18 +79,20 @@ export default function SignIn(props) {
         <TopImage className='squiggle' />
         <h1>Welcome Back!</h1>
         <FormContainer>
-          <input
+          <Input
             placeholder='email'
             name='email'
             onChange={handleChange}
             value={inputs.email}
+            image={envelopeImage}
           />
-          <input
+          <Input
             placeholder='password'
             name='password'
             onChange={handleChange}
             value={inputs.password}
             type='password'
+            image={lockImage}
           />
           <a href='#'>Forgot password?</a>
           <Button
