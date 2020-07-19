@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../../components/shared/Layout/Layout'
 import Input from '../../components/shared/Input/Input'
+import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
 import styled from 'styled-components'
 import Button from '../../components/shared/Button/Button'
 import { Redirect } from 'react-router-dom'
@@ -43,15 +44,6 @@ const TopImage = styled.div`
 const BottomImage = styled.div`
   bottom: 0;
   transform: scaleY(-1) scaleX(-1);
-`
-const ProfilePic = styled.div`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-image: url(${props => props.profileImg});
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 30px;
 `
 
 export default function EditAccount(props) {
@@ -99,7 +91,7 @@ export default function EditAccount(props) {
       <ScreenContainer>
         <TopImage className='squiggle' />
         <h1>Edit Your Account</h1>
-        <ProfilePic profileImg={inputs.profileImg} />
+        <ProfilePicCircle profileImg={inputs.profileImg} />
         <FormContainer>
           <Input
             placeholder='Username'
