@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
+import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
 import styled from "styled-components";
 import Button from "../../components/shared/Button/Button";
 import { getUser } from '../../services/users'
@@ -35,10 +36,9 @@ const AccountDiv = styled.div`
   }
 `
 const UserPhoto = styled.img`
-margin: -10px;
-border-radius: 50%;
-background-color: transparent;
-
+  margin: -10px;
+  border-radius: 50%;
+  background-color: transparent;
 `
 const TopImage = styled.div`
   top: 0;
@@ -46,6 +46,10 @@ const TopImage = styled.div`
 const BottomImage = styled.div`
   bottom: 0;
   transform: scaleY(-1) scaleX(-1);
+`
+const Welcome = styled.div`
+  font-size: 18px;
+  font-weight: bold;
 `
 
 export default function AccountInfo(props) {
@@ -60,15 +64,15 @@ export default function AccountInfo(props) {
   }, [])
 
   return (
-    <Layout loggedIn={props.loggedIn}>
+    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <ScreenContainer>
         <TopImage className="squiggle" />
         <AccountDiv>
           <h1>Manage My Account</h1>
           {userData &&
             <>
-              <UserPhoto src={userData.profileImg} />
-              <h3>Welcome, {userData.username}!<br />What would you like to do next?{" "}</h3>
+              <ProfilePicCircle profileImg={userData.profileImg} />
+              <Welcome>Welcome, {userData.username}!<br />What would you like to do next?{" "}</Welcome>
             </>
           }
           <Button color="#5a83ec" buttonText="Edit Account Information" buttonLink={`/account/${props.loggedIn}/edit`} />
@@ -76,7 +80,7 @@ export default function AccountInfo(props) {
           <Button
             color="#ff7373"
             buttonText="Delete My Account"
-            buttonLink="/"
+            buttonLink={`/account/${props.loggedIn}/delete`}
           />
         </AccountDiv>
         <BottomImage className="squiggle" />
