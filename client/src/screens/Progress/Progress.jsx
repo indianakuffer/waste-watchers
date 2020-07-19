@@ -1,9 +1,10 @@
 import React from 'react'
+import Layout from '../../components/shared/Layout/Layout'
 
-export default function Progress() {
+export default function Progress(props) {
   return (
-    <div>
+    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
 
-    </div>
+    </Layout>
   )
 }

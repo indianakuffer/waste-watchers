@@ -1,9 +1,10 @@
 import React from 'react'
+import Layout from '../../components/shared/Layout/Layout'
 
-export default function Logger() {
+export default function Logger(props) {
   return (
-    <div>
+    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
 
-    </div>
+    </Layout>
   )
 }
