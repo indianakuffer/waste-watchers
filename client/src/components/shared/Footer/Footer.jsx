@@ -46,7 +46,6 @@ const Logo = styled(NavLink)`
 const LogoImage = styled.img`
   height: 60px;
 `;
-
 const Waste = styled.span`
   font-weight: 700;
 `;
@@ -56,7 +55,6 @@ const Watchers = styled.span`
   top: 18px;
   right: 25px;
 `;
-
 const SocialIcons = styled.img`
 height: 25px;
 margin: 0px 5px;
@@ -75,7 +73,6 @@ export default function Footer() {
           <Waste>Waste</Waste> <Watchers>Watchers</Watchers>
         </Logo>
       </LogoContainer>
-
       <FooterCategory>
         <div className='title'>Connect with Us</div>
         <SocialContainer>
