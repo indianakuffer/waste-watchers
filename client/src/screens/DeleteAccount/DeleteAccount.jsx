@@ -55,7 +55,7 @@ export default function DeleteAccount(props) {
   if (deleted) return <Redirect to='/' />
 
   return (
-    <Layout loggedIn={props.loggedIn}>
+    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <ScreenContainer>
         <TopSquiggle className="squiggle" />
         <ScreenDiv>
