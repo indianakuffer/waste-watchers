@@ -27,8 +27,7 @@ const TextBorder = styled.div`
   position: relative;
    left: 18px; 
    top: 18px;
-  float: right
-  width: 50px;
+  width: 150px;
   height: 5px;
   background-color: #000000;
 }
