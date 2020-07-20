@@ -35,42 +35,59 @@ const HeadingUnderline = styled.div`
 `;
 
 const ProgressBar = styled.div`
-background-color: #dadada;
-width: 990px;
-height: 65px;
-border-radius: 100px;
-border: 5px solid black;
-margin-top: 60px;
-margin-bottom: 20px;
-z-index: -10;
-`
+  background-color: #dadada;
+  width: 990px;
+  height: 65px;
+  border-radius: 100px;
+  border: 5px solid black;
+  margin-top: 60px;
+  margin-bottom: 20px;
+`;
 
 const ProgressBarColor = styled.div`
-background-color: #31c96e;
-width: 800px;
-height: 55px;
-border-radius: 100px;
-border: none;
-z-index: 1;
-`
+  background-color: #31c96e;
+  width: 800px;
+  height: 55px;
+  border-radius: 100px;
+  border: none;
+`;
 
-const PlantedTree = styled.img`
-width: 260px;
-height: 290px;
-`
+const TreeImage = styled.img`
+  max-width: 260px;
+`;
 
 const ProgressText = styled.p`
-font-size: 40px;
+  font-size: 40px;
 
-span {
-  font-weight: bold;
-}
-`
+  span {
+    font-weight: bold;
+  }
+`;
 
+const PieChart = styled.div`
+  position: relative;
+  height: 400px;
+  width: 400px;
+  border-radius: 100%;
+  margin: 0 auto 2rem;
+  overflow: hidden;
+  background-color: red;
+`;
+const ChartCenter = styled.div`
+  background: #ffff;
+  position: absolute;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+`;
 
 export default function Progress(props) {
   return (
-
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <Jumbotron
         imageUrl="https://i.imgur.com/JgT56UU.png"
@@ -83,13 +100,20 @@ export default function Progress(props) {
         <ProgressHeading>How Many Trees I've Planted</ProgressHeading>
         <HeadingUnderline />
         <ProgressBar>
-        <ProgressBarColor />
+          <ProgressBarColor />
         </ProgressBar>
-        <ProgressText>Only <span>20 points</span> until your next tree!</ProgressText>
-        <PlantedTree src="https://i.imgur.com/ztj0HxG.png" />
-        <ProgressText>You've planted <span>138 trees</span> so far!</ProgressText>
+        <ProgressText>
+          Only <span>20 points</span> until your next tree!
+        </ProgressText>
+        <TreeImage src="https://i.imgur.com/ztj0HxG.png" />
+        <ProgressText>
+          You've planted <span>138 trees</span> so far!
+        </ProgressText>
         <ProgressHeading>Recyclables Breakdown</ProgressHeading>
         <HeadingUnderline />
+        <PieChart>
+          <ChartCenter />
+        </PieChart>
         <BottomSquiggle src="https://i.imgur.com/zP7qZyg.png" />
       </ProgressContainer>
     </Layout>
