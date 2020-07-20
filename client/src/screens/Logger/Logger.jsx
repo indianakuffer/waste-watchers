@@ -54,6 +54,10 @@ export default function Logger(props) {
   const handleSubmit = async () => {
     let loggedTotal = 0
     Object.keys(loggedList).forEach(category => loggedTotal += loggedList[category])
+    if (loggedTotal <= 0) {
+      alert('No items logged.')
+      return
+    }
 
     const updateObject = {
       points: retrievedData.points += loggedTotal,
