@@ -32,10 +32,10 @@ export default function Button(props) {
     <>
       {props.buttonLink ?
         <StyledLink to={props.buttonLink}>
-          <StyledButton color={props.color} fontSize={props.fontSize} onClick={props.onClick}>{props.buttonText}</StyledButton>
+          <StyledButton color={props.color} fontSize={props.fontSize} className={props.className || 'btn'} onClick={props.onClick}>{props.buttonText}</StyledButton>
         </StyledLink>
         :
-        <StyledButton color={props.color} fontSize={props.fontSize} onClick={props.onClick}>{props.buttonText}</StyledButton>
+        <StyledButton color={props.color} fontSize={props.fontSize} className={props.className || 'btn'} onClick={props.onClick}>{props.buttonText}</StyledButton>
       }
 
     </>

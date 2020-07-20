@@ -16,7 +16,7 @@ const ItemList = styled.div`
   display: flex;
   flex-flow: column;
   padding: 40px 10%;
-  ${Button} {
+  .btn {
     width: 300px;
     align-self: center;
   }
