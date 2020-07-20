@@ -7,49 +7,41 @@ const AboutContainer = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
-`;
-
+`
 const AboutHeading = styled.div`
-  font-family: "Nunito", sans-serif;
   margin-top: 60px;
   font-size: 60px;
   text-align: center;
   align-items: center;
   font-weight: bold;
-  color: #000000;
-`;
-
+`
 const HeadingUnderline = styled.div`
   text-align: center;
   width: 150px;
   height: 5px;
   background-color: #000000;
   margin-top: 20px;
-`;
-
+  border-radius: 5px;
+`
 const AboutText = styled.p`
   display: flex;
   justify-content: center;
   text-align: center;
   width: 1123px;
   height: 545px;
-  font-family: "Nunito", sans-serif;
   font-size: 80px;
   font-weight: bold;
-  color: #000000;
   margin-top: 80px;
   margin-bottom: 150px;
-`;
-
+`
 const BlueSquiggle = styled.img`
   width: 100%;
   z-index: -10;
-`;
-
+`
 const GreenSquiggle = styled.img`
   width: 100%;
   z-index: -10;
-`;
+`
 
 export default function About(props) {
   return (
