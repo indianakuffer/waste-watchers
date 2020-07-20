@@ -34,9 +34,44 @@ const HeadingUnderline = styled.div`
   border-radius: 5px;
 `;
 
+const ProgressBar = styled.div`
+background-color: #dadada;
+width: 990px;
+height: 65px;
+border-radius: 100px;
+border: 5px solid black;
+margin-top: 60px;
+margin-bottom: 20px;
+z-index: -10;
+`
+
+const ProgressBarColor = styled.div`
+background-color: #31c96e;
+width: 800px;
+height: 55px;
+border-radius: 100px;
+border: none;
+z-index: 1;
+`
+
+const PlantedTree = styled.img`
+width: 260px;
+height: 290px;
+`
+
+const ProgressText = styled.p`
+font-size: 40px;
+
+span {
+  font-weight: bold;
+}
+`
+
+
 export default function Progress(props) {
   return (
-    <Layout loggedIn={props.loggedIn}>
+
+    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <Jumbotron
         imageUrl="https://i.imgur.com/JgT56UU.png"
         color="#235ae5"
@@ -46,6 +81,14 @@ export default function Progress(props) {
       <ProgressContainer>
         <TopSquiggle src="https://i.imgur.com/zP7qZyg.png" />
         <ProgressHeading>How Many Trees I've Planted</ProgressHeading>
+        <HeadingUnderline />
+        <ProgressBar>
+        <ProgressBarColor />
+        </ProgressBar>
+        <ProgressText>Only <span>20 points</span> until your next tree!</ProgressText>
+        <PlantedTree src="https://i.imgur.com/ztj0HxG.png" />
+        <ProgressText>You've planted <span>138 trees</span> so far!</ProgressText>
+        <ProgressHeading>Recyclables Breakdown</ProgressHeading>
         <HeadingUnderline />
         <BottomSquiggle src="https://i.imgur.com/zP7qZyg.png" />
       </ProgressContainer>

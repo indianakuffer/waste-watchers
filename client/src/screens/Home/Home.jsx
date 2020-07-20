@@ -14,7 +14,7 @@ const HomeContainer = styled.div`
 
 export default function Home(props) {
   return (
-    <Layout loggedIn={props.loggedIn}>
+    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <HomeContainer>
         <Jumbotron
           imageUrl='https://i.imgur.com/aat01sL.png'

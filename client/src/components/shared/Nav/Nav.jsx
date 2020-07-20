@@ -91,7 +91,7 @@ export default function Nav(props) {
         <Links to="/about">About Us</Links>
         <AccountButton profileImg={props.profileImg} onClick={toggleNavMenu} />
       </LinksContainer>
-      {showNav && <NavMenu loggedIn={props.loggedIn} toggleNavMenu={toggleNavMenu} />}
+      {showNav && <NavMenu loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} toggleNavMenu={toggleNavMenu} />}
     </NavBar>
   );
 }
