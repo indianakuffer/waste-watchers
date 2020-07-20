@@ -54,7 +54,8 @@ export default function EditAccount(props) {
   useEffect(() => {
     const helper = async () => {
       const response = await getUser(props.loggedIn)
-      setInputs({ ...inputs, ...response.accountInfo, password: '' })
+      setInputs({ ...inputs, ...response.accountInfo })
+      setConfirm(response.accountInfo.password)
     }
     helper()
   }, [])

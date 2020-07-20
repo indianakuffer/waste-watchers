@@ -14,6 +14,7 @@ const Title = styled.div`
 `
 const ItemContainer = styled.div`
   display: flex;
+  flex-flow: row wrap;
   align-items: baseline;
 `
 
