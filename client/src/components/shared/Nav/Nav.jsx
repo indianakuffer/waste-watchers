@@ -86,8 +86,18 @@ export default function Nav(props) {
         </Logo>
       </LogoContainer>
       <LinksContainer>
-        <Links to="/log">Log Recycling</Links>
-        <Links to="/progress">My Progress</Links>
+        {props.loggedIn ?
+          <>
+            <Links to="/log">Log Recycling</Links>
+            <Links to="/progress">My Progress</Links>
+          </>
+          :
+          <>
+            <Links to="/signin">Log Recycling</Links>
+            <Links to="/signin">My Progress</Links>
+          </>
+        }
+
         <Links to="/about">About Us</Links>
         <AccountButton profileImg={props.profileImg} onClick={toggleNavMenu} />
       </LinksContainer>
