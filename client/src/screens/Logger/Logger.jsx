@@ -45,10 +45,26 @@ export default function Logger(props) {
           <Item name='Bulk' image='https://i.imgur.com/RFaz0uo.png' category='plastic' />
         </ItemCategory>
         <ItemCategory name='Cartons'>
+          <Item name='Beverage' image='https://i.imgur.com/H5SGnUq.png' category='cartons' />
+          <Item name='Food' image='https://i.imgur.com/ZZk8tRx.png' category='cartons' />
+          <Item name='Aseptics' image='https://i.imgur.com/Yh6SF1b.png' category='cartons' />
         </ItemCategory>
         <ItemCategory name='Paper'>
+          <Item name='Newspaper' image='https://i.imgur.com/DYkch9B.png' category='paper' />
+          <Item name='Colored' image='https://i.imgur.com/WkmANVv.png' category='paper' />
+          <Item name='Envelopes' image='https://i.imgur.com/AnIbQFa.png' category='paper' />
+          <Item name='Receipts' image='https://i.imgur.com/F4nF1QH.png' category='paper' />
+          <Item name='Bags' image='https://i.imgur.com/TCfF7Ga.png' category='paper' />
+          <Item name='Wrapping' image='https://i.imgur.com/8uguGoJ.png' category='paper' />
+          <Item name='Paperbacks' image='https://i.imgur.com/lGp6wEF.png' category='paper' />
         </ItemCategory>
         <ItemCategory name='Cardboard'>
+          <Item name='Egg Carton' image='https://i.imgur.com/Xb3MaPR.png' category='cardboard' />
+          <Item name='Trays' image='https://i.imgur.com/3lgZpM3.png' category='cardboard' />
+          <Item name='Smooth' image='https://i.imgur.com/BzRudUL.png' category='cardboard' />
+          <Item name='Pizza Box' image='https://i.imgur.com/87zCQF6.png' category='cardboard' />
+          <Item name='Cups' image='https://i.imgur.com/Ny05v7i.png' category='cardboard' />
+          <Item name='Corrugated' image='https://i.imgur.com/D2uZvkf.png' category='cardboard' />
         </ItemCategory>
       </ItemList>
     </Layout>

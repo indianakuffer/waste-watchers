@@ -5,10 +5,12 @@ const CategoryContainer = styled.div`
   display: flex;
   flex-flow: column;
   border-top: 2px solid #dadada;
+  padding: 35px 0 50px 0;
 `
 const Title = styled.div`
   font-weight: bold;
   font-size: 20px;
+  margin-bottom: 15px;
 `
 const ItemContainer = styled.div`
   display: flex;
