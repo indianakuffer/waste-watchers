@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import Jumbotron from "../../components/shared/Jumbotron/Jumbotron";
 import styled from "styled-components";
+import { getUser } from '../../services/users'
 
 const ProgressContainer = styled.div`
   display: flex;
@@ -36,22 +37,23 @@ const HeadingUnderline = styled.div`
 
 const ProgressBar = styled.div`
   background-color: #dadada;
-  width: 990px;
+  width: 60%;
   height: 65px;
   border-radius: 100px;
   border: 5px solid black;
   margin-top: 60px;
   margin-bottom: 20px;
+  overflow: hidden;
 `;
 
 const ProgressBarColor = styled.div`
   background-color: #31c96e;
-  width: 800px;
+  width: ${props => props.progressPercent + '%'};
+  transition: width 4s ease;
   height: 55px;
-  border-radius: 100px;
+  border-radius: inherit;
   border: none;
-`;
-
+`
 const TreeImage = styled.img`
   max-width: 260px;
 `;
@@ -87,6 +89,18 @@ const ChartCenter = styled.div`
 `;
 
 export default function Progress(props) {
+  let [userData, setUserData] = useState(null)
+  let [progressPercent, setProgressPercent] = useState(0)
+
+  useEffect(() => {
+    const helper = async () => {
+      const response = await getUser(props.loggedIn)
+      setUserData(response)
+      setProgressPercent(response.points % 100)
+    }
+    helper()
+  }, [])
+
   return (
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <Jumbotron
@@ -100,14 +114,14 @@ export default function Progress(props) {
         <ProgressHeading>How Many Trees I've Planted</ProgressHeading>
         <HeadingUnderline />
         <ProgressBar>
-          <ProgressBarColor />
+          <ProgressBarColor progressPercent={progressPercent} />
         </ProgressBar>
         <ProgressText>
-          Only <span>20 points</span> until your next tree!
+          Only <span>{userData && (100 - (userData.points % 100))} points</span> until your next tree!
         </ProgressText>
         <TreeImage src="https://i.imgur.com/ztj0HxG.png" />
         <ProgressText>
-          You've planted <span>138 trees</span> so far!
+          You've planted <span>{userData && Math.floor(userData.points / 100)} trees</span> so far!
         </ProgressText>
         <ProgressHeading>Recyclables Breakdown</ProgressHeading>
         <HeadingUnderline />

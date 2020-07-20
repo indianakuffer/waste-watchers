@@ -86,65 +86,52 @@ export default function Logger(props) {
         smallText={`For every 100 points you earn, we'll plant a tree in your name.`}
       />
       <Squiggle src='https://i.imgur.com/2d7CEc0.png' />
-      {props.loggedIn &&
-        <ItemList>
-          <ItemCategory name='Metal'>
-            <Item name='Cans' image='https://i.imgur.com/k7es9ya.png' category='metal' changeItem={changeItem} />
-            <Item name='Aluminum' image='https://i.imgur.com/qHRiy7n.png' category='metal' changeItem={changeItem} />
-            <Item name='Bulk' image='https://i.imgur.com/dfEssGp.png' category='metal' changeItem={changeItem} />
-            <Item name='Caps' image='https://i.imgur.com/uIwZWW6.png' category='metal' changeItem={changeItem} />
-            <Item name='Household' image='https://i.imgur.com/piAJEIr.png' category='metal' changeItem={changeItem} />
-          </ItemCategory>
-          <ItemCategory name='Glass'>
-            <Item name='Bottles' image='https://i.imgur.com/Ze3Sdkf.png' category='glass' changeItem={changeItem} />
-            <Item name='Jars' image='https://i.imgur.com/V4qnx4b.png' category='glass' changeItem={changeItem} />
-          </ItemCategory>
-          <ItemCategory name='Plastic'>
-            <Item name='Bottles' image='https://i.imgur.com/Nty0H2E.png' category='plastic' changeItem={changeItem} />
-            <Item name='Containers' image='https://i.imgur.com/tOEwiXi.png' category='plastic' changeItem={changeItem} />
-            <Item name='Appliances' image='https://i.imgur.com/hmxHO87.png' category='plastic' changeItem={changeItem} />
-            <Item name='Bulk' image='https://i.imgur.com/RFaz0uo.png' category='plastic' changeItem={changeItem} />
-          </ItemCategory>
-          <ItemCategory name='Cartons'>
-            <Item name='Beverage' image='https://i.imgur.com/H5SGnUq.png' category='cartons' changeItem={changeItem} />
-            <Item name='Food' image='https://i.imgur.com/ZZk8tRx.png' category='cartons' changeItem={changeItem} />
-            <Item name='Aseptics' image='https://i.imgur.com/Yh6SF1b.png' category='cartons' changeItem={changeItem} />
-          </ItemCategory>
-          <ItemCategory name='Paper'>
-            <Item name='Newspaper' image='https://i.imgur.com/DYkch9B.png' category='paper' changeItem={changeItem} />
-            <Item name='Colored' image='https://i.imgur.com/WkmANVv.png' category='paper' changeItem={changeItem} />
-            <Item name='Envelopes' image='https://i.imgur.com/AnIbQFa.png' category='paper' changeItem={changeItem} />
-            <Item name='Receipts' image='https://i.imgur.com/F4nF1QH.png' category='paper' changeItem={changeItem} />
-            <Item name='Bags' image='https://i.imgur.com/TCfF7Ga.png' category='paper' changeItem={changeItem} />
-            <Item name='Wrapping' image='https://i.imgur.com/8uguGoJ.png' category='paper' changeItem={changeItem} />
-            <Item name='Paperbacks' image='https://i.imgur.com/lGp6wEF.png' category='paper' changeItem={changeItem} />
-          </ItemCategory>
-          <ItemCategory name='Cardboard'>
-            <Item name='Egg Carton' image='https://i.imgur.com/Xb3MaPR.png' category='cardboard' changeItem={changeItem} />
-            <Item name='Trays' image='https://i.imgur.com/3lgZpM3.png' category='cardboard' changeItem={changeItem} />
-            <Item name='Smooth' image='https://i.imgur.com/BzRudUL.png' category='cardboard' changeItem={changeItem} />
-            <Item name='Pizza Box' image='https://i.imgur.com/87zCQF6.png' category='cardboard' changeItem={changeItem} />
-            <Item name='Cups' image='https://i.imgur.com/Ny05v7i.png' category='cardboard' changeItem={changeItem} />
-            <Item name='Corrugated' image='https://i.imgur.com/D2uZvkf.png' category='cardboard' changeItem={changeItem} />
-          </ItemCategory>
-          <Button
-            color="#31C96E"
-            buttonText="Submit"
-            onClick={handleSubmit}
-          />
-        </ItemList>
-
-      }
-      {!props.loggedIn &&
-        <NotLoggedIn>
-          <h1>Please sign in to add items.</h1>
-          <Button
-            color="#31C96E"
-            buttonText="Sign In"
-            buttonLink="/signin"
-          />
-        </NotLoggedIn>
-      }
+      <ItemList>
+        <ItemCategory name='Metal'>
+          <Item name='Cans' image='https://i.imgur.com/k7es9ya.png' category='metal' changeItem={changeItem} />
+          <Item name='Aluminum' image='https://i.imgur.com/qHRiy7n.png' category='metal' changeItem={changeItem} />
+          <Item name='Bulk' image='https://i.imgur.com/dfEssGp.png' category='metal' changeItem={changeItem} />
+          <Item name='Caps' image='https://i.imgur.com/uIwZWW6.png' category='metal' changeItem={changeItem} />
+          <Item name='Household' image='https://i.imgur.com/piAJEIr.png' category='metal' changeItem={changeItem} />
+        </ItemCategory>
+        <ItemCategory name='Glass'>
+          <Item name='Bottles' image='https://i.imgur.com/Ze3Sdkf.png' category='glass' changeItem={changeItem} />
+          <Item name='Jars' image='https://i.imgur.com/V4qnx4b.png' category='glass' changeItem={changeItem} />
+        </ItemCategory>
+        <ItemCategory name='Plastic'>
+          <Item name='Bottles' image='https://i.imgur.com/Nty0H2E.png' category='plastic' changeItem={changeItem} />
+          <Item name='Containers' image='https://i.imgur.com/tOEwiXi.png' category='plastic' changeItem={changeItem} />
+          <Item name='Appliances' image='https://i.imgur.com/hmxHO87.png' category='plastic' changeItem={changeItem} />
+          <Item name='Bulk' image='https://i.imgur.com/RFaz0uo.png' category='plastic' changeItem={changeItem} />
+        </ItemCategory>
+        <ItemCategory name='Cartons'>
+          <Item name='Beverage' image='https://i.imgur.com/H5SGnUq.png' category='cartons' changeItem={changeItem} />
+          <Item name='Food' image='https://i.imgur.com/ZZk8tRx.png' category='cartons' changeItem={changeItem} />
+          <Item name='Aseptics' image='https://i.imgur.com/Yh6SF1b.png' category='cartons' changeItem={changeItem} />
+        </ItemCategory>
+        <ItemCategory name='Paper'>
+          <Item name='Newspaper' image='https://i.imgur.com/DYkch9B.png' category='paper' changeItem={changeItem} />
+          <Item name='Colored' image='https://i.imgur.com/WkmANVv.png' category='paper' changeItem={changeItem} />
+          <Item name='Envelopes' image='https://i.imgur.com/AnIbQFa.png' category='paper' changeItem={changeItem} />
+          <Item name='Receipts' image='https://i.imgur.com/F4nF1QH.png' category='paper' changeItem={changeItem} />
+          <Item name='Bags' image='https://i.imgur.com/TCfF7Ga.png' category='paper' changeItem={changeItem} />
+          <Item name='Wrapping' image='https://i.imgur.com/8uguGoJ.png' category='paper' changeItem={changeItem} />
+          <Item name='Paperbacks' image='https://i.imgur.com/lGp6wEF.png' category='paper' changeItem={changeItem} />
+        </ItemCategory>
+        <ItemCategory name='Cardboard'>
+          <Item name='Egg Carton' image='https://i.imgur.com/Xb3MaPR.png' category='cardboard' changeItem={changeItem} />
+          <Item name='Trays' image='https://i.imgur.com/3lgZpM3.png' category='cardboard' changeItem={changeItem} />
+          <Item name='Smooth' image='https://i.imgur.com/BzRudUL.png' category='cardboard' changeItem={changeItem} />
+          <Item name='Pizza Box' image='https://i.imgur.com/87zCQF6.png' category='cardboard' changeItem={changeItem} />
+          <Item name='Cups' image='https://i.imgur.com/Ny05v7i.png' category='cardboard' changeItem={changeItem} />
+          <Item name='Corrugated' image='https://i.imgur.com/D2uZvkf.png' category='cardboard' changeItem={changeItem} />
+        </ItemCategory>
+        <Button
+          color="#31C96E"
+          buttonText="Submit"
+          onClick={handleSubmit}
+        />
+      </ItemList>
     </Layout>
   )
 }
