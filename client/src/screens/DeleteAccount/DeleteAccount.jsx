@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import Button from "../../components/shared/Button/Button";
+import Card from "../../components/shared/Card/Card";
 import styled from "styled-components";
 import { deleteUser } from '../../services/users'
 import { Redirect } from 'react-router-dom'
@@ -58,23 +59,25 @@ export default function DeleteAccount(props) {
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <ScreenContainer>
         <TopSquiggle className="squiggle" />
-        <ScreenDiv>
-          <h1>
-            Are you sure you want to delete your account? <br /> This action
+        <Card>
+          <ScreenDiv>
+            <h1>
+              Are you sure you want to delete your account? <br /> This action
             cannot be undone.
           </h1>
-          <Button
-            color="#5A83EC"
-            buttonText="Cancel"
-            buttonLink={`/account/${props.loggedIn}`}
-          />
-          <Button
-            color="#FF7373"
-            buttonText="Yes, Delete My Account"
-            buttonLink="/"
-            onClick={handleSubmit}
-          />
-        </ScreenDiv>
+            <Button
+              color="#5A83EC"
+              buttonText="Cancel"
+              buttonLink={`/account/${props.loggedIn}`}
+            />
+            <Button
+              color="#FF7373"
+              buttonText="Yes, Delete My Account"
+              buttonLink="/"
+              onClick={handleSubmit}
+            />
+          </ScreenDiv>
+        </Card>
         <BottomSquiggle className="squiggle" />
       </ScreenContainer>
     </Layout>
