@@ -1,4 +1,5 @@
 import React from 'react'
+import Item from '../../components/Item/Item'
 import styled from 'styled-components'
 
 const CategoryContainer = styled.div`
@@ -15,16 +16,16 @@ const Title = styled.div`
 const ItemContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
-  align-items: baseline;
 `
 
 export default function ItemCategory(props) {
-
   return (
     <CategoryContainer>
-      <Title>{props.name}</Title>
+      <Title>{props.name[0].toUpperCase() + props.name.slice(1)}</Title>
       <ItemContainer>
-        {props.children}
+        {props.contents && Object.keys(props.contents).map(item => {
+          return <Item name={item} image={props.contents[item]} category={props.name} changeItem={props.changeItem} />
+        })}
       </ItemContainer>
     </CategoryContainer>
   )
