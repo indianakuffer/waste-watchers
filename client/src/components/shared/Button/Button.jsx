@@ -25,6 +25,10 @@ const StyledButton = styled.button`
   align-items: center;
   text-decoration: none;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    background-color:rgba(0, 0, 0, 0.1)
+  }
 `
 
 export default function Button(props) {
