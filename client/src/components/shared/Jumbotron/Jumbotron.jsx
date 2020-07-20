@@ -61,9 +61,11 @@ export default function Jumbotron(props) {
         <BigText quote={props.quote}>{props.bigText}</BigText>
         {props.quote && <Quoted>{props.quote}</Quoted>}
         <SmallText>{props.smallText}</SmallText>
-        <Link to={props.buttonLink}>
-          <JumboButton>{props.buttonText}</JumboButton>
-        </Link>
+        {props.buttonText &&
+          <Link to={props.buttonLink}>
+            <JumboButton>{props.buttonText}</JumboButton>
+          </Link>
+        }
       </TextBox>
     </JumboContainer>
   )
