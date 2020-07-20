@@ -6,20 +6,17 @@ const TextContainer = styled.div`
 display: flex;
   width: 1123px;
   height: 545px;
-  text-align: center;
-  align-content: center;
+  position: relative; 
+  left: 22px;
+  top: 99px;
   font-family: Nunito;
   font-size: 60px;
   font-weight: bold;
   color: #000000;
 `
 const AboutTitle = styled.div`
-  display: flex;
-  position: relative;
-  flex-wrap: wrap;
-  justify-content: center;
   font-family: Nunito;
-  font-size: 20px;
+  font-size: 40px;
   text-align: center;
   align-items: center;
   font-weight: bold;
@@ -27,16 +24,22 @@ const AboutTitle = styled.div`
 `
 const TextBorder = styled.div`
 {
-  position: absolute;
-  left: 45%;
-  width: 150px;
+  position: relative;
+   left: 18px; 
+   top: 18px;
+  float: right
+  width: 50px;
   height: 5px;
   background-color: #000000;
 }
 `
 const AlignAll = styled.div`
 {
-
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: center
+}
 }
 `
 
@@ -46,8 +49,9 @@ export default function About(props) {
 
       <AlignAll>
         <AboutTitle>
-          <h1>Who We Are</h1>
+          Who We Are
         </AboutTitle>
+        <br></br>
         <TextBorder />
         <TextContainer>
           Waste Watchers is a global
