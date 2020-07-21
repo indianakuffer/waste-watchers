@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import NavMenu from "../../NavMenu/NavMenu";
-import Logo from "../Logo"
+import Logo from "../Logo/Logo"
 import { getUser } from '../../../services/users'
 
 const NavBar = styled.nav`

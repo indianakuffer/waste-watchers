@@ -5,7 +5,7 @@ import twitter from "../../../images/social-icons/twitter.png"
 import facebook from "../../../images/social-icons/facebook.png"
 import instagram from "../../../images/social-icons/instagram.png"
 import linkedin from "../../../images/social-icons/linkedin.png"
-import Logo from "../../shared/Logo"
+import Logo from "../Logo/Logo"
 
 const FooterContainer = styled.footer`
   display: flex;
