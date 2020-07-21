@@ -9,24 +9,6 @@ import PopUp from '../../components/shared/PopUp/PopUp'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
-const ScreenContainer = styled.div`
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-
-  .squiggle {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    z-index: -10;
-    background: url('https://i.imgur.com/2d7CEc0.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-`
 const FormContainer = styled.form`
   display: flex;
   flex-flow: column;
@@ -37,13 +19,6 @@ const FormContainer = styled.form`
   button {
     margin-top: 50px;
   }
-`
-const TopImage = styled.div`
-  top: 0;
-`
-const BottomImage = styled.div`
-  bottom: 0;
-  transform: scaleY(-1) scaleX(-1);
 `
 
 export default function SignUp(props) {
@@ -101,42 +76,38 @@ export default function SignUp(props) {
   if (submitted) return <Redirect to='/' />
 
   return (
-    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
-      <ScreenContainer>
-        <TopImage className='squiggle' />
-        <h1>Get Started!</h1>
-        <FormContainer>
-          <Input
-            placeholder='Email'
-            name='email'
-            onChange={handleChange}
-            value={inputs.email}
-            image={envelopeImage}
-          />
-          <Input
-            placeholder='Password'
-            name='password'
-            onChange={handleChange}
-            value={inputs.password}
-            type='password'
-            image={lockImage}
-          />
-          <Input
-            placeholder='Confirm Password'
-            name='confirm'
-            onChange={handleChange}
-            value={inputs.confirm}
-            type='password'
-            image={lockImage}
-          />
-          <Button
-            color='#31C96E'
-            buttonText='Sign Up'
-            onClick={handleSubmit}
-          />
-        </FormContainer>
-        <BottomImage className='squiggle' />
-      </ScreenContainer>
+    <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <h1>Get Started!</h1>
+      <FormContainer>
+        <Input
+          placeholder='Email'
+          name='email'
+          onChange={handleChange}
+          value={inputs.email}
+          image={envelopeImage}
+        />
+        <Input
+          placeholder='Password'
+          name='password'
+          onChange={handleChange}
+          value={inputs.password}
+          type='password'
+          image={lockImage}
+        />
+        <Input
+          placeholder='Confirm Password'
+          name='confirm'
+          onChange={handleChange}
+          value={inputs.confirm}
+          type='password'
+          image={lockImage}
+        />
+        <Button
+          color='#31C96E'
+          buttonText='Sign Up'
+          onClick={handleSubmit}
+        />
+      </FormContainer>
       {alertNoMatch &&
         <PopUp
           color='#df6565'
