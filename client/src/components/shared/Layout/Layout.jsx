@@ -23,7 +23,7 @@ const ScreenContainer = styled.div`
     z-index: -10;
     background: url('${props => props.wavesImg || 'https://i.imgur.com/2d7CEc0.png'}');
     background-size: contain;
-    background-repeat: no-repeat;
+    background-repeat: repeat-x;
   }
   a {
     font-size: 17px;
