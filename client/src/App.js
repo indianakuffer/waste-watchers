@@ -11,7 +11,8 @@ import Logger from "./screens/Logger/Logger";
 import Progress from "./screens/Progress/Progress";
 
 const App = () => {
-  let [loggedIn, setLoggedIn] = useState(null)
+  let [loggedIn, setLoggedIn] = useState('5f11ecc94679dc0a698bac4e')
+  // let [loggedIn, setLoggedIn] = useState(null)
 
   return (
     <div className="app">

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { getUser } from "../../services/users";
+import styled from "styled-components";
 import Layout from "../../components/shared/Layout/Layout";
 import Jumbotron from "../../components/shared/Jumbotron/Jumbotron";
-import styled from "styled-components";
-import { getUser } from "../../services/users";
+import Chart from '../../components/Chart/Chart'
+import Legend from '../../components/Legend/Legend'
 
 const ProgressContainer = styled.div`
   display: flex;
@@ -65,73 +67,12 @@ const ProgressText = styled.p`
     font-weight: bold;
   }
 `;
-
-const PieChart = styled.div`
-  position: relative;
-  height: 400px;
-  width: 400px;
-  border-radius: 100%;
-  margin: 0 auto 2rem;
-  overflow: hidden;
-  background-color: red;
-`;
-
-const ChartCenter = styled.div`
-  background-color: #ffff;
-  position: absolute;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  overflow: hidden;
-  // z-index: 1;
-`;
-
-const PieSegment1 = styled.div`
-  background: #ff7373;
-  content: "";
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transform: translate(0, 100%) rotate(90deg);
-  transform-origin: 50% 0;
-`;
-
-const PieSegment2 = styled.div`
-  background: #ffbb0d;
-  content: "";
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transform: translate(0, 100%) rotate(-90deg);
-  transform-origin: 50% 0;
-`;
-
-const PieSegment3 = styled.div`
-  // background: #ffdd87;
-  // content: "";
-  // height: 100%;
-  // width: 100%;
-  // position: absolute;
-  // transform: translate(0, 100%) rotate(90deg) rotate(60deg);
-  // transform-origin: 40% 0;
-`;
-
-const PieSegment4 = styled.div`
-  background: #31c96e;
-`;
-
-const PieSegment5 = styled.div`
-  background: #0085ff;
-`;
-
-const PieSegment6 = styled.div`
-  background: #b79eff;
-`;
+const Breakdown = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90vw;
+`
 
 export default function Progress(props) {
   let [userData, setUserData] = useState(null);
@@ -173,12 +114,10 @@ export default function Progress(props) {
         </ProgressText>
         <ProgressHeading>Recyclables Breakdown</ProgressHeading>
         <HeadingUnderline />
-        <PieChart>
-          <ChartCenter />
-          <PieSegment1 />
-          <PieSegment2 />
-          <PieSegment3 />
-        </PieChart>
+        <Breakdown >
+          <Legend />
+          {userData && <Chart data={Object.values(userData.itemCategories)} />}
+        </Breakdown>
         <BottomSquiggle src="https://i.imgur.com/zP7qZyg.png" />
       </ProgressContainer>
     </Layout>
