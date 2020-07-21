@@ -121,7 +121,7 @@ export default function Progress(props) {
         </ProgressText>
         <TreeImage src="https://i.imgur.com/ztj0HxG.png" />
         <ProgressText>
-          You've planted <span>{userData && Math.floor(userData.points / 100)} trees</span> so far!
+          You've planted <span>{userData && `${Math.floor(userData.points / 100)} tree${Math.floor(userData.points / 100) === 1 ? '' : 's'}`}</span> so far!
         </ProgressText>
         <ProgressHeading>Recyclables Breakdown</ProgressHeading>
         <HeadingUnderline />
