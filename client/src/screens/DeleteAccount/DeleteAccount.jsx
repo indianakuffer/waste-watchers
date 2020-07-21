@@ -48,7 +48,7 @@ export default function DeleteAccount(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await deleteUser(props.loggedIn)
+    await deleteUser(props.loggedIn)
     props.setLoggedIn(null)
     setDeleted(true)
   }
