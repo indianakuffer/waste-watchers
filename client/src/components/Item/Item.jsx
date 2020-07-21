@@ -10,14 +10,12 @@ const ItemContainer = styled.div`
   align-items: center;
   margin-right: 15px;
 `
-const Image = styled.div`
-  background-image: url(${props => props.image});
+const Image = styled.img`
   width: 110px;
   height: 110px;
   border: 1px solid black;
   border-radius: 15px;
-  background-repeat: no-repeat;
-  background-position: center;
+  object-fit: scale-down;
 `
 const Plus = styled.button`
   position: absolute;
@@ -77,8 +75,7 @@ export default function Item(props) {
 
   return (
     <ItemContainer>
-      <Image className='image' image={props.image} />
-
+      <Image className='image' src={require(`../../${props.image}`)} />
       {count > 0 &&
         <CountContainer>
           <Trash onClick={handleDelete} />
@@ -87,8 +84,7 @@ export default function Item(props) {
         </CountContainer>
       }
       {count <= 0 && <Plus onClick={handlePlus} />}
-
-      {props.name}
+      {props.name[0].toUpperCase() + props.name.slice(1)}
     </ItemContainer>
   )
 }

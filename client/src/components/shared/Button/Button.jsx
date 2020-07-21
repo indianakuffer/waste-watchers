@@ -30,16 +30,34 @@ const StyledButton = styled.button`
     filter: saturate(50%);
   }
 `
+const ButtonContent = styled.div`
+  display: ${props => props.image ? 'flex' : 'block'};
+  justify-content: space-between;
+  width: 100%;
+  .buttonText {
+    margin-left: ${props => props.image ? '20px' : '0'};
+  }
+`
 
 export default function Button(props) {
   return (
     <>
       {props.buttonLink ?
         <StyledLink to={props.buttonLink}>
-          <StyledButton color={props.color} fontSize={props.fontSize} onClick={props.onClick}>{props.buttonText}</StyledButton>
+          <StyledButton color={props.color} fontSize={props.fontSize} className={props.className || 'btn'} onClick={props.onClick}>
+            <ButtonContent className='contents' image={props.image}>
+              <div className='buttonText'>{props.buttonText}</div>
+              {props.image && <img src={require(`../../../${props.image}`)} />}
+            </ButtonContent>
+          </StyledButton>
         </StyledLink>
         :
-        <StyledButton color={props.color} fontSize={props.fontSize} onClick={props.onClick}>{props.buttonText}</StyledButton>
+        <StyledButton color={props.color} fontSize={props.fontSize} className={props.className || 'btn'} onClick={props.onClick}>
+          <ButtonContent className='contents' image={props.image}>
+            <div className='buttonText'>{props.buttonText}</div>
+            {props.image && <img src={require(`../../../${props.image}`)} />}
+          </ButtonContent>
+        </StyledButton>
       }
     </>
   )
