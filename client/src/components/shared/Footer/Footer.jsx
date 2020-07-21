@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { NavLink } from "react-router-dom";
 import twitter from "../../../images/social-icons/twitter.png"
 import facebook from "../../../images/social-icons/facebook.png"
 import instagram from "../../../images/social-icons/instagram.png"
