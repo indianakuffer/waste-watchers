@@ -79,6 +79,7 @@ export default function Progress(props) {
   let [progressPercent, setProgressPercent] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     const helper = async () => {
       const response = await getUser(props.loggedIn);
       setUserData(response);
@@ -108,9 +109,7 @@ export default function Progress(props) {
         </ProgressText>
         <TreeImage src="https://i.imgur.com/ztj0HxG.png" />
         <ProgressText>
-          You've planted{" "}
-          <span>{userData && Math.floor(userData.points / 100)} trees</span> so
-          far!
+          You've planted <span>{userData && `${Math.floor(userData.points / 100)} tree${Math.floor(userData.points / 100) === 1 ? '' : 's'}`}</span> so far!
         </ProgressText>
         <ProgressHeading>Recyclables Breakdown</ProgressHeading>
         <HeadingUnderline />

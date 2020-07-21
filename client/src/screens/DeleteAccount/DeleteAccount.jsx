@@ -6,41 +6,19 @@ import styled from "styled-components";
 import { deleteUser } from '../../services/users'
 import { Redirect } from 'react-router-dom'
 
-const ScreenContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex: 1;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-
-  .squiggle {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    z-index: -10;
-    background: url("https://i.imgur.com/lVYqloz.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-`
 const ScreenDiv = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
-  margin: 0;
+  text-align: center;
   padding: 50px;
-
-  button {
+  .btn {
     margin: 10px 0;
+    max-width: 400px;
   }
-`
-const TopSquiggle = styled.div`
-  top: 0;
-`
-const BottomSquiggle = styled.div`
-  bottom: 0;
-  transform: scaleY(-1) scaleX(-1);
+  a {
+    max-width: 400px;
+  }
 `
 
 export default function DeleteAccount(props) {
@@ -48,7 +26,7 @@ export default function DeleteAccount(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const response = await deleteUser(props.loggedIn)
+    await deleteUser(props.loggedIn)
     props.setLoggedIn(null)
     setDeleted(true)
   }
@@ -56,30 +34,26 @@ export default function DeleteAccount(props) {
   if (deleted) return <Redirect to='/' />
 
   return (
-    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
-      <ScreenContainer>
-        <TopSquiggle className="squiggle" />
-        <Card>
-          <ScreenDiv>
-            <h1>
-              Are you sure you want to delete your account? <br /> This action
+    <Layout waves={true} wavesImg='https://i.imgur.com/lVYqloz.png' loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <Card>
+        <ScreenDiv>
+          <h1>
+            Are you sure you want to delete your account? <br /> This action
             cannot be undone.
           </h1>
-            <Button
-              color="#5A83EC"
-              buttonText="Cancel"
-              buttonLink={`/account/${props.loggedIn}`}
-            />
-            <Button
-              color="#FF7373"
-              buttonText="Yes, Delete My Account"
-              buttonLink="/"
-              onClick={handleSubmit}
-            />
-          </ScreenDiv>
-        </Card>
-        <BottomSquiggle className="squiggle" />
-      </ScreenContainer>
+          <Button
+            color="#5A83EC"
+            buttonText="Cancel"
+            buttonLink={`/account/${props.loggedIn}`}
+          />
+          <Button
+            color="#FF7373"
+            buttonText="Yes, Delete My Account"
+            buttonLink="/"
+            onClick={handleSubmit}
+          />
+        </ScreenDiv>
+      </Card>
     </Layout>
   );
 }

@@ -25,6 +25,7 @@ const StyledButton = styled.button`
   align-items: center;
   text-decoration: none;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  transition: filter 0.2s ease-out;
 
   &:hover {
     filter: saturate(50%);
@@ -47,7 +48,7 @@ export default function Button(props) {
           <StyledButton color={props.color} fontSize={props.fontSize} className={props.className || 'btn'} onClick={props.onClick}>
             <ButtonContent className='contents' image={props.image}>
               <div className='buttonText'>{props.buttonText}</div>
-              {props.image && <img src={require(`../../../${props.image}`)} />}
+              {props.image && <img src={require(`../../../${props.image}`)} alt='icon' />}
             </ButtonContent>
           </StyledButton>
         </StyledLink>
@@ -55,7 +56,7 @@ export default function Button(props) {
         <StyledButton color={props.color} fontSize={props.fontSize} className={props.className || 'btn'} onClick={props.onClick}>
           <ButtonContent className='contents' image={props.image}>
             <div className='buttonText'>{props.buttonText}</div>
-            {props.image && <img src={require(`../../../${props.image}`)} />}
+            {props.image && <img src={require(`../../../${props.image}`)} alt='icon' />}
           </ButtonContent>
         </StyledButton>
       }

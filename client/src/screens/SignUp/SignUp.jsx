@@ -1,31 +1,15 @@
 import React, { useState } from 'react'
-import Layout from '../../components/shared/Layout/Layout'
-import Input from '../../components/shared/Input/Input'
-import styled from 'styled-components'
-import Button from '../../components/shared/Button/Button'
 import { Redirect } from 'react-router-dom'
 import { getUsers, createUser } from '../../services/users'
+import styled from 'styled-components'
+import Layout from '../../components/shared/Layout/Layout'
+import Input from '../../components/shared/Input/Input'
+import Button from '../../components/shared/Button/Button'
+import PopUp from '../../components/shared/PopUp/PopUp'
+import Card from '../../components/shared/Card/Card'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
-const ScreenContainer = styled.div`
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-
-  .squiggle {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    z-index: -10;
-    background: url('https://i.imgur.com/2d7CEc0.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-`
 const FormContainer = styled.form`
   display: flex;
   flex-flow: column;
@@ -37,17 +21,12 @@ const FormContainer = styled.form`
     margin-top: 50px;
   }
 `
-const TopImage = styled.div`
-  top: 0;
-`
-const BottomImage = styled.div`
-  bottom: 0;
-  transform: scaleY(-1) scaleX(-1);
-`
 
 export default function SignUp(props) {
   let [inputs, setInputs] = useState({ email: '', password: '', confirm: '' })
   let [submitted, setSubmitted] = useState(false)
+  let [alertAlreadyExists, setAlertAlreadyExists] = useState(false)
+  let [alertNoMatch, setAlertNoMatch] = useState(false)
 
   const handleChange = e => {
     let value = e.target.value
@@ -61,7 +40,7 @@ export default function SignUp(props) {
   const handleSubmit = async e => {
     e.preventDefault()
     if (inputs.password !== inputs.confirm) {
-      alert('Please make sure passwords match.')
+      setAlertNoMatch(true)
       return
     }
     const response = await getUsers()
@@ -69,7 +48,7 @@ export default function SignUp(props) {
     if (!search) {
       submitUser()
     } else {
-      alert('A user with that email already exists.')
+      setAlertAlreadyExists(true)
     }
   }
 
@@ -98,9 +77,8 @@ export default function SignUp(props) {
   if (submitted) return <Redirect to='/' />
 
   return (
-    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
-      <ScreenContainer>
-        <TopImage className='squiggle' />
+    <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <Card>
         <h1>Get Started!</h1>
         <FormContainer>
           <Input
@@ -132,8 +110,23 @@ export default function SignUp(props) {
             onClick={handleSubmit}
           />
         </FormContainer>
-        <BottomImage className='squiggle' />
-      </ScreenContainer>
+      </Card>
+      {alertNoMatch &&
+        <PopUp
+          color='#df6565'
+          smallText='Please make sure the passwords match!'
+          buttonText='Okay'
+          onClick={() => { setAlertNoMatch(false) }}
+        />
+      }
+      {alertAlreadyExists &&
+        <PopUp
+          color='#df6565'
+          smallText='A user with that email already exists!'
+          buttonText='Oh!'
+          onClick={() => { setAlertAlreadyExists(false) }}
+        />
+      }
     </Layout>
   )
 }
