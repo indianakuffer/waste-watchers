@@ -49,11 +49,18 @@ const SmallText = styled.div`
 const JumboButton = styled.button`
   color: white;
   background: #aeaeae;
+  border-radius: 5px;
   border: none;
   width: 236px;
   height: 72px;
   font-size: 17px;
   font-weight: bold;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  transition: filter 0.2s ease-out;
+
+  &:hover {
+    filter: brightness(95%);
+  }
 `
 
 export default function Jumbotron(props) {
