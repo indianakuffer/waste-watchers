@@ -10,24 +10,20 @@ const ProgressContainer = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
-`;
-
-const TopSquiggle = styled.img`
+`
+const TopWave = styled.img`
   width: 100%;
-`;
-
-const BottomSquiggle = styled.img`
+`
+const BottomWave = styled.img`
   width: 100%;
   transform: scaleY(-1) scaleX(-1);
   bottom: 0;
   z-index: -10;
-`;
-
+`
 const ProgressHeading = styled.div`
   font-size: 60px;
   font-weight: bold;
-`;
-
+`
 const HeadingUnderline = styled.div`
   text-align: center;
   width: 150px;
@@ -35,8 +31,7 @@ const HeadingUnderline = styled.div`
   background-color: #000000;
   margin-top: 20px;
   border-radius: 5px;
-`;
-
+`
 const ProgressBar = styled.div`
   background-color: #dadada;
   width: 60%;
@@ -46,8 +41,7 @@ const ProgressBar = styled.div`
   margin-top: 60px;
   margin-bottom: 20px;
   overflow: hidden;
-`;
-
+`
 const ProgressBarColor = styled.div`
   background-color: #31c96e;
   width: ${(props) => props.progressPercent + "%"};
@@ -55,14 +49,12 @@ const ProgressBarColor = styled.div`
   height: 55px;
   border-radius: inherit;
   border: none;
-`;
+`
 const TreeImage = styled.img`
   max-width: 260px;
-`;
-
+`
 const ProgressText = styled.p`
   font-size: 40px;
-
   span {
     font-weight: bold;
   }
@@ -97,7 +89,7 @@ export default function Progress(props) {
         smallText="See your recycling habits visualized"
       />
       <ProgressContainer>
-        <TopSquiggle src="https://i.imgur.com/zP7qZyg.png" />
+        <TopWave src="https://i.imgur.com/zP7qZyg.png" />
         <ProgressHeading>How Many Trees I've Planted</ProgressHeading>
         <HeadingUnderline />
         <ProgressBar>
@@ -117,7 +109,7 @@ export default function Progress(props) {
           <Legend />
           {userData && <Chart data={Object.values(userData.itemCategories)} />}
         </Breakdown>
-        <BottomSquiggle src="https://i.imgur.com/zP7qZyg.png" />
+        <BottomWave src="https://i.imgur.com/zP7qZyg.png" />
       </ProgressContainer>
     </Layout>
   );
