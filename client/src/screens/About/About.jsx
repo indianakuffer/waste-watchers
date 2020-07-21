@@ -31,6 +31,7 @@ const AboutText = styled.p`
   font-weight: bold;
   margin-top: 80px;
   margin-bottom: 150px;
+  max-width: 1200px;
 `
 const BlueSquiggle = styled.img`
   width: 100%;
@@ -48,7 +49,7 @@ export default function About(props) {
         className="jumbotron"
         imageUrl="https://i.imgur.com/aat01sL.png"
         color="#ffce51"
-        bigText="We're reframing recylcing"
+        bigText="We're reframing recycling"
         smallText="About Waste Watchers"
       />
       <AboutContainer>
