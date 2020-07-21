@@ -5,6 +5,7 @@ import Button from '../Button/Button'
 const PopUpContainer = styled.div`
   display: flex;
   position: fixed;
+  top: 20vh;
   flex-flow: column;
   align-items: center;
   align-self: center;
