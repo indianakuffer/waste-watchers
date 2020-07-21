@@ -93,6 +93,7 @@ export default function Progress(props) {
   let [progressPercent, setProgressPercent] = useState(0)
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     const helper = async () => {
       const response = await getUser(props.loggedIn)
       setUserData(response)
