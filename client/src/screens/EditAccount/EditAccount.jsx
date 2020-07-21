@@ -91,59 +91,55 @@ export default function EditAccount(props) {
   if (saved) return <Redirect to={`/account/${props.loggedIn}`} />
 
   return (
-    <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
-      <ScreenContainer>
-        <TopImage className='squiggle' />
-        <Card>
-          <h1>Edit Your Account</h1>
-          <ProfilePicCircle profileImg={inputs.profileImg} />
-          <FormContainer>
-            <Input
-              placeholder='Username'
-              name='username'
-              onChange={handleChange}
-              value={inputs.username}
-              image={envelopeImage}
-            />
-            <Input
-              placeholder='Profile Pic'
-              name='profileImg'
-              onChange={handleChange}
-              value={inputs.profileImg}
-              image={envelopeImage}
-            />
-            <Input
-              placeholder='Email'
-              name='email'
-              onChange={handleChange}
-              value={inputs.email}
-              image={envelopeImage}
-            />
-            <Input
-              placeholder='Password'
-              name='password'
-              onChange={handleChange}
-              value={inputs.password}
-              type='password'
-              image={lockImage}
-            />
-            <Input
-              placeholder='Confirm Password'
-              name='confirm'
-              onChange={(e) => setConfirm(e.target.value)}
-              value={confirm}
-              type='password'
-              image={lockImage}
-            />
-            <Button
-              color='#31C96E'
-              buttonText='Save'
-              onClick={handleSubmit}
-            />
-          </FormContainer>
-        </Card>
-        <BottomImage className='squiggle' />
-      </ScreenContainer>
+    <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <Card>
+        <h1>Edit Your Account</h1>
+        <ProfilePicCircle profileImg={inputs.profileImg} />
+        <FormContainer>
+          <Input
+            placeholder='Username'
+            name='username'
+            onChange={handleChange}
+            value={inputs.username}
+            image={envelopeImage}
+          />
+          <Input
+            placeholder='Profile Pic'
+            name='profileImg'
+            onChange={handleChange}
+            value={inputs.profileImg}
+            image={envelopeImage}
+          />
+          <Input
+            placeholder='Email'
+            name='email'
+            onChange={handleChange}
+            value={inputs.email}
+            image={envelopeImage}
+          />
+          <Input
+            placeholder='Password'
+            name='password'
+            onChange={handleChange}
+            value={inputs.password}
+            type='password'
+            image={lockImage}
+          />
+          <Input
+            placeholder='Confirm Password'
+            name='confirm'
+            onChange={(e) => setConfirm(e.target.value)}
+            value={confirm}
+            type='password'
+            image={lockImage}
+          />
+          <Button
+            color='#31C96E'
+            buttonText='Save'
+            onClick={handleSubmit}
+          />
+        </FormContainer>
+      </Card>
       {alert &&
         <PopUp
           color='#df6565'

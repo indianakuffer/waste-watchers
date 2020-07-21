@@ -10,6 +10,7 @@ const JumboContainer = styled.div`
   min-height: 800px;
   background-image: url(${props => props.imageUrl});
   background-size: cover;
+  width: 100%;
   * {
     box-sizing: border-box;
   }
