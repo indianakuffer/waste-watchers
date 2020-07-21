@@ -25,6 +25,10 @@ const StyledButton = styled.button`
   align-items: center;
   text-decoration: none;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    filter: saturate(50%);
+  }
 `
 const ButtonContent = styled.div`
   display: ${props => props.image ? 'flex' : 'block'};
@@ -55,7 +59,6 @@ export default function Button(props) {
           </ButtonContent>
         </StyledButton>
       }
-
     </>
   )
 }
