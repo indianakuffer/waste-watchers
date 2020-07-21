@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import Jumbotron from "../../components/shared/Jumbotron/Jumbotron";
 import styled from "styled-components";
-import { getUser } from '../../services/users'
+import { getUser } from "../../services/users";
 
 const ProgressContainer = styled.div`
   display: flex;
@@ -48,12 +48,12 @@ const ProgressBar = styled.div`
 
 const ProgressBarColor = styled.div`
   background-color: #31c96e;
-  width: ${props => props.progressPercent + '%'};
+  width: ${(props) => props.progressPercent + "%"};
   transition: width 4s ease;
   height: 55px;
   border-radius: inherit;
   border: none;
-`
+`;
 const TreeImage = styled.img`
   max-width: 260px;
 `;
@@ -75,8 +75,9 @@ const PieChart = styled.div`
   overflow: hidden;
   background-color: red;
 `;
+
 const ChartCenter = styled.div`
-  background: #ffff;
+  background-color: #ffff;
   position: absolute;
   border-radius: 50%;
   width: 150px;
@@ -86,20 +87,64 @@ const ChartCenter = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
+  overflow: hidden;
+  // z-index: 1;
+`;
+
+const PieSegment1 = styled.div`
+  background: #ff7373;
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: translate(0, 100%) rotate(90deg);
+  transform-origin: 50% 0;
+`;
+
+const PieSegment2 = styled.div`
+  background: #ffbb0d;
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: translate(0, 100%) rotate(-90deg);
+  transform-origin: 50% 0;
+`;
+
+const PieSegment3 = styled.div`
+  background: #ffdd87;
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform: translate(0, 100%) rotate(90deg) rotate(60deg);
+  transform-origin: 40% 0;
+`;
+
+const PieSegment4 = styled.div`
+  background: #31c96e;
+`;
+
+const PieSegment5 = styled.div`
+  background: #0085ff;
+`;
+
+const PieSegment6 = styled.div`
+  background: #b79eff;
 `;
 
 export default function Progress(props) {
-  let [userData, setUserData] = useState(null)
-  let [progressPercent, setProgressPercent] = useState(0)
+  let [userData, setUserData] = useState(null);
+  let [progressPercent, setProgressPercent] = useState(0);
 
   useEffect(() => {
     const helper = async () => {
-      const response = await getUser(props.loggedIn)
-      setUserData(response)
-      setProgressPercent(response.points % 100)
-    }
-    helper()
-  }, [])
+      const response = await getUser(props.loggedIn);
+      setUserData(response);
+      setProgressPercent(response.points % 100);
+    };
+    helper();
+  }, []);
 
   return (
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
@@ -117,16 +162,22 @@ export default function Progress(props) {
           <ProgressBarColor progressPercent={progressPercent} />
         </ProgressBar>
         <ProgressText>
-          Only <span>{userData && (100 - (userData.points % 100))} points</span> until your next tree!
+          Only <span>{userData && 100 - (userData.points % 100)} points</span>{" "}
+          until your next tree!
         </ProgressText>
         <TreeImage src="https://i.imgur.com/ztj0HxG.png" />
         <ProgressText>
-          You've planted <span>{userData && Math.floor(userData.points / 100)} trees</span> so far!
+          You've planted{" "}
+          <span>{userData && Math.floor(userData.points / 100)} trees</span> so
+          far!
         </ProgressText>
         <ProgressHeading>Recyclables Breakdown</ProgressHeading>
         <HeadingUnderline />
         <PieChart>
           <ChartCenter />
+          <PieSegment1 />
+          <PieSegment2 />
+          <PieSegment3 />
         </PieChart>
         <BottomSquiggle src="https://i.imgur.com/zP7qZyg.png" />
       </ProgressContainer>
