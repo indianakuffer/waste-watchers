@@ -11,24 +11,6 @@ import PopUp from '../../components/shared/PopUp/PopUp'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
-const ScreenContainer = styled.div`
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-
-  .squiggle {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    z-index: -10;
-    background: url('https://i.imgur.com/2d7CEc0.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-`
 const FormContainer = styled.form`
   display: flex;
   flex-flow: column;
@@ -40,25 +22,20 @@ const FormContainer = styled.form`
     margin-top: 50px;
   }
 `
-const TopImage = styled.div`
-  top: 0;
-`
-const BottomImage = styled.div`
-  bottom: 0;
-  transform: scaleY(-1) scaleX(-1);
-`
 
 export default function EditAccount(props) {
   let [inputs, setInputs] = useState({ username: '', email: '', password: '', profileImg: '' })
+  let [origData, setOrigData] = useState(null)
   let [confirm, setConfirm] = useState('')
   let [saved, setSaved] = useState(false)
   let [alert, setAlert] = useState(false)
+  let [alertConfirm, setAlertConfirm] = useState(false)
 
   useEffect(() => {
     const helper = async () => {
       const response = await getUser(props.loggedIn)
-      setInputs({ ...inputs, ...response.accountInfo })
-      setConfirm(response.accountInfo.password)
+      setOrigData(response.accountInfo)
+      setInputs({ ...inputs, ...response.accountInfo, password: '' })
     }
     helper()
   }, [])
@@ -83,9 +60,9 @@ export default function EditAccount(props) {
     if (password) {
       response = await updateUser(props.loggedIn, { accountInfo: inputs })
     } else {
-      response = await updateUser(props.loggedIn, { accountInfo: rest })
+      response = await updateUser(props.loggedIn, { accountInfo: { ...rest, password: origData.password } })
     }
-    setSaved(true)
+    setAlertConfirm(true)
   }
 
   if (saved) return <Redirect to={`/account/${props.loggedIn}`} />
@@ -146,6 +123,14 @@ export default function EditAccount(props) {
           smallText='Please make sure passwords match.'
           buttonText='Okay'
           onClick={() => { setAlert(false) }}
+        />
+      }
+      {alertConfirm &&
+        <PopUp
+          color='#235ae5'
+          smallText='Account updated!'
+          buttonText='Okay'
+          onClick={() => { setSaved(true) }}
         />
       }
     </Layout>
