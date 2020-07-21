@@ -7,13 +7,16 @@ const PopUpContainer = styled.div`
   position: fixed;
   flex-flow: column;
   align-items: center;
-  color: white;
-  max-width: 800px;
   align-self: center;
-  z-index: 20;
-  font-size: 40px;
-  background-color: ${props => props.color ? props.color + 'BF' : 'white'};
+  max-width: 800px;
   padding: 70px;
+  z-index: 20;
+  background-color: ${props => props.color ? props.color + 'BF' : 'white'};
+  color: white;
+  font-size: 40px;
+  text-align: center;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   .big-text {
     font-weight: bold;
   }
@@ -21,6 +24,9 @@ const PopUpContainer = styled.div`
     margin-bottom: 40px;
   }
   a {
+    max-width: 150px;
+  }
+  .btn {
     max-width: 150px;
   }
 `

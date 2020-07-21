@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import Layout from '../../components/shared/Layout/Layout'
-import Input from '../../components/shared/Input/Input'
-import styled from 'styled-components'
-import Button from '../../components/shared/Button/Button'
 import { Redirect } from 'react-router-dom'
 import { getUsers, createUser } from '../../services/users'
+import styled from 'styled-components'
+import Layout from '../../components/shared/Layout/Layout'
+import Input from '../../components/shared/Input/Input'
+import Button from '../../components/shared/Button/Button'
+import PopUp from '../../components/shared/PopUp/PopUp'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
@@ -48,6 +49,8 @@ const BottomImage = styled.div`
 export default function SignUp(props) {
   let [inputs, setInputs] = useState({ email: '', password: '', confirm: '' })
   let [submitted, setSubmitted] = useState(false)
+  let [alertAlreadyExists, setAlertAlreadyExists] = useState(false)
+  let [alertNoMatch, setAlertNoMatch] = useState(false)
 
   const handleChange = e => {
     let value = e.target.value
@@ -61,7 +64,7 @@ export default function SignUp(props) {
   const handleSubmit = async e => {
     e.preventDefault()
     if (inputs.password !== inputs.confirm) {
-      alert('Please make sure passwords match.')
+      setAlertNoMatch(true)
       return
     }
     const response = await getUsers()
@@ -69,7 +72,7 @@ export default function SignUp(props) {
     if (!search) {
       submitUser()
     } else {
-      alert('A user with that email already exists.')
+      setAlertAlreadyExists(true)
     }
   }
 
@@ -134,6 +137,22 @@ export default function SignUp(props) {
         </FormContainer>
         <BottomImage className='squiggle' />
       </ScreenContainer>
+      {alertNoMatch &&
+        <PopUp
+          color='#df6565'
+          smallText='Please make sure the passwords match!'
+          buttonText='Okay'
+          onClick={() => { setAlertNoMatch(false) }}
+        />
+      }
+      {alertAlreadyExists &&
+        <PopUp
+          color='#df6565'
+          smallText='A user with that email already exists!'
+          buttonText='Oh!'
+          onClick={() => { setAlertAlreadyExists(false) }}
+        />
+      }
     </Layout>
   )
 }

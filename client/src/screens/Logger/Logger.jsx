@@ -7,6 +7,7 @@ import Jumbotron from '../../components/shared/Jumbotron/Jumbotron'
 import ItemCategory from '../../components/ItemCategory/ItemCategory'
 import Button from '../../components/shared/Button/Button'
 import PopUp from '../../components/shared/PopUp/PopUp'
+import { set } from 'mongoose'
 
 const ItemList = styled.div`
   display: flex;
@@ -26,6 +27,7 @@ export default function Logger(props) {
   let [loggedList, setLoggedList] = useState({ metal: 0, glass: 0, plastic: 0, cartons: 0, paper: 0, cardboard: 0 })
   let [retrievedData, setRetrievedData] = useState(null)
   let [submitted, setSubmitted] = useState(false)
+  let [alert, setAlert] = useState(false)
 
   useEffect(() => {
     const helper = async () => {
@@ -51,7 +53,7 @@ export default function Logger(props) {
     let loggedTotal = 0
     Object.keys(loggedList).forEach(category => loggedTotal += loggedList[category])
     if (loggedTotal <= 0) {
-      alert('No items logged.')
+      setAlert(true)
       return
     }
 
@@ -99,6 +101,14 @@ export default function Logger(props) {
           buttonLink='/progress'
           buttonColor='#59fd87'
           onClick={logReset}
+        />
+      }
+      {alert &&
+        <PopUp
+          color='#df6565'
+          smallText='No recyclables logged.'
+          buttonText='Oh!'
+          onClick={() => { setAlert(false) }}
         />
       }
     </Layout>
