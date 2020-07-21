@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import Layout from '../../components/shared/Layout/Layout'
-import Input from '../../components/shared/Input/Input'
-import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
-import styled from 'styled-components'
-import Button from '../../components/shared/Button/Button'
-import Card from '../../components/shared/Card/Card'
 import { Redirect } from 'react-router-dom'
 import { getUser, updateUser } from '../../services/users'
+import styled from 'styled-components'
+import Layout from '../../components/shared/Layout/Layout'
+import Card from '../../components/shared/Card/Card'
+import Input from '../../components/shared/Input/Input'
+import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
+import Button from '../../components/shared/Button/Button'
+import PopUp from '../../components/shared/PopUp/PopUp'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
@@ -51,6 +52,7 @@ export default function EditAccount(props) {
   let [inputs, setInputs] = useState({ username: '', email: '', password: '', profileImg: '' })
   let [confirm, setConfirm] = useState('')
   let [saved, setSaved] = useState(false)
+  let [alert, setAlert] = useState(false)
 
   useEffect(() => {
     const helper = async () => {
@@ -73,7 +75,7 @@ export default function EditAccount(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (inputs.password !== confirm) {
-      alert('Please make sure passwords match.')
+      setAlert(true)
       return
     }
     let response
@@ -142,6 +144,14 @@ export default function EditAccount(props) {
         </Card>
         <BottomImage className='squiggle' />
       </ScreenContainer>
+      {alert &&
+        <PopUp
+          color='#df6565'
+          smallText='Please make sure passwords match.'
+          buttonText='Okay'
+          onClick={() => { setAlert(false) }}
+        />
+      }
     </Layout>
   )
 }

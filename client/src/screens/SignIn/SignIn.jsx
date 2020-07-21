@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import Layout from '../../components/shared/Layout/Layout'
-import Input from '../../components/shared/Input/Input'
-import styled from 'styled-components'
-import Button from '../../components/shared/Button/Button'
-import Card from '../../components/shared/Card/Card'
 import { Link, Redirect } from 'react-router-dom'
 import { getUsers } from '../../services/users'
+import styled from 'styled-components'
+import Layout from '../../components/shared/Layout/Layout'
+import Input from '../../components/shared/Input/Input'
+import Card from '../../components/shared/Card/Card'
+import Button from '../../components/shared/Button/Button'
+import PopUp from '../../components/shared/PopUp/PopUp'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
@@ -63,6 +64,7 @@ const Prompt = styled.div`
 export default function SignIn(props) {
   let [inputs, setInputs] = useState({ email: '', password: '' })
   let [submitted, setSubmitted] = useState(false)
+  let [alert, setAlert] = useState(false)
 
   const handleChange = e => {
     let value = e.target.value
@@ -81,7 +83,7 @@ export default function SignIn(props) {
       props.setLoggedIn(search._id)
       setSubmitted(true)
     } else {
-      alert('No user found., try again!')
+      setAlert(true)
     }
   }
 
@@ -123,7 +125,15 @@ export default function SignIn(props) {
         </Card>
         <BottomImage className='squiggle' />
       </ScreenContainer>
-
+      {alert &&
+        <PopUp
+          color='#df6565'
+          bigText='No user found.'
+          smallText='Please try again!'
+          buttonText='Okay'
+          onClick={() => { setAlert(false) }}
+        />
+      }
     </Layout>
   )
 }
