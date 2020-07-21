@@ -27,7 +27,7 @@ const StyledButton = styled.button`
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 
   &:hover {
-    background-color:rgba(0, 0, 0, 0.1)
+    filter: saturate(50%);
   }
 `
 
@@ -41,7 +41,6 @@ export default function Button(props) {
         :
         <StyledButton color={props.color} fontSize={props.fontSize} onClick={props.onClick}>{props.buttonText}</StyledButton>
       }
-
     </>
   )
 }
