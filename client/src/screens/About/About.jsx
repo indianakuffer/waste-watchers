@@ -49,7 +49,7 @@ export default function About(props) {
         className="jumbotron"
         imageUrl="https://i.imgur.com/aat01sL.png"
         color="#ffce51"
-        bigText="We're reframing recycling"
+        bigText="We're reframing recycling."
         smallText="About Waste Watchers"
       />
       <AboutContainer>

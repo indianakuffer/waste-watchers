@@ -6,6 +6,7 @@ import Layout from '../../components/shared/Layout/Layout'
 import Input from '../../components/shared/Input/Input'
 import Button from '../../components/shared/Button/Button'
 import PopUp from '../../components/shared/PopUp/PopUp'
+import Card from '../../components/shared/Card/Card'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
@@ -77,37 +78,39 @@ export default function SignUp(props) {
 
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
-      <h1>Get Started!</h1>
-      <FormContainer>
-        <Input
-          placeholder='Email'
-          name='email'
-          onChange={handleChange}
-          value={inputs.email}
-          image={envelopeImage}
-        />
-        <Input
-          placeholder='Password'
-          name='password'
-          onChange={handleChange}
-          value={inputs.password}
-          type='password'
-          image={lockImage}
-        />
-        <Input
-          placeholder='Confirm Password'
-          name='confirm'
-          onChange={handleChange}
-          value={inputs.confirm}
-          type='password'
-          image={lockImage}
-        />
-        <Button
-          color='#31C96E'
-          buttonText='Sign Up'
-          onClick={handleSubmit}
-        />
-      </FormContainer>
+      <Card>
+        <h1>Get Started!</h1>
+        <FormContainer>
+          <Input
+            placeholder='Email'
+            name='email'
+            onChange={handleChange}
+            value={inputs.email}
+            image={envelopeImage}
+          />
+          <Input
+            placeholder='Password'
+            name='password'
+            onChange={handleChange}
+            value={inputs.password}
+            type='password'
+            image={lockImage}
+          />
+          <Input
+            placeholder='Confirm Password'
+            name='confirm'
+            onChange={handleChange}
+            value={inputs.confirm}
+            type='password'
+            image={lockImage}
+          />
+          <Button
+            color='#31C96E'
+            buttonText='Sign Up'
+            onClick={handleSubmit}
+          />
+        </FormContainer>
+      </Card>
       {alertNoMatch &&
         <PopUp
           color='#df6565'
