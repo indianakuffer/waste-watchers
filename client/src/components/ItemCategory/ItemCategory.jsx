@@ -24,7 +24,7 @@ export default function ItemCategory(props) {
       <Title>{props.name[0].toUpperCase() + props.name.slice(1)}</Title>
       <ItemContainer>
         {props.contents && Object.keys(props.contents).map(item => {
-          return <Item name={item} image={props.contents[item]} category={props.name} changeItem={props.changeItem} />
+          return <Item key={props.name + item} name={item} image={props.contents[item]} category={props.name} changeItem={props.changeItem} reset={props.reset} setReset={props.setReset} />
         })}
       </ItemContainer>
     </CategoryContainer>

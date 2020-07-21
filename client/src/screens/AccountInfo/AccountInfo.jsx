@@ -36,11 +36,6 @@ const AccountDiv = styled.div`
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   }
 `
-const UserPhoto = styled.img`
-  margin: -10px;
-  border-radius: 50%;
-  background-color: transparent;
-`
 const TopImage = styled.div`
   top: 0;
 `

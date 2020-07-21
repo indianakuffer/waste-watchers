@@ -63,6 +63,10 @@ const Trash = styled.button`
 export default function Item(props) {
   let [count, setCount] = useState(0)
 
+  if (props.reset) {
+    setCount(0)
+  }
+
   const handlePlus = () => {
     setCount(count + 1)
     props.changeItem(props.category, 1)
