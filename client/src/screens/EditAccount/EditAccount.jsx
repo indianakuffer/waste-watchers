@@ -4,6 +4,7 @@ import Input from '../../components/shared/Input/Input'
 import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
 import styled from 'styled-components'
 import Button from '../../components/shared/Button/Button'
+import Card from '../../components/shared/Card/Card'
 import { Redirect } from 'react-router-dom'
 import { getUser, updateUser } from '../../services/users'
 import envelopeImage from '../../images/input-icons/envelope.svg'
@@ -54,7 +55,8 @@ export default function EditAccount(props) {
   useEffect(() => {
     const helper = async () => {
       const response = await getUser(props.loggedIn)
-      setInputs({ ...inputs, ...response.accountInfo, password: '' })
+      setInputs({ ...inputs, ...response.accountInfo })
+      setConfirm(response.accountInfo.password)
     }
     helper()
   }, [])
@@ -90,52 +92,54 @@ export default function EditAccount(props) {
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <ScreenContainer>
         <TopImage className='squiggle' />
-        <h1>Edit Your Account</h1>
-        <ProfilePicCircle profileImg={inputs.profileImg} />
-        <FormContainer>
-          <Input
-            placeholder='Username'
-            name='username'
-            onChange={handleChange}
-            value={inputs.username}
-            image={envelopeImage}
-          />
-          <Input
-            placeholder='Profile Pic'
-            name='profileImg'
-            onChange={handleChange}
-            value={inputs.profileImg}
-            image={envelopeImage}
-          />
-          <Input
-            placeholder='Email'
-            name='email'
-            onChange={handleChange}
-            value={inputs.email}
-            image={envelopeImage}
-          />
-          <Input
-            placeholder='Password'
-            name='password'
-            onChange={handleChange}
-            value={inputs.password}
-            type='password'
-            image={lockImage}
-          />
-          <Input
-            placeholder='Confirm Password'
-            name='confirm'
-            onChange={(e) => setConfirm(e.target.value)}
-            value={confirm}
-            type='password'
-            image={lockImage}
-          />
-          <Button
-            color='#31C96E'
-            buttonText='Save'
-            onClick={handleSubmit}
-          />
-        </FormContainer>
+        <Card>
+          <h1>Edit Your Account</h1>
+          <ProfilePicCircle profileImg={inputs.profileImg} />
+          <FormContainer>
+            <Input
+              placeholder='Username'
+              name='username'
+              onChange={handleChange}
+              value={inputs.username}
+              image={envelopeImage}
+            />
+            <Input
+              placeholder='Profile Pic'
+              name='profileImg'
+              onChange={handleChange}
+              value={inputs.profileImg}
+              image={envelopeImage}
+            />
+            <Input
+              placeholder='Email'
+              name='email'
+              onChange={handleChange}
+              value={inputs.email}
+              image={envelopeImage}
+            />
+            <Input
+              placeholder='Password'
+              name='password'
+              onChange={handleChange}
+              value={inputs.password}
+              type='password'
+              image={lockImage}
+            />
+            <Input
+              placeholder='Confirm Password'
+              name='confirm'
+              onChange={(e) => setConfirm(e.target.value)}
+              value={confirm}
+              type='password'
+              image={lockImage}
+            />
+            <Button
+              color='#31C96E'
+              buttonText='Save'
+              onClick={handleSubmit}
+            />
+          </FormContainer>
+        </Card>
         <BottomImage className='squiggle' />
       </ScreenContainer>
     </Layout>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import NavMenu from "../../NavMenu/NavMenu";
-// import { getUser } from '../../../services/users'
+import { getUser } from '../../../services/users'
 
 const NavBar = styled.nav`
   background-color: #dadada;
@@ -59,23 +59,24 @@ const AccountButton = styled.button`
   border: none;
   background-image: url("${props => props.profileImg ? props.profileImg : 'https://i.imgur.com/SUHhp7V.png'}");
   background-position: center;
+  background-size: cover;
   margin-left: 10px;
 `;
 
 export default function Nav(props) {
   let [showNav, setShowNav] = useState(false)
-  // let [profileImg, setProfileImg] = useState('https://i.imgur.com/lp2jwK3.png')
+  let [profileImg, setProfileImg] = useState(null)
   const toggleNavMenu = () => {
     setShowNav(!showNav)
   }
 
-  // useEffect(() => {
-  //   const helper = async (id) => {
-  //     const response = await getUser(id)
-  //     setProfileImg(response.accountInfo.profileImg)
-  //   }
-  //   if (props.loggedIn) helper(props.loggedIn)
-  // }, [props.loggedIn])
+  useEffect(() => {
+    const helper = async (id) => {
+      const response = await getUser(id)
+      setProfileImg(response.accountInfo.profileImg)
+    }
+    if (props.loggedIn) helper(props.loggedIn)
+  }, [props.loggedIn])
 
   return (
     <NavBar>
@@ -86,10 +87,20 @@ export default function Nav(props) {
         </Logo>
       </LogoContainer>
       <LinksContainer>
-        <Links to="/log">Log Recycling</Links>
-        <Links to="/progress">My Progress</Links>
+        {props.loggedIn ?
+          <>
+            <Links to="/log">Log Recycling</Links>
+            <Links to="/progress">My Progress</Links>
+          </>
+          :
+          <>
+            <Links to="/signin">Log Recycling</Links>
+            <Links to="/signin">My Progress</Links>
+          </>
+        }
+
         <Links to="/about">About Us</Links>
-        <AccountButton profileImg={props.profileImg} onClick={toggleNavMenu} />
+        <AccountButton profileImg={profileImg} onClick={toggleNavMenu} />
       </LinksContainer>
       {showNav && <NavMenu loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} toggleNavMenu={toggleNavMenu} />}
     </NavBar>

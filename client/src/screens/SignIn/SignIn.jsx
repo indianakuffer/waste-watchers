@@ -3,6 +3,7 @@ import Layout from '../../components/shared/Layout/Layout'
 import Input from '../../components/shared/Input/Input'
 import styled from 'styled-components'
 import Button from '../../components/shared/Button/Button'
+import Card from '../../components/shared/Card/Card'
 import { Link, Redirect } from 'react-router-dom'
 import { getUsers } from '../../services/users'
 import envelopeImage from '../../images/input-icons/envelope.svg'
@@ -90,36 +91,39 @@ export default function SignIn(props) {
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <ScreenContainer>
         <TopImage className='squiggle' />
-        <h1>Welcome Back!</h1>
-        <FormContainer>
-          <Input
-            placeholder='Email'
-            name='email'
-            onChange={handleChange}
-            value={inputs.email}
-            image={envelopeImage}
-          />
-          <Input
-            placeholder='Password'
-            name='password'
-            onChange={handleChange}
-            value={inputs.password}
-            type='password'
-            image={lockImage}
-          />
-          <a href='#'>Forgot password?</a>
-          <Button
-            color='#31C96E'
-            buttonText='Sign In'
-            onClick={handleSubmit}
-          />
-        </FormContainer>
-        <Prompt>
-          <div>Don't have an account?</div>
-          <Link to='signup'>Sign Up!</Link>
-        </Prompt>
+        <Card>
+          <h1>Welcome Back!</h1>
+          <FormContainer>
+            <Input
+              placeholder='Email'
+              name='email'
+              onChange={handleChange}
+              value={inputs.email}
+              image={envelopeImage}
+            />
+            <Input
+              placeholder='Password'
+              name='password'
+              onChange={handleChange}
+              value={inputs.password}
+              type='password'
+              image={lockImage}
+            />
+            <a href='#'>Forgot password?</a>
+            <Button
+              color='#31C96E'
+              buttonText='Sign In'
+              onClick={handleSubmit}
+            />
+          </FormContainer>
+          <Prompt>
+            <div>Don't have an account?</div>
+            <Link to='signup'>Sign Up!</Link>
+          </Prompt>
+        </Card>
         <BottomImage className='squiggle' />
       </ScreenContainer>
+
     </Layout>
   )
 }

@@ -1,0 +1,41 @@
+{
+  "cardboard": {
+    "corrugated": "images/item-icons/cardboard/corrugated.png",
+    "cups": "images/item-icons/cardboard/cups.png",
+    "egg-carton": "images/item-icons/cardboard/egg-carton.png",
+    "pizza-box": "images/item-icons/cardboard/pizza-box.png",
+    "smooth": "images/item-icons/cardboard/smooth.png",
+    "trays": "images/item-icons/cardboard/trays.png"
+  },
+  "cartons": {
+    "aseptics": "images/item-icons/cartons/aseptics.png",
+    "beverage": "images/item-icons/cartons/beverage.png",
+    "food": "images/item-icons/cartons/food.png"
+  },
+  "glass": {
+    "bottles": "images/item-icons/glass/bottles.png",
+    "jars": "images/item-icons/glass/jars.png"
+  },
+  "metal": {
+    "aluminum": "images/item-icons/metal/aluminum.png",
+    "bulk": "images/item-icons/metal/bulk.png",
+    "cans": "images/item-icons/metal/cans.png",
+    "caps": "images/item-icons/metal/caps.png",
+    "household": "images/item-icons/metal/household.png"
+  },
+  "paper": {
+    "bags": "images/item-icons/paper/bags.png",
+    "colored": "images/item-icons/paper/colored.png",
+    "envelopes": "images/item-icons/paper/envelopes.png",
+    "newspaper": "images/item-icons/paper/newspaper.png",
+    "paperbacks": "images/item-icons/paper/paperbacks.png",
+    "receipts": "images/item-icons/paper/receipts.png",
+    "wrapping": "images/item-icons/paper/wrapping.png"
+  },
+  "plastic": {
+    "appliances": "images/item-icons/plastic/appliances.png",
+    "bottles": "images/item-icons/plastic/bottles.png",
+    "bulk": "images/item-icons/plastic/bulk.png",
+    "containers": "images/item-icons/plastic/containers.png"
+  }
+}
