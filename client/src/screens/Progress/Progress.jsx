@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { getUser } from "../../services/users";
+import styled from "styled-components";
 import Layout from "../../components/shared/Layout/Layout";
 import Jumbotron from "../../components/shared/Jumbotron/Jumbotron";
-import styled from "styled-components";
-import { getUser } from '../../services/users'
+import Chart from '../../components/Chart/Chart'
+import Legend from '../../components/Legend/Legend'
 
 const ProgressContainer = styled.div`
   display: flex;
@@ -48,12 +50,12 @@ const ProgressBar = styled.div`
 
 const ProgressBarColor = styled.div`
   background-color: #31c96e;
-  width: ${props => props.progressPercent + '%'};
+  width: ${(props) => props.progressPercent + "%"};
   transition: width 4s ease;
   height: 55px;
   border-radius: inherit;
   border: none;
-`
+`;
 const TreeImage = styled.img`
   max-width: 260px;
 `;
@@ -65,42 +67,26 @@ const ProgressText = styled.p`
     font-weight: bold;
   }
 `;
-
-const PieChart = styled.div`
-  position: relative;
-  height: 400px;
-  width: 400px;
-  border-radius: 100%;
-  margin: 0 auto 2rem;
-  overflow: hidden;
-  background-color: red;
-`;
-const ChartCenter = styled.div`
-  background: #ffff;
-  position: absolute;
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  margin: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-`;
+const Breakdown = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90vw;
+`
 
 export default function Progress(props) {
-  let [userData, setUserData] = useState(null)
-  let [progressPercent, setProgressPercent] = useState(0)
+  let [userData, setUserData] = useState(null);
+  let [progressPercent, setProgressPercent] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0)
     const helper = async () => {
-      const response = await getUser(props.loggedIn)
-      setUserData(response)
-      setProgressPercent(response.points % 100)
-    }
-    helper()
-  }, [])
+      const response = await getUser(props.loggedIn);
+      setUserData(response);
+      setProgressPercent(response.points % 100);
+    };
+    helper();
+  }, []);
 
   return (
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
@@ -118,7 +104,8 @@ export default function Progress(props) {
           <ProgressBarColor progressPercent={progressPercent} />
         </ProgressBar>
         <ProgressText>
-          Only <span>{userData && (100 - (userData.points % 100))} points</span> until your next tree!
+          Only <span>{userData && 100 - (userData.points % 100)} points</span>{" "}
+          until your next tree!
         </ProgressText>
         <TreeImage src="https://i.imgur.com/ztj0HxG.png" />
         <ProgressText>
@@ -126,9 +113,10 @@ export default function Progress(props) {
         </ProgressText>
         <ProgressHeading>Recyclables Breakdown</ProgressHeading>
         <HeadingUnderline />
-        <PieChart>
-          <ChartCenter />
-        </PieChart>
+        <Breakdown >
+          <Legend />
+          {userData && <Chart data={Object.values(userData.itemCategories)} />}
+        </Breakdown>
         <BottomSquiggle src="https://i.imgur.com/zP7qZyg.png" />
       </ProgressContainer>
     </Layout>
