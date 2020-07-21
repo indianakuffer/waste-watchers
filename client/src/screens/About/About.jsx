@@ -27,9 +27,7 @@ const AboutText = styled.p`
   display: flex;
   justify-content: center;
   text-align: center;
-  width: 1123px;
-  height: 545px;
-  font-size: 80px;
+  font-size: 70px;
   font-weight: bold;
   margin-top: 80px;
   margin-bottom: 150px;
@@ -65,7 +63,7 @@ export default function About(props) {
         <HeadingUnderline />
         <AboutText>
           We empower our members through providing personalized analytics and
-          tree planting incentives based on identified recyling habits.
+          tree planting incentives based on identified recycling habits.
         </AboutText>
         <GreenSquiggle src="https://i.imgur.com/Xq3HU2x.png" />
         <AboutHeading>Why We Do What We Do</AboutHeading>
