@@ -112,13 +112,13 @@ const PieSegment2 = styled.div`
 `;
 
 const PieSegment3 = styled.div`
-  background: #ffdd87;
-  content: "";
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transform: translate(0, 100%) rotate(90deg) rotate(60deg);
-  transform-origin: 40% 0;
+  // background: #ffdd87;
+  // content: "";
+  // height: 100%;
+  // width: 100%;
+  // position: absolute;
+  // transform: translate(0, 100%) rotate(90deg) rotate(60deg);
+  // transform-origin: 40% 0;
 `;
 
 const PieSegment4 = styled.div`
