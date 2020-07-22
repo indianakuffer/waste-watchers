@@ -33,12 +33,16 @@ const Plus = styled.button`
 `
 const CountContainer = styled.div`
   position: absolute;
+  top: 1px;
+  left: 1px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #dadada;
-  width: 80%;
+  background-color: rgba(255,255,255,0.8);
+  width: 99%;
   height: 30px;
+  padding: 2px;
+  border-radius: 15px 15px 0 0;
   .count {
     font-weight: bold;
   }
