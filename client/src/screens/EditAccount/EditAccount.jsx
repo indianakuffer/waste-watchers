@@ -19,8 +19,15 @@ const FormContainer = styled.form`
   .input-container {
     margin-bottom: 10px;
   }
-  button {
+  .btn, .btn-back {
     margin-top: 50px;
+  }
+  .btn-back, a {
+    margin-right: 30px;
+  }
+  .button-container {
+    display: flex;
+    width: 100%;
   }
 `
 
@@ -67,7 +74,7 @@ export default function EditAccount(props) {
   }
 
   if (!props.loggedIn) return <Redirect to='/signin' />
-  if (saved) return <Redirect to={`/account/${props.loggedIn}`} />
+  if (saved) return <Redirect to={`/account`} />
 
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
@@ -113,11 +120,19 @@ export default function EditAccount(props) {
             type='password'
             image={lockImage}
           />
-          <Button
-            color='#31C96E'
-            buttonText='Save'
-            onClick={handleSubmit}
-          />
+          <div className='button-container'>
+            <Button
+              color='#aeaeae'
+              buttonText='Back'
+              buttonLink='/account'
+              className='btn-back'
+            />
+            <Button
+              color='#31C96E'
+              buttonText='Save'
+              onClick={handleSubmit}
+            />
+          </div>
         </FormContainer>
       </Card>
       <MobileWave image='images/mobile-waves/info-bottom.svg' />

@@ -109,7 +109,7 @@ export default function Nav(props) {
         <NavMenu loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} closeFunction={() => setShowAccountMenu(false)}>
           {props.loggedIn &&
             <>
-              <Button color="#5A83EC" buttonText="Manage My Account" buttonLink={`/account/${props.loggedIn}`} fontSize='15px' />
+              <Button color="#5A83EC" buttonText="Manage My Account" buttonLink={`/account`} fontSize='15px' />
               <Button color="#FF7373" buttonText="Sign Out" onClick={signOut} fontSize='15px' />
             </>
           }
