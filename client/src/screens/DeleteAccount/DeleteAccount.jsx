@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+import { Redirect } from 'react-router-dom'
+import { deleteUser } from '../../services/users'
 import Layout from "../../components/shared/Layout/Layout";
 import Button from "../../components/shared/Button/Button";
 import Card from "../../components/shared/Card/Card";
-import styled from "styled-components";
-import { deleteUser } from '../../services/users'
-import { Redirect } from 'react-router-dom'
+import MobileWave from "../../components/shared/MobileWave/MobileWave";
 
 const ScreenDiv = styled.div`
   display: flex;
@@ -35,6 +36,7 @@ export default function DeleteAccount(props) {
 
   return (
     <Layout waves={true} wavesImg='https://i.imgur.com/lVYqloz.png' loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <MobileWave image='images/mobile-waves/delete-top.svg' />
       <Card>
         <ScreenDiv>
           <h1>
@@ -54,6 +56,7 @@ export default function DeleteAccount(props) {
           />
         </ScreenDiv>
       </Card>
+      <MobileWave image='images/mobile-waves/delete-bottom.svg' />
     </Layout>
   );
 }

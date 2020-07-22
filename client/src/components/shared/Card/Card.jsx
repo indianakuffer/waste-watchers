@@ -10,6 +10,10 @@ const CardContainer = styled.div`
   flex-flow: column;
   align-items: center;
   margin: 30px;
+  @media only screen and (max-width: 768px) {
+    padding: 0px;
+    margin: 0px;
+  }
 `
 
 export default function Card(props) {

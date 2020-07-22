@@ -4,6 +4,7 @@ import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePi
 import styled from "styled-components";
 import Button from "../../components/shared/Button/Button";
 import Card from "../../components/shared/Card/Card";
+import MobileWave from "../../components/shared/MobileWave/MobileWave";
 import { getUser } from '../../services/users'
 
 const AccountDiv = styled.div`
@@ -36,6 +37,7 @@ export default function AccountInfo(props) {
 
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <MobileWave image='images/mobile-waves/info-top.svg' />
       <Card>
         <AccountDiv>
           <h1>Manage My Account</h1>
@@ -64,6 +66,7 @@ export default function AccountInfo(props) {
           />
         </AccountDiv>
       </Card>
+      <MobileWave image='images/mobile-waves/info-bottom.svg' />
     </Layout>
   );
 }

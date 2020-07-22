@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Jumbotron from "../../components/shared/Jumbotron/Jumbotron";
 import AboutTextBox from '../../components/AboutTextBox/AboutTextBox'
 
-
 const BlueWave = styled.img`
   width: 100%;
   z-index: -10;
