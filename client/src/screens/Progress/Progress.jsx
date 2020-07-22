@@ -5,6 +5,7 @@ import Layout from "../../components/shared/Layout/Layout";
 import Jumbotron from "../../components/shared/Jumbotron/Jumbotron";
 import Chart from '../../components/Chart/Chart'
 import Legend from '../../components/Legend/Legend'
+import Loader from '../../components/shared/Loader/Loader'
 
 const TopWave = styled.img`
   width: 100%;
@@ -102,6 +103,7 @@ export default function Progress(props) {
         <Legend />
         {userData && <Chart data={Object.values(userData.itemCategories)} />}
       </Breakdown>
+      <Loader />
       <BottomWave src="https://i.imgur.com/zP7qZyg.png" />
     </Layout>
   );
