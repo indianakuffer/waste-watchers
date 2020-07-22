@@ -8,6 +8,11 @@ const HomeContainer = styled.div`
   >* {
     margin-bottom: 150px;
   }
+  @media only screen and (max-width: 768px) {
+    >* {
+      margin-bottom: 100px;
+    }
+  }
 `
 
 export default function Home(props) {
