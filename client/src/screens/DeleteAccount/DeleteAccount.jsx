@@ -47,7 +47,7 @@ export default function DeleteAccount(props) {
           <Button
             color="#5A83EC"
             buttonText="Cancel"
-            buttonLink={`/account/${props.loggedIn}`}
+            buttonLink={`/account`}
           />
           <Button
             color="#FF7373"

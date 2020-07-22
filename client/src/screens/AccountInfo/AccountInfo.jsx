@@ -53,7 +53,7 @@ export default function AccountInfo(props) {
           <Button
             color="#5a83ec"
             buttonText="Edit Account Information"
-            buttonLink={`/account/${props.loggedIn}/edit`}
+            buttonLink={`/account/edit`}
             image='images/button-icons/right-arrow.svg'
           />
           <Button
@@ -64,7 +64,7 @@ export default function AccountInfo(props) {
           <Button
             color="#ff7373"
             buttonText="Delete My Account"
-            buttonLink={`/account/${props.loggedIn}/delete`}
+            buttonLink={`/account/delete`}
             image='images/button-icons/right-arrow.svg'
           />
         </AccountDiv>
