@@ -11,7 +11,7 @@ const LogoContainer = styled.div`
       display: none;
     }
   }
-`;
+`
 const LogoNav = styled(NavLink)`
   display: flex;
   align-items: center;
@@ -32,12 +32,13 @@ const Watchers = styled.span`
   right: 25px;
 `
 
-export default function Logo() {
+export default function Logo(props) {
   return (
     <LogoContainer>
       <LogoNav to="/">
         <LogoImage src="https://i.imgur.com/lp2jwK3.png" />
-        <Waste className='mobile-hide'>Waste</Waste> <Watchers className='mobile-hide'>Watchers</Watchers>
+        {!props.mobile && <><Waste className='mobile-hide'>Waste</Waste> <Watchers className='mobile-hide'>Watchers</Watchers></>}
+        {props.mobile && <><Waste>Waste</Waste> <Watchers>Watchers</Watchers></>}
       </LogoNav>
     </LogoContainer>
   )

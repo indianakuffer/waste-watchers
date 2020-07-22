@@ -33,6 +33,7 @@ export default function DeleteAccount(props) {
   }
 
   if (deleted) return <Redirect to='/' />
+  if (!props.loggedIn) return <Redirect to='/signin' />
 
   return (
     <Layout waves={true} wavesImg='https://i.imgur.com/lVYqloz.png' loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>

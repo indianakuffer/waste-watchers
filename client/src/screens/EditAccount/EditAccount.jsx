@@ -66,6 +66,7 @@ export default function EditAccount(props) {
     setAlertConfirm(true)
   }
 
+  if (!props.loggedIn) return <Redirect to='/signin' />
   if (saved) return <Redirect to={`/account/${props.loggedIn}`} />
 
   return (
