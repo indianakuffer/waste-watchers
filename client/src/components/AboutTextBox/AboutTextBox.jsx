@@ -7,11 +7,17 @@ const TextBox = styled.div`
   align-items: center;
   text-align: center;
   padding: 0 50px;
+  @media only screen and (max-width: 768px) {
+    padding: 0px;
+  }
 `
 const Heading = styled.div`
   margin-top: 60px;
   font-size: 55px;
   font-weight: bold;
+  @media only screen and (max-width: 768px) {
+    font-size: 35px;
+  }
 `
 const Underline = styled.div`
   width: 150px;
@@ -26,6 +32,9 @@ const Text = styled.p`
   margin-top: 80px;
   margin-bottom: 150px;
   max-width: 1200px;
+  @media only screen and (max-width: 768px) {
+    font-size: 40px;
+  }
 `
 
 export default function AboutTextBox(props) {

@@ -15,6 +15,9 @@ const JumboContainer = styled.div`
   * {
     box-sizing: border-box;
   }
+  @media only screen and (max-width: 768px) {
+    min-height: 500px;
+  }
 `
 const TextBox = styled.div`
   display: flex;
@@ -27,7 +30,10 @@ const TextBox = styled.div`
   text-align: center;
   background-color: ${props => props.color ? props.color + 'BF' : 'white'};
   width: 83%;
-  min-height: 480px;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    padding: 50px 0;
+  }
 `
 const BigText = styled.div`
   font-weight: bold;
@@ -35,6 +41,9 @@ const BigText = styled.div`
   width: 90%;
   max-width: 900px;
   margin-bottom: ${props => props.quote ? '10px' : '20px'};
+  @media only screen and (max-width: 768px) {
+    font-size: 30px;
+  }
 `
 const Quoted = styled.div`
   font-size: 25px;
@@ -45,6 +54,9 @@ const SmallText = styled.div`
   font-size: 30px;
   max-width: 470px;
   margin-bottom: 45px;
+  @media only screen and (max-width: 768px) {
+    font-size: 20px;
+  }
 `
 const JumboButton = styled.button`
   color: white;
@@ -60,6 +72,9 @@ const JumboButton = styled.button`
 
   &:hover {
     filter: brightness(95%);
+  }
+  @media only screen and (max-width: 768px) {
+    height: 40px;
   }
 `
 

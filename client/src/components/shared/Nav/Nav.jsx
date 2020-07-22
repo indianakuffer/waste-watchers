@@ -15,32 +15,41 @@ const NavBar = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0px 100px;
-`;
-
+  @media only screen and (max-width: 768px) {
+    padding: 0px 10px;
+    height: 76px;
+  }
+`
 const LinksContainer = styled.div`
   display: flex;
   align-items: center;
-`;
+  margin-left: auto;
+  @media only screen and (max-width: 768px) {
+    order: -1;
+  }
+`
 const Links = styled(NavLink)`
   align-items: center;
   text-decoration: none;
-  font-family: "Nunito", arial, sans-serif;
   color: #000000;
   font-size: 15px;
   height: 23px;
   margin: 10px;
   text-align: center;
-`;
+`
 const AccountButton = styled.button`
   border-radius: 50%;
-  height: 35px;
-  width: 35px;
+  height: 44px;
+  width: 44px;
   border: none;
   background-image: url("${props => props.profileImg ? props.profileImg : 'https://i.imgur.com/SUHhp7V.png'}");
   background-position: center;
   background-size: cover;
   margin-left: 10px;
-`;
+  @media only screen and (max-width: 768px) {
+    order: 2;
+  }
+`
 
 export default function Nav(props) {
   let [showNav, setShowNav] = useState(false)
@@ -72,10 +81,9 @@ export default function Nav(props) {
             <Links to="/signin">My Progress</Links>
           </>
         }
-
         <Links to="/about">About Us</Links>
-        <AccountButton profileImg={profileImg} onClick={toggleNavMenu} />
       </LinksContainer>
+      <AccountButton profileImg={profileImg} onClick={toggleNavMenu} />
       {showNav && <NavMenu loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} toggleNavMenu={toggleNavMenu} />}
     </NavBar>
   );
