@@ -4,9 +4,7 @@ import Jumbotron from '../../components/shared/Jumbotron/Jumbotron'
 import styled from 'styled-components'
 
 const HomeContainer = styled.div`
-  display: flex;
-  flex-flow: column;
-
+  width: 100%;
   >* {
     margin-bottom: 150px;
   }

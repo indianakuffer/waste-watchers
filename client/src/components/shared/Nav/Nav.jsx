@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import NavMenu from "../../NavMenu/NavMenu";
+import Logo from "../Logo/Logo"
 import { getUser } from '../../../services/users'
 
 const NavBar = styled.nav`
@@ -15,29 +16,7 @@ const NavBar = styled.nav`
   align-items: center;
   padding: 0px 100px;
 `;
-const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const Logo = styled(NavLink)`
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: black;
-  font-size: 20px;
-`;
-const LogoImage = styled.img`
-  height: 60px;
-`;
-const Waste = styled.span`
-  font-weight: 700;
-`;
-const Watchers = styled.span`
-  font-weight: 200;
-  position: relative;
-  top: 18px;
-  right: 25px;
-`;
+
 const LinksContainer = styled.div`
   display: flex;
   align-items: center;
@@ -80,12 +59,7 @@ export default function Nav(props) {
 
   return (
     <NavBar>
-      <LogoContainer>
-        <Logo to="/">
-          <LogoImage src="https://i.imgur.com/lp2jwK3.png" />
-          <Waste>Waste</Waste> <Watchers>Watchers</Watchers>
-        </Logo>
-      </LogoContainer>
+      <Logo />
       <LinksContainer>
         {props.loggedIn ?
           <>

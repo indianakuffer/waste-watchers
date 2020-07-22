@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { getUser, updateUser } from '../../services/users'
+import styled from 'styled-components'
+import itemList from '../../item-list.json'
 import Layout from '../../components/shared/Layout/Layout'
 import Jumbotron from '../../components/shared/Jumbotron/Jumbotron'
 import ItemCategory from '../../components/ItemCategory/ItemCategory'
 import Button from '../../components/shared/Button/Button'
-import styled from 'styled-components'
-import { getUser, updateUser } from '../../services/users'
-import { Redirect } from 'react-router-dom'
-import itemList from '../../item-list.json'
+import PopUp from '../../components/shared/PopUp/PopUp'
 
 const ItemList = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const ItemList = styled.div`
     align-self: center;
   }
 `
-const Squiggle = styled.img`
+const Wave = styled.img`
   width: 100%;
   z-index: -10;
 `
@@ -26,6 +26,7 @@ export default function Logger(props) {
   let [loggedList, setLoggedList] = useState({ metal: 0, glass: 0, plastic: 0, cartons: 0, paper: 0, cardboard: 0 })
   let [retrievedData, setRetrievedData] = useState(null)
   let [submitted, setSubmitted] = useState(false)
+  let [alert, setAlert] = useState(false)
 
   useEffect(() => {
     const helper = async () => {
@@ -40,11 +41,18 @@ export default function Logger(props) {
     setLoggedList({ ...loggedList, [category]: current + amount })
   }
 
+  const logReset = async () => {
+    setLoggedList({ metal: 0, glass: 0, plastic: 0, cartons: 0, paper: 0, cardboard: 0 })
+    const response = await getUser(props.loggedIn)
+    setRetrievedData({ points: response.points, itemCategories: response.itemCategories })
+    setSubmitted(false)
+  }
+
   const handleSubmit = async () => {
     let loggedTotal = 0
     Object.keys(loggedList).forEach(category => loggedTotal += loggedList[category])
     if (loggedTotal <= 0) {
-      alert('No items logged.')
+      setAlert(true)
       return
     }
 
@@ -64,8 +72,6 @@ export default function Logger(props) {
     setSubmitted(true)
   }
 
-  if (submitted) return <Redirect to='/progress' />
-
   return (
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <Jumbotron
@@ -74,10 +80,10 @@ export default function Logger(props) {
         bigText='Earn points for each item you recycle.'
         smallText={`For every 100 points you earn, we'll plant a tree in your name.`}
       />
-      <Squiggle src='https://i.imgur.com/2d7CEc0.png' />
+      <Wave src='https://i.imgur.com/2d7CEc0.png' />
       <ItemList>
-        {Object.keys(itemList).map(category => {
-          return <ItemCategory name={category} contents={itemList[category]} changeItem={changeItem} />
+        {Object.keys(itemList).map((category, idx) => {
+          return <ItemCategory key={category} name={category} contents={itemList[category]} changeItem={changeItem} />
         })}
         <Button
           color="#31C96E"
@@ -85,6 +91,25 @@ export default function Logger(props) {
           onClick={handleSubmit}
         />
       </ItemList>
+      {submitted &&
+        <PopUp
+          color='#31c96e'
+          bigText='Way to go!'
+          smallText='Your points have been recorded!'
+          buttonText='OK'
+          buttonLink='/progress'
+          buttonColor='#59fd87'
+          onClick={logReset}
+        />
+      }
+      {alert &&
+        <PopUp
+          color='#df6565'
+          smallText='No recyclables logged.'
+          buttonText='Oh!'
+          onClick={() => { setAlert(false) }}
+        />
+      }
     </Layout>
   )
 }
