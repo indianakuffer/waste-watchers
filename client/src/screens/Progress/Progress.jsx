@@ -6,19 +6,12 @@ import Jumbotron from "../../components/shared/Jumbotron/Jumbotron";
 import Chart from '../../components/Chart/Chart'
 import Legend from '../../components/Legend/Legend'
 
-const ProgressContainer = styled.div`
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-`
 const TopWave = styled.img`
   width: 100%;
 `
 const BottomWave = styled.img`
   width: 100%;
   transform: scaleY(-1) scaleX(-1);
-  bottom: 0;
-  z-index: -10;
 `
 const ProgressHeading = styled.div`
   font-size: 60px;
@@ -58,7 +51,7 @@ const ProgressText = styled.p`
   span {
     font-weight: bold;
   }
-`;
+`
 const Breakdown = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -89,29 +82,27 @@ export default function Progress(props) {
         bigText="Track your impact."
         smallText="See your recycling habits visualized"
       />
-      <ProgressContainer>
-        <TopWave src="https://i.imgur.com/zP7qZyg.png" />
-        <ProgressHeading>How Many Trees I've Planted</ProgressHeading>
-        <HeadingUnderline />
-        <ProgressBar>
-          <ProgressBarColor progressPercent={progressPercent} />
-        </ProgressBar>
-        <ProgressText>
-          Only <span>{userData && 100 - (userData.points % 100)} points</span>{" "}
+      <TopWave src="https://i.imgur.com/zP7qZyg.png" />
+      <ProgressHeading>How Many Trees I've Planted</ProgressHeading>
+      <HeadingUnderline />
+      <ProgressBar>
+        <ProgressBarColor progressPercent={progressPercent} />
+      </ProgressBar>
+      <ProgressText>
+        Only <span>{userData && 100 - (userData.points % 100)} points</span>{" "}
           until your next tree!
         </ProgressText>
-        <TreeImage src="https://i.imgur.com/ztj0HxG.png" />
-        <ProgressText>
-          You've planted <span>{userData && `${Math.floor(userData.points / 100)} tree${Math.floor(userData.points / 100) === 1 ? '' : 's'}`}</span> so far!
+      <TreeImage src="https://i.imgur.com/ztj0HxG.png" />
+      <ProgressText>
+        You've planted <span>{userData && `${Math.floor(userData.points / 100)} tree${Math.floor(userData.points / 100) === 1 ? '' : 's'}`}</span> so far!
         </ProgressText>
-        <ProgressHeading>Recyclables Breakdown</ProgressHeading>
-        <HeadingUnderline />
-        <Breakdown >
-          <Legend />
-          {userData && <Chart data={Object.values(userData.itemCategories)} />}
-        </Breakdown>
-        <BottomWave src="https://i.imgur.com/zP7qZyg.png" />
-      </ProgressContainer>
+      <ProgressHeading>Recyclables Breakdown</ProgressHeading>
+      <HeadingUnderline />
+      <Breakdown >
+        <Legend />
+        {userData && <Chart data={Object.values(userData.itemCategories)} />}
+      </Breakdown>
+      <BottomWave src="https://i.imgur.com/zP7qZyg.png" />
     </Layout>
   );
 }
