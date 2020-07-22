@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import { getUser } from "../../services/users";
 import styled from "styled-components";
 import Layout from "../../components/shared/Layout/Layout";
@@ -91,6 +92,8 @@ export default function Progress(props) {
     };
     helper();
   }, []);
+
+  if (!props.loggedIn) return <Redirect to='/signin' />
 
   return (
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>

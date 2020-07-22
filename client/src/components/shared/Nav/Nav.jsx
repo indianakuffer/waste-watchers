@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import styled from "styled-components";
-import NavMenu from "../../NavMenu/NavMenu";
-import Logo from "../Logo/Logo"
+import React, { useState, useEffect } from "react"
+import { NavLink, Redirect } from "react-router-dom"
 import { getUser } from '../../../services/users'
+import styled from "styled-components"
+import NavMenu from "../../NavMenu/NavMenu"
+import Logo from "../Logo/Logo"
+import Button from "../../shared/Button/Button"
 
 const NavBar = styled.nav`
   background-color: #dadada;
@@ -18,6 +19,14 @@ const NavBar = styled.nav`
   @media only screen and (max-width: 768px) {
     padding: 0px 10px;
     height: 76px;
+    .mobile-nav {
+      right: unset;
+      left: 0;
+      .btn .button-text {
+        color: black;
+        margin-left: 0px;
+      }
+    }
   }
 `
 const LinksContainer = styled.div`
@@ -25,7 +34,7 @@ const LinksContainer = styled.div`
   align-items: center;
   margin-left: auto;
   @media only screen and (max-width: 768px) {
-    order: -1;
+    display: none;
   }
 `
 const Links = styled(NavLink)`
@@ -46,17 +55,27 @@ const AccountButton = styled.button`
   background-position: center;
   background-size: cover;
   margin-left: 10px;
+`
+const Hamburger = styled.button`
+  display: none;
+  background-image: url('${require('../../../images/nav-menu/hamburger.svg')}');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  border: none;
   @media only screen and (max-width: 768px) {
-    order: 2;
+    display: block;
   }
 `
 
 export default function Nav(props) {
-  let [showNav, setShowNav] = useState(false)
+  let [showAccountMenu, setShowAccountMenu] = useState(false)
+  let [showNavMenu, setShowNavMenu] = useState(false)
   let [profileImg, setProfileImg] = useState(null)
-  const toggleNavMenu = () => {
-    setShowNav(!showNav)
-  }
+  let [signedOut, setSignedOut] = useState(false)
 
   useEffect(() => {
     const helper = async (id) => {
@@ -66,8 +85,16 @@ export default function Nav(props) {
     if (props.loggedIn) helper(props.loggedIn)
   }, [props.loggedIn])
 
+  const signOut = () => {
+    props.setLoggedIn(null)
+    setSignedOut(true)
+  }
+
+  if (signedOut) return <Redirect to='/' />
+
   return (
     <NavBar>
+      <Hamburger onClick={() => setShowNavMenu(!showNavMenu)} />
       <Logo />
       <LinksContainer>
         {props.loggedIn ?
@@ -83,8 +110,33 @@ export default function Nav(props) {
         }
         <Links to="/about">About Us</Links>
       </LinksContainer>
-      <AccountButton profileImg={profileImg} onClick={toggleNavMenu} />
-      {showNav && <NavMenu loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} toggleNavMenu={toggleNavMenu} />}
+      <AccountButton profileImg={profileImg} onClick={() => setShowAccountMenu(!showAccountMenu)} />
+      {showAccountMenu &&
+        <NavMenu loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} closeFunction={() => setShowAccountMenu(false)}>
+          {props.loggedIn &&
+            <>
+              <Button color="#5A83EC" buttonText="Manage My Account" buttonLink={`/account/${props.loggedIn}`} fontSize='15px' />
+              <Button color="#FF7373" buttonText="Sign Out" onClick={signOut} fontSize='15px' />
+            </>
+          }
+          {!props.loggedIn &&
+            <>
+              <Button color="#31C96E" buttonText="Sign In" buttonLink="/signin" fontSize='20px' />
+              <Button color="#5A83EC" buttonText="Create an Account" buttonLink="/signup" fontSize='15px' />
+            </>
+          }
+        </NavMenu>
+      }
+      {showNavMenu &&
+        <NavMenu className='mobile-nav' loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} closeFunction={() => setShowNavMenu(false)}>
+          <Button color="white" buttonText="About Us" buttonLink={`/about`} fontSize='15px' image='images/nav-menu/about-us.svg' />
+          <Button color="white" buttonText="Add Recycling" buttonLink={`/log`} fontSize='14px' image='images/nav-menu/add-recycling.svg' />
+          <Button color="white" buttonText="My Progress" buttonLink={`/progress`} fontSize='15px' image='images/nav-menu/my-progress.svg' />
+          <Button color="white" buttonText="Map View" buttonLink={`/progress`} fontSize='15px' image='images/nav-menu/map-view.svg' />
+          <Button color="white" buttonText="Language" buttonLink={`/account/${props.loggedIn}`} fontSize='15px' image='images/nav-menu/language.svg' />
+          <Button color="white" buttonText="Help" buttonLink={`/about`} fontSize='15px' image='images/nav-menu/help.png' />
+        </NavMenu>
+      }
     </NavBar>
   );
 }

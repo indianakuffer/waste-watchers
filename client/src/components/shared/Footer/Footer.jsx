@@ -48,7 +48,7 @@ display: inline;
 export default function Footer() {
   return (
     <FooterContainer>
-      <Logo />
+      <Logo mobile={true} />
       <FooterCategory>
         <div className='title'>Connect with Us</div>
         <SocialContainer>

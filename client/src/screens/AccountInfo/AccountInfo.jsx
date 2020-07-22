@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom"
 import Layout from "../../components/shared/Layout/Layout";
 import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
 import styled from "styled-components";
@@ -34,6 +35,8 @@ export default function AccountInfo(props) {
     }
     helper(props.loggedIn)
   }, [])
+
+  if (!props.loggedIn) return <Redirect to='/signin' />
 
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
