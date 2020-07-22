@@ -5,31 +5,26 @@ import Slice from '../Slice/Slice'
 
 const ChartContainer = styled.div`
   position: relative;
-  display: flex;
+  display: ${props => props.mobile ? 'none' : 'flex'};
   justify-content: center;
   align-items: center;
-`
-const MiddleCircle = styled.div`
-  position: absolute;
-  background-color: white;
-  border-radius: 50%;
-  z-index: 10;
-  height: 180px;
-  width: 180px;
+  @media only screen and (max-width: 768px) {
+    display: ${props => props.mobile ? 'flex' : 'none'};
+    order: -1;
+    margin-bottom: 50px;
+  }
 `
 
 export default function Chart(props) {
-  const height = 500, width = 500
   let pie = d3.pie()(props.data)
 
   return (
-    <ChartContainer>
-      <svg height={height} width={width}>
-        <g transform={`translate(${width / 2},${height / 2})`}>
-          <Slice pie={pie} />
+    <ChartContainer mobile={props.mobile}>
+      <svg height={props.size} width={props.size}>
+        <g transform={`translate(${props.size / 2},${props.size / 2})`}>
+          <Slice size={props.size} pie={pie} />
         </g>
       </svg>
-      <MiddleCircle>&nbsp;</MiddleCircle>
     </ChartContainer>
   )
 }

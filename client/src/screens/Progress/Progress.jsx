@@ -16,6 +16,10 @@ const BottomWave = styled.img`
 const ProgressHeading = styled.div`
   font-size: 60px;
   font-weight: bold;
+  text-align: center;
+  @media only screen and (max-width: 768px) {
+    font-size: 45px;
+  }
 `
 const HeadingUnderline = styled.div`
   text-align: center;
@@ -34,6 +38,9 @@ const ProgressBar = styled.div`
   margin-top: 60px;
   margin-bottom: 20px;
   overflow: hidden;
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+  }
 `
 const ProgressBarColor = styled.div`
   background-color: #31c96e;
@@ -48,8 +55,15 @@ const TreeImage = styled.img`
 `
 const ProgressText = styled.p`
   font-size: 40px;
+  text-align: center;
   span {
     font-weight: bold;
+  }
+  @media only screen and (max-width: 768px) {
+    font-size: 25px;
+    &.so-far {
+      font-size: 40px;
+    }
   }
 `
 const Breakdown = styled.div`
@@ -58,6 +72,10 @@ const Breakdown = styled.div`
   align-items: center;
   width: 90vw;
   margin: 100px 0;
+  @media only screen and (max-width: 768px) {
+    flex-flow: column;
+    margin: 50px 0;
+  }
 `
 
 export default function Progress(props) {
@@ -93,14 +111,19 @@ export default function Progress(props) {
           until your next tree!
         </ProgressText>
       <TreeImage src="https://i.imgur.com/ztj0HxG.png" />
-      <ProgressText>
+      <ProgressText className='so-far'>
         You've planted <span>{userData && `${Math.floor(userData.points / 100)} tree${Math.floor(userData.points / 100) === 1 ? '' : 's'}`}</span> so far!
         </ProgressText>
       <ProgressHeading>Recyclables Breakdown</ProgressHeading>
       <HeadingUnderline />
       <Breakdown >
         <Legend />
-        {userData && <Chart data={Object.values(userData.itemCategories)} />}
+        {userData &&
+          <>
+            <Chart mobile={false} size={500} data={Object.values(userData.itemCategories)} />
+            <Chart mobile={true} size={300} data={Object.values(userData.itemCategories)} />
+          </>
+        }
       </Breakdown>
       <BottomWave src="https://i.imgur.com/zP7qZyg.png" />
     </Layout>

@@ -15,6 +15,9 @@ const JumboContainer = styled.div`
   * {
     box-sizing: border-box;
   }
+  @media only screen and (max-width: 768px) {
+    min-height: 500px;
+  }
 `
 const TextBox = styled.div`
   display: flex;
@@ -27,7 +30,10 @@ const TextBox = styled.div`
   text-align: center;
   background-color: ${props => props.color ? props.color + 'BF' : 'white'};
   width: 83%;
-  min-height: 480px;
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    padding: 50px 0;
+  }
 `
 const BigText = styled.div`
   font-weight: bold;
