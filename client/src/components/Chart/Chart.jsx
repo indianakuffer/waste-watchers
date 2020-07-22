@@ -14,12 +14,12 @@ const MiddleCircle = styled.div`
   background-color: white;
   border-radius: 50%;
   z-index: 10;
-  height: 120px;
-  width: 120px;
+  height: 180px;
+  width: 180px;
 `
 
 export default function Chart(props) {
-  const height = 300, width = 300
+  const height = 500, width = 500
   let pie = d3.pie()(props.data)
 
   return (

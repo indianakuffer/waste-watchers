@@ -64,6 +64,7 @@ const Breakdown = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 90vw;
+  margin: 100px 0;
 `
 
 export default function Progress(props) {
