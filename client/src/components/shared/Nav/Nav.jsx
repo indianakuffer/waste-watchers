@@ -33,18 +33,21 @@ const LinksContainer = styled.div`
   display: flex;
   align-items: center;
   margin-left: auto;
+  a {
+    align-items: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 15px;
+    height: 23px;
+    margin: 10px;
+    text-align: center;
+    &:hover, &.active {
+      text-shadow: 0 0 .75px black, 0 0 .75px black;
+    }
+  }
   @media only screen and (max-width: 768px) {
     display: none;
   }
-`
-const Links = styled(NavLink)`
-  align-items: center;
-  text-decoration: none;
-  color: #000000;
-  font-size: 15px;
-  height: 23px;
-  margin: 10px;
-  text-align: center;
 `
 const AccountButton = styled.button`
   border-radius: 50%;
@@ -97,18 +100,9 @@ export default function Nav(props) {
       <Hamburger onClick={() => setShowNavMenu(!showNavMenu)} />
       <Logo />
       <LinksContainer>
-        {props.loggedIn ?
-          <>
-            <Links to="/log">Log Recycling</Links>
-            <Links to="/progress">My Progress</Links>
-          </>
-          :
-          <>
-            <Links to="/signin">Log Recycling</Links>
-            <Links to="/signin">My Progress</Links>
-          </>
-        }
-        <Links to="/about">About Us</Links>
+        <NavLink to="/log">Log Recycling</NavLink>
+        <NavLink to="/progress">My Progress</NavLink>
+        <NavLink activeClassName='active' to="/about">About Us</NavLink>
       </LinksContainer>
       <AccountButton profileImg={profileImg} onClick={() => setShowAccountMenu(!showAccountMenu)} />
       {showAccountMenu &&
