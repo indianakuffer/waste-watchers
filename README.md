@@ -2,6 +2,8 @@
 
 [waste-watchers.netlify.app](https://waste-watchers.netlify.app/)
 
+## Appendix
+
 - [Overview](#Overview)
 - [Team](#Team)
 - [MVP](#MVP)
