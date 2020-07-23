@@ -7,6 +7,12 @@ import Button from "../../components/shared/Button/Button";
 import Card from "../../components/shared/Card/Card";
 import MobileWave from "../../components/shared/MobileWave/MobileWave";
 import { getUser } from '../../services/users'
+import styled from "styled-components"
+import Layout from "../../components/shared/Layout/Layout"
+import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
+import Button from "../../components/shared/Button/Button"
+import Card from "../../components/shared/Card/Card"
+import Loader from '../../components/shared/Loader/Loader'
 
 const AccountDiv = styled.div`
   display: flex;
@@ -27,10 +33,13 @@ const Welcome = styled.div`
 
 export default function AccountInfo(props) {
   let [userData, setUserData] = useState(null)
+  let [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const helper = async id => {
+      setLoading(true)
       const response = await getUser(id)
+      setLoading(false)
       setUserData(response.accountInfo)
     }
     helper(props.loggedIn)
@@ -70,6 +79,7 @@ export default function AccountInfo(props) {
         </AccountDiv>
       </Card>
       <MobileWave image='images/mobile-waves/info-bottom.svg' />
+      {loading && <Loader />}
     </Layout>
   );
 }

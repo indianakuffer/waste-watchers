@@ -7,6 +7,7 @@ import Input from '../../components/shared/Input/Input'
 import Card from '../../components/shared/Card/Card'
 import Button from '../../components/shared/Button/Button'
 import PopUp from '../../components/shared/PopUp/PopUp'
+import Loader from '../../components/shared/Loader/Loader'
 import MobileWave from '../../components/shared/MobileWave/MobileWave'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
@@ -38,6 +39,8 @@ export default function SignIn(props) {
   let [inputs, setInputs] = useState({ email: '', password: '' })
   let [submitted, setSubmitted] = useState(false)
   let [alert, setAlert] = useState(false)
+  let [loading, setLoading] = useState(false)
+
 
   const handleChange = e => {
     let value = e.target.value
@@ -50,7 +53,9 @@ export default function SignIn(props) {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    setLoading(true)
     const response = await getUsers()
+    setLoading(false)
     const search = response.find(user => (user.accountInfo.email === inputs.email && user.accountInfo.password === inputs.password))
     if (search) {
       props.setLoggedIn(search._id)
@@ -105,6 +110,7 @@ export default function SignIn(props) {
           onClick={() => { setAlert(false) }}
         />
       }
+      {loading && <Loader />}
     </Layout>
   )
 }

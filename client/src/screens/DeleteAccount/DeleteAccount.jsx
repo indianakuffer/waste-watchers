@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Redirect } from 'react-router-dom'
 import { deleteUser } from '../../services/users'
+import styled from "styled-components";
 import Layout from "../../components/shared/Layout/Layout";
 import Button from "../../components/shared/Button/Button";
 import Card from "../../components/shared/Card/Card";
+import Loader from '../../components/shared/Loader/Loader'
 import MobileWave from "../../components/shared/MobileWave/MobileWave";
 
 const ScreenDiv = styled.div`
@@ -24,10 +25,13 @@ const ScreenDiv = styled.div`
 
 export default function DeleteAccount(props) {
   let [deleted, setDeleted] = useState(false)
+  let [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     await deleteUser(props.loggedIn)
+    setLoading(false)
     props.setLoggedIn(null)
     setDeleted(true)
   }
@@ -58,6 +62,7 @@ export default function DeleteAccount(props) {
         </ScreenDiv>
       </Card>
       <MobileWave image='images/mobile-waves/delete-bottom.svg' />
+      {loading && <Loader />}
     </Layout>
   );
 }
