@@ -34,6 +34,7 @@ const FormContainer = styled.form`
 `
 
 export default function EditAccount(props) {
+  //--------- States ---------//
   let [inputs, setInputs] = useState({ username: '', email: '', password: '', profileImg: '' })
   let [origData, setOrigData] = useState(null)
   let [confirm, setConfirm] = useState('')
@@ -42,7 +43,9 @@ export default function EditAccount(props) {
   let [alertConfirm, setAlertConfirm] = useState(false)
   let [loading, setLoading] = useState(false)
 
+  //--------- Functions ---------//
   useEffect(() => {
+    window.scrollTo(0, 0)
     const helper = async () => {
       setLoading(true)
       const response = await getUser(props.loggedIn)
@@ -56,10 +59,7 @@ export default function EditAccount(props) {
   const handleChange = e => {
     let value = e.target.value
     let name = e.target.name
-    setInputs({
-      ...inputs,
-      [name]: value
-    })
+    setInputs({ ...inputs, [name]: value })
   }
 
   const handleSubmit = async (e) => {
@@ -78,9 +78,11 @@ export default function EditAccount(props) {
     setAlertConfirm(true)
   }
 
+  //--------- Redirects ---------//
   if (!props.loggedIn) return <Redirect to='/signin' />
   if (saved) return <Redirect to={`/account`} />
 
+  //--------- Render ---------//
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <MobileWave image='images/mobile-waves/info-top.svg' />

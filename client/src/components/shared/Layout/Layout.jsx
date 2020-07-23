@@ -1,7 +1,7 @@
 import React from 'react'
+import styled from 'styled-components'
 import Nav from '../Nav/Nav'
 import Footer from '../Footer/Footer'
-import styled from 'styled-components'
 
 const Main = styled.main`
   display: flex;
@@ -15,7 +15,6 @@ const ScreenContainer = styled.div`
   flex-flow: column;
   justify-content: center;
   align-items: center;
-
   .wave {
     position: absolute;
     width: 100%;

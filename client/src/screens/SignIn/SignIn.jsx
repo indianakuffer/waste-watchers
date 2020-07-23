@@ -12,7 +12,6 @@ import MobileWave from '../../components/shared/MobileWave/MobileWave'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
-
 const FormContainer = styled.form`
   display: flex;
   flex-flow: column;
@@ -36,12 +35,13 @@ const Prompt = styled.div`
 `
 
 export default function SignIn(props) {
+  //--------- States ---------//
   let [inputs, setInputs] = useState({ email: '', password: '' })
   let [submitted, setSubmitted] = useState(false)
   let [alert, setAlert] = useState(false)
   let [loading, setLoading] = useState(false)
 
-
+  //--------- Functions ---------//
   const handleChange = e => {
     let value = e.target.value
     let name = e.target.name
@@ -65,8 +65,10 @@ export default function SignIn(props) {
     }
   }
 
+  //--------- Redirects ---------//
   if (submitted) return <Redirect to='/' />
 
+  //--------- Render ---------//
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <MobileWave image='images/mobile-waves/signin-top.svg' />

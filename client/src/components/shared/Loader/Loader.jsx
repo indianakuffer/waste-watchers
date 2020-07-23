@@ -10,7 +10,6 @@ const Spinner = styled.div`
   border-top: 4px solid #5a83ec;
   border-right: 4px solid transparent;
   border-radius: 50%;
-
   animation: 1s spin linear infinite;
   @keyframes spin {
     to {

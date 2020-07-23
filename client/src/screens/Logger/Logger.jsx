@@ -24,12 +24,15 @@ const Wave = styled.img`
 `
 
 export default function Logger(props) {
+  //--------- States ---------//
   let [loggedList, setLoggedList] = useState({ metal: 0, glass: 0, plastic: 0, cartons: 0, paper: 0, cardboard: 0 })
   let [retrievedData, setRetrievedData] = useState(null)
   let [submitted, setSubmitted] = useState(false)
   let [alert, setAlert] = useState(false)
 
+  //--------- Functions ---------//
   useEffect(() => {
+    window.scrollTo(0, 0)
     const helper = async () => {
       const response = await getUser(props.loggedIn)
       setRetrievedData({ points: response.points, itemCategories: response.itemCategories })
@@ -40,13 +43,6 @@ export default function Logger(props) {
   const changeItem = (category, amount) => {
     const current = loggedList[category]
     setLoggedList({ ...loggedList, [category]: current + amount })
-  }
-
-  const logReset = async () => {
-    setLoggedList({ metal: 0, glass: 0, plastic: 0, cartons: 0, paper: 0, cardboard: 0 })
-    const response = await getUser(props.loggedIn)
-    setRetrievedData({ points: response.points, itemCategories: response.itemCategories })
-    setSubmitted(false)
   }
 
   const handleSubmit = async () => {
@@ -73,8 +69,10 @@ export default function Logger(props) {
     setSubmitted(true)
   }
 
+  //--------- Redirects ---------//
   if (!props.loggedIn) return <Redirect to='/signin' />
 
+  //--------- Render ---------//
   return (
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <Jumbotron
@@ -85,7 +83,7 @@ export default function Logger(props) {
       />
       <Wave src='https://i.imgur.com/2d7CEc0.png' />
       <ItemList>
-        {Object.keys(itemList).map((category, idx) => {
+        {Object.keys(itemList).map(category => {
           return <ItemCategory key={category} name={category} contents={itemList[category]} changeItem={changeItem} />
         })}
         <Button
@@ -102,7 +100,7 @@ export default function Logger(props) {
           buttonText='OK'
           buttonLink='/progress'
           buttonColor='#59fd87'
-          onClick={logReset}
+          onClick={() => setSubmitted(false)}
         />
       }
       {alert &&
@@ -110,7 +108,7 @@ export default function Logger(props) {
           color='#df6565'
           smallText='No recyclables logged.'
           buttonText='Oh!'
-          onClick={() => { setAlert(false) }}
+          onClick={() => setAlert(false)}
         />
       }
     </Layout>
