@@ -2,6 +2,16 @@
 
 [waste-watchers.netlify.app](https://waste-watchers.netlify.app/)
 
+- [Overview](#Overview)
+- [Team](#Team)
+- [MVP](#MVP)
+  - [Backend](#Backend)
+  - [Front-End](#Front-End)
+- [Post MVP](#Post-MVP)
+- [Component Tree](#Component-Tree)
+- [UXDI Collaboration](#UXDI-Collaboration)
+- [MongoDB Schema](#MongoDB-Schema)
+
 ## Overview
 
 Waste Watcher is a web and mobile application that makes recycling fun. It provides a way to track what and how often users recycle and shows users the impact they're making on the environment. Points are awarded for every item recycled-- every 100 points a digital tree is planted. The ultimate goal of the app is to spread awareness of how important recycling is for the environment, and make recycling more accessible for everyone.
@@ -49,8 +59,7 @@ Waste Watcher is a web and mobile application that makes recycling fun. It provi
 ![Component Tree](https://i.imgur.com/K3abjD8.png)
 [Whimsical Diagram](https://whimsical.com/SfvYWhv4nKQ6PJXS2z7MVT)
 
-## UXD Design Collaboration
-
+## UXDI Design Collaboration
 
 ![Design](https://i.imgur.com/gkBRB6c.png)
 [Zeplin](https://app.zeplin.io/project/5f0e5672133b1a7efea78be1/dashboard?sid=5f0f134e1434157d8c52912c)
