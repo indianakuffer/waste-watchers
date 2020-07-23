@@ -9,7 +9,7 @@ export default function Slice(props) {
   return (
     <>
       {pie.map((slice, index) => {
-        return <path d={arc(slice)} fill={colors[index]} />
+        return <path key={index} d={arc(slice)} fill={colors[index]} />
       })}
     </>
   )

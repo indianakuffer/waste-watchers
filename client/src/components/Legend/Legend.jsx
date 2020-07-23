@@ -43,7 +43,7 @@ export default function Legend() {
   return (
     <LegendContainer>
       {Object.keys(keys).map(key => {
-        return <Key>
+        return <Key key={key}>
           <Circle color={keys[key]} />
           <Text>{key}</Text>
         </Key>
