@@ -15,29 +15,29 @@ Waste Watcher is a web and mobile application that makes recycling fun. It provi
 [UXDI Trello](https://trello.com/b/MUBISn2p/waste-watchers-sei-uxdi)
 
 ### Backend
-- Install dependecies such as MongoDB, Express, NodeJS, Nodemon, etc.
-- Set up backend file architecture
-- Build out the Schema
-- Import and connect files to make sure they perform CRUD functionality (ability to create / edit / delete account information on the backend)
-- Deploy to Heruko/MongoDB Atlas and test CRUD functionality in MongoDB Compass and Postman 
+- Set up NodeJS and Express backend file architecture.
+- Installed dependecies such as Mongoose for MongoDB, Express, etc.
+- Built out the schema to store user information and recycled items.
+- Imported and connected files to make sure they perform full CRUD functionality.
+- Deployed to Heruko and connected to MongoDB Atlas, tested CRUD functionality using MongoDB Compass and Postman.
 
 ### Front-End
-- Create a well-designed front-end experience.
-- Set up the front-end file architecture (components, images, services, and screens) and make sure files are connected to appropriate routes.
-- Use Styled Components for styling of all front-end screens and components.
-- Build out the ability to create, edit, and delete user account information on the front-end
-- Deploy to Netlify
+- Created a well-designed front-end experience based off of collaboration with UXDI team.
+- Set up the front-end file architecture (components, images, services, and screens) and made sure files were connected to appropriate routes.
+- Used Styled Components library for styling of all components.
+- Built out the ability to create, edit, and delete user account information.
+- Deployed site using Netlify.
 
 
 ## Post MVP
 
-- Create a functioning screen that tracks recycled items by allowing the user to log and submit items ot the database with a counter.
-- Create a metrics page that shows user progress with a progress bar.
-- Add functionality to the progress bar by allowing it to update as user submits data.
-- Create total digital tree count and update as user points increase.
-- Create statistics chart with D3 and connect it to user progress data.
-- Create and execute animated loader when user signs in, signs out, edits account information, submits updated data to account, deletes account.
-- Build pop ups in sync with App Design when 'User is Not Found' or "Account is Deleted" 
+- Created a fully-functional screen that allows users to log recycled items.
+- Created a metrics page that shows user progress with an animated progress bar.
+- Created total digital tree count based off of user points.
+- Created a statistics chart using the D3 library, displaying a percentage of recycled items by category.
+- Created an animated loader to display while API calls are in progress.
+- Built pop ups based off of app design, for user errors and confirmations.
+- Implemented mobile-friendly styling.
 
 
 ## Component Tree
