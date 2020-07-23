@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom"
+import { getUser } from '../../services/users'
 import Layout from "../../components/shared/Layout/Layout";
 import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
 import styled from "styled-components";
 import Button from "../../components/shared/Button/Button";
 import Card from "../../components/shared/Card/Card";
-import MobileWave from "../../components/shared/MobileWave/MobileWave";
-import { getUser } from '../../services/users'
-import styled from "styled-components"
-import Layout from "../../components/shared/Layout/Layout"
-import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
-import Button from "../../components/shared/Button/Button"
-import Card from "../../components/shared/Card/Card"
 import Loader from '../../components/shared/Loader/Loader'
+import MobileWave from "../../components/shared/MobileWave/MobileWave";
 
 const AccountDiv = styled.div`
   display: flex;
