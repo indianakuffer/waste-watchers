@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const SpinnerContainer = styled.div`
-  border: 3px dashed black;
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 `;
 
 const Spinner = styled.div`
@@ -16,14 +19,19 @@ const Spinner = styled.div`
   border-right: 4px solid transparent;
   border-radius: 50%;
   animation: 1s spin linear infinite;
+
+  @keyframes spin {
+    to {transform: rotate(360deg); 
+    }
+  }
 `;
 
 export default function Loader() {
   return (
-    <div>
+    <>
       <SpinnerContainer>
         <Spinner />
       </SpinnerContainer>
-    </div>
+    </>
   );
 }
