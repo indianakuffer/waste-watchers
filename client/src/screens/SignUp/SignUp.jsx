@@ -7,6 +7,8 @@ import Input from '../../components/shared/Input/Input'
 import Button from '../../components/shared/Button/Button'
 import PopUp from '../../components/shared/PopUp/PopUp'
 import Card from '../../components/shared/Card/Card'
+import Loader from '../../components/shared/Loader/Loader'
+import MobileWave from '../../components/shared/MobileWave/MobileWave'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
@@ -23,18 +25,18 @@ const FormContainer = styled.form`
 `
 
 export default function SignUp(props) {
+  //--------- States ---------//
   let [inputs, setInputs] = useState({ email: '', password: '', confirm: '' })
   let [submitted, setSubmitted] = useState(false)
   let [alertAlreadyExists, setAlertAlreadyExists] = useState(false)
   let [alertNoMatch, setAlertNoMatch] = useState(false)
+  let [loading, setLoading] = useState(false)
 
+  //--------- Functions ---------//
   const handleChange = e => {
     let value = e.target.value
     let name = e.target.name
-    setInputs({
-      ...inputs,
-      [name]: value
-    })
+    setInputs({ ...inputs, [name]: value })
   }
 
   const handleSubmit = async e => {
@@ -43,7 +45,9 @@ export default function SignUp(props) {
       setAlertNoMatch(true)
       return
     }
+    setLoading(true)
     const response = await getUsers()
+    setLoading(false)
     const search = response.find(user => (user.accountInfo.email === inputs.email))
     if (!search) {
       submitUser()
@@ -74,10 +78,13 @@ export default function SignUp(props) {
     setSubmitted(true)
   }
 
+  //--------- Redirects ---------//
   if (submitted) return <Redirect to='/' />
 
+  //--------- Render ---------//
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <MobileWave image='images/mobile-waves/signup-top.svg' />
       <Card>
         <h1>Get Started!</h1>
         <FormContainer>
@@ -111,6 +118,7 @@ export default function SignUp(props) {
           />
         </FormContainer>
       </Card>
+      <MobileWave image='images/mobile-waves/signup-bottom.svg' />
       {alertNoMatch &&
         <PopUp
           color='#df6565'
@@ -127,6 +135,7 @@ export default function SignUp(props) {
           onClick={() => { setAlertAlreadyExists(false) }}
         />
       }
+      {loading && <Loader />}
     </Layout>
   )
 }

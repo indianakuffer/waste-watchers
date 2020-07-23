@@ -7,9 +7,10 @@ import Input from '../../components/shared/Input/Input'
 import Card from '../../components/shared/Card/Card'
 import Button from '../../components/shared/Button/Button'
 import PopUp from '../../components/shared/PopUp/PopUp'
+import Loader from '../../components/shared/Loader/Loader'
+import MobileWave from '../../components/shared/MobileWave/MobileWave'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
-
 
 const FormContainer = styled.form`
   display: flex;
@@ -34,10 +35,13 @@ const Prompt = styled.div`
 `
 
 export default function SignIn(props) {
+  //--------- States ---------//
   let [inputs, setInputs] = useState({ email: '', password: '' })
   let [submitted, setSubmitted] = useState(false)
   let [alert, setAlert] = useState(false)
+  let [loading, setLoading] = useState(false)
 
+  //--------- Functions ---------//
   const handleChange = e => {
     let value = e.target.value
     let name = e.target.name
@@ -49,7 +53,9 @@ export default function SignIn(props) {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    setLoading(true)
     const response = await getUsers()
+    setLoading(false)
     const search = response.find(user => (user.accountInfo.email === inputs.email && user.accountInfo.password === inputs.password))
     if (search) {
       props.setLoggedIn(search._id)
@@ -59,10 +65,13 @@ export default function SignIn(props) {
     }
   }
 
+  //--------- Redirects ---------//
   if (submitted) return <Redirect to='/' />
 
+  //--------- Render ---------//
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <MobileWave image='images/mobile-waves/signin-top.svg' />
       <Card>
         <h1>Welcome Back!</h1>
         <FormContainer>
@@ -93,6 +102,7 @@ export default function SignIn(props) {
           <Link to='signup'>Sign Up!</Link>
         </Prompt>
       </Card>
+      <MobileWave image='images/mobile-waves/signin-bottom.svg' />
       {alert &&
         <PopUp
           color='#df6565'
@@ -102,6 +112,7 @@ export default function SignIn(props) {
           onClick={() => { setAlert(false) }}
         />
       }
+      {loading && <Loader />}
     </Layout>
   )
 }

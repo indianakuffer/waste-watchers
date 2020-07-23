@@ -1,7 +1,7 @@
 import React from 'react'
+import styled from 'styled-components'
 import Nav from '../Nav/Nav'
 import Footer from '../Footer/Footer'
-import styled from 'styled-components'
 
 const Main = styled.main`
   display: flex;
@@ -15,7 +15,6 @@ const ScreenContainer = styled.div`
   flex-flow: column;
   justify-content: center;
   align-items: center;
-
   .wave {
     position: absolute;
     width: 100%;
@@ -24,6 +23,9 @@ const ScreenContainer = styled.div`
     background: url('${props => props.wavesImg || 'https://i.imgur.com/2d7CEc0.png'}');
     background-size: contain;
     background-repeat: repeat-x;
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
   }
   a {
     font-size: 17px;

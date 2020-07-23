@@ -8,8 +8,11 @@ import Input from '../../components/shared/Input/Input'
 import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
 import Button from '../../components/shared/Button/Button'
 import PopUp from '../../components/shared/PopUp/PopUp'
+import Loader from '../../components/shared/Loader/Loader'
+import MobileWave from '../../components/shared/MobileWave/MobileWave'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
+
 
 const FormContainer = styled.form`
   display: flex;
@@ -18,22 +21,35 @@ const FormContainer = styled.form`
   .input-container {
     margin-bottom: 10px;
   }
-  button {
+  .btn, .btn-back {
     margin-top: 50px;
+  }
+  .btn-back, a {
+    margin-right: 30px;
+  }
+  .button-container {
+    display: flex;
+    width: 100%;
   }
 `
 
 export default function EditAccount(props) {
+  //--------- States ---------//
   let [inputs, setInputs] = useState({ username: '', email: '', password: '', profileImg: '' })
   let [origData, setOrigData] = useState(null)
   let [confirm, setConfirm] = useState('')
   let [saved, setSaved] = useState(false)
   let [alert, setAlert] = useState(false)
   let [alertConfirm, setAlertConfirm] = useState(false)
+  let [loading, setLoading] = useState(false)
 
+  //--------- Functions ---------//
   useEffect(() => {
+    window.scrollTo(0, 0)
     const helper = async () => {
+      setLoading(true)
       const response = await getUser(props.loggedIn)
+      setLoading(false)
       setOrigData(response.accountInfo)
       setInputs({ ...inputs, ...response.accountInfo, password: '' })
     }
@@ -43,10 +59,7 @@ export default function EditAccount(props) {
   const handleChange = e => {
     let value = e.target.value
     let name = e.target.name
-    setInputs({
-      ...inputs,
-      [name]: value
-    })
+    setInputs({ ...inputs, [name]: value })
   }
 
   const handleSubmit = async (e) => {
@@ -65,10 +78,14 @@ export default function EditAccount(props) {
     setAlertConfirm(true)
   }
 
-  if (saved) return <Redirect to={`/account/${props.loggedIn}`} />
+  //--------- Redirects ---------//
+  if (!props.loggedIn) return <Redirect to='/signin' />
+  if (saved) return <Redirect to={`/account`} />
 
+  //--------- Render ---------//
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <MobileWave image='images/mobile-waves/info-top.svg' />
       <Card>
         <h1>Edit Your Account</h1>
         <ProfilePicCircle profileImg={inputs.profileImg} />
@@ -110,13 +127,22 @@ export default function EditAccount(props) {
             type='password'
             image={lockImage}
           />
-          <Button
-            color='#31C96E'
-            buttonText='Save'
-            onClick={handleSubmit}
-          />
+          <div className='button-container'>
+            <Button
+              color='#aeaeae'
+              buttonText='Back'
+              buttonLink='/account'
+              className='btn-back'
+            />
+            <Button
+              color='#31C96E'
+              buttonText='Save'
+              onClick={handleSubmit}
+            />
+          </div>
         </FormContainer>
       </Card>
+      <MobileWave image='images/mobile-waves/info-bottom.svg' />
       {alert &&
         <PopUp
           color='#df6565'
@@ -133,6 +159,7 @@ export default function EditAccount(props) {
           onClick={() => { setSaved(true) }}
         />
       }
+      {loading && <Loader />}
     </Layout>
   )
 }

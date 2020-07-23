@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
 import Layout from '../../components/shared/Layout/Layout'
 import Jumbotron from '../../components/shared/Jumbotron/Jumbotron'
-import styled from 'styled-components'
 
 const HomeContainer = styled.div`
   width: 100%;
   >* {
     margin-bottom: 150px;
   }
+  @media only screen and (max-width: 768px) {
+    >* {
+      margin-bottom: 100px;
+    }
+  }
 `
 
 export default function Home(props) {
+
+  //--------- Functions ---------//
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  //--------- Render ---------//
   return (
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <HomeContainer>
@@ -18,7 +30,7 @@ export default function Home(props) {
           imageUrl='https://i.imgur.com/aat01sL.png'
           color='#ffce51'
           bigText='Waste Watchers is a global recycling collective.'
-          smallText='Learn more about what we do and the values driving our organization.'
+          smallText='Learn more about what we do and the values driving our organization'
           buttonText='About Waste Watchers'
           buttonLink='/about'
         />
@@ -33,8 +45,8 @@ export default function Home(props) {
         <Jumbotron
           imageUrl='https://i.imgur.com/f1ytCY7.png'
           color='#235ae5'
-          bigText='The first step of your recycling journey starts here.'
-          smallText='All the recycling resources you need.'
+          bigText='The first step to your recycling journey starts here.'
+          smallText='All the recycling resources you need'
           buttonText='Join Us!'
           buttonLink='/signup'
         />
@@ -42,8 +54,8 @@ export default function Home(props) {
           imageUrl='https://i.imgur.com/b2PQ8oB.png'
           color='#ff7373'
           quote='-Brian A., NYC'
-          bigText={`"I feel bad for not participating in something so well designed."`}
-          smallText='Take a virtual tour of the Sims Municipal Recycling Center.'
+          bigText={`'I feel bad for not participating in something so well designed.'`}
+          smallText='Take a virtual tour of the Sims Municipal Recycling Center'
           buttonText='Start Now'
           buttonLink='/signup'
         />

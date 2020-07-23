@@ -1,18 +1,21 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import Logo from "../Logo/Logo"
 import twitter from "../../../images/social-icons/twitter.png"
 import facebook from "../../../images/social-icons/facebook.png"
 import instagram from "../../../images/social-icons/instagram.png"
 import linkedin from "../../../images/social-icons/linkedin.png"
-import Logo from "../Logo/Logo"
 
 const FooterContainer = styled.footer`
   display: flex;
   justify-content: space-around;
   background-color: #dadada;
-  height: 261px;
-  padding-top: 40px;
+  padding: 40px 0px;
+  @media only screen and (max-width: 768px) {
+    flex-flow: column;
+    align-items: center;
+  }
 `
 const FooterCategory = styled.div`
   display: flex;
@@ -30,43 +33,42 @@ const FooterCategory = styled.div`
       text-decoration: underline;
     }
   }
+  @media only screen and (max-width: 768px) {
+    margin: 20px 0px;
+  }
 `
-
-const SocialIcons = styled.img`
-height: 25px;
-margin: 0px 5px;
-`
-const SocialContainer = styled.div`
-display: inline;
+const SocialIcon = styled.img`
+  height: 25px;
+  margin: 0px 5px;
 `
 
 export default function Footer() {
   return (
     <FooterContainer>
-      <Logo />
+      <Logo mobile={true} />
       <FooterCategory>
         <div className='title'>Connect with Us</div>
-        <SocialContainer>
-          <a href='#' target='_blank' rel='noopener noreferrer'><SocialIcons src={twitter} /></a>
-          <a href='#' target='_blank' rel='noopener noreferrer'><SocialIcons src={facebook} /></a>
-          <a href='#' target='_blank' rel='noopener noreferrer'><SocialIcons src={instagram} /></a>
-          <a href='#' target='_blank' rel='noopener noreferrer'><SocialIcons src={linkedin} /></a>
-        </SocialContainer>
+        <div>
+          <a href='#' target='_blank' rel='noopener noreferrer'><SocialIcon src={twitter} /></a>
+          <a href='#' target='_blank' rel='noopener noreferrer'><SocialIcon src={facebook} /></a>
+          <a href='#' target='_blank' rel='noopener noreferrer'><SocialIcon src={instagram} /></a>
+          <a href='#' target='_blank' rel='noopener noreferrer'><SocialIcon src={linkedin} /></a>
+        </div>
       </FooterCategory>
       <FooterCategory>
         <div className='title'>Support</div>
-        <Link to="/">Help Center</Link>
-        <Link to="/">Contact Us</Link>
-        <Link to="/">Cookies</Link>
-        <Link to="/">Privacy & Terms</Link>
-        <Link to="/">Sitemap</Link>
+        <Link to="/about">Help Center</Link>
+        <Link to="/about">Contact Us</Link>
+        <Link to="/about">Cookies</Link>
+        <Link to="/about">Privacy & Terms</Link>
+        <Link to="/about">Sitemap</Link>
       </FooterCategory>
       <FooterCategory>
         <div className='title'>Company</div>
-        <Link to="/">About Us</Link>
-        <Link to="/">Jobs</Link>
-        <Link to="/">Press</Link>
-        <Link to="/">Investor Relations</Link>
+        <Link to="/about">About Us</Link>
+        <Link to="/about">Jobs</Link>
+        <Link to="/about">Press</Link>
+        <Link to="/about">Investor Relations</Link>
       </FooterCategory>
     </FooterContainer>
   )
