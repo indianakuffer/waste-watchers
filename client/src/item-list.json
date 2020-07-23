@@ -2,8 +2,8 @@
   "cardboard": {
     "corrugated": "images/item-icons/cardboard/corrugated.png",
     "cups": "images/item-icons/cardboard/cups.png",
-    "egg-carton": "images/item-icons/cardboard/egg-carton.png",
-    "pizza-box": "images/item-icons/cardboard/pizza-box.png",
+    "egg Carton": "images/item-icons/cardboard/egg-carton.png",
+    "pizza Box": "images/item-icons/cardboard/pizza-box.png",
     "smooth": "images/item-icons/cardboard/smooth.png",
     "trays": "images/item-icons/cardboard/trays.png"
   },

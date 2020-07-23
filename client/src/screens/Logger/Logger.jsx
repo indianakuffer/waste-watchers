@@ -81,7 +81,7 @@ export default function Logger(props) {
         imageUrl='https://i.imgur.com/Oj8yaYf.png'
         color='#31c96e'
         bigText='Earn points for each item you recycle.'
-        smallText={`For every 100 points you earn, we'll plant a tree in your name.`}
+        smallText={`For every 100 points you earn, we'll plant a tree in your name`}
       />
       <Wave src='https://i.imgur.com/2d7CEc0.png' />
       <ItemList>

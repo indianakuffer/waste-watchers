@@ -7,7 +7,7 @@ const Spinner = styled.div`
   width: 75px;
   height: 75px;
   background: transparent;
-  border-top: 4px solid blue;
+  border-top: 4px solid #5a83ec;
   border-right: 4px solid transparent;
   border-radius: 50%;
 
