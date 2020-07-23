@@ -7,6 +7,7 @@ import Input from '../../components/shared/Input/Input'
 import Button from '../../components/shared/Button/Button'
 import PopUp from '../../components/shared/PopUp/PopUp'
 import Card from '../../components/shared/Card/Card'
+import Loader from '../../components/shared/Loader/Loader'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
@@ -27,6 +28,7 @@ export default function SignUp(props) {
   let [submitted, setSubmitted] = useState(false)
   let [alertAlreadyExists, setAlertAlreadyExists] = useState(false)
   let [alertNoMatch, setAlertNoMatch] = useState(false)
+  let [loading, setLoading] = useState(false)
 
   const handleChange = e => {
     let value = e.target.value
@@ -43,7 +45,9 @@ export default function SignUp(props) {
       setAlertNoMatch(true)
       return
     }
+    setLoading(true)
     const response = await getUsers()
+    setLoading(false)
     const search = response.find(user => (user.accountInfo.email === inputs.email))
     if (!search) {
       submitUser()
@@ -127,6 +131,7 @@ export default function SignUp(props) {
           onClick={() => { setAlertAlreadyExists(false) }}
         />
       }
+      {loading && <Loader />}
     </Layout>
   )
 }

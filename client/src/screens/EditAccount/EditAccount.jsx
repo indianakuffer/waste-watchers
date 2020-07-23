@@ -8,6 +8,7 @@ import Input from '../../components/shared/Input/Input'
 import ProfilePicCircle from '../../components/shared/ProfilePicCircle/ProfilePicCircle'
 import Button from '../../components/shared/Button/Button'
 import PopUp from '../../components/shared/PopUp/PopUp'
+import Loader from '../../components/shared/Loader/Loader'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
@@ -30,10 +31,13 @@ export default function EditAccount(props) {
   let [saved, setSaved] = useState(false)
   let [alert, setAlert] = useState(false)
   let [alertConfirm, setAlertConfirm] = useState(false)
+  let [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const helper = async () => {
+      setLoading(true)
       const response = await getUser(props.loggedIn)
+      setLoading(false)
       setOrigData(response.accountInfo)
       setInputs({ ...inputs, ...response.accountInfo, password: '' })
     }
@@ -133,6 +137,7 @@ export default function EditAccount(props) {
           onClick={() => { setSaved(true) }}
         />
       }
+      {loading && <Loader />}
     </Layout>
   )
 }

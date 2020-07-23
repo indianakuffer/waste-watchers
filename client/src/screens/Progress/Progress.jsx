@@ -62,15 +62,18 @@ const Breakdown = styled.div`
 `
 
 export default function Progress(props) {
-  let [userData, setUserData] = useState(null);
-  let [progressPercent, setProgressPercent] = useState(0);
+  let [userData, setUserData] = useState(null)
+  let [loading, setLoading] = useState(false)
+  let [progressPercent, setProgressPercent] = useState(0)
 
   useEffect(() => {
     window.scrollTo(0, 0)
     const helper = async () => {
-      const response = await getUser(props.loggedIn);
-      setUserData(response);
-      setProgressPercent(response.points % 100);
+      setLoading(true)
+      const response = await getUser(props.loggedIn)
+      setLoading(false)
+      setUserData(response)
+      setProgressPercent(response.points % 100)
     };
     helper();
   }, []);
@@ -103,8 +106,8 @@ export default function Progress(props) {
         <Legend />
         {userData && <Chart data={Object.values(userData.itemCategories)} />}
       </Breakdown>
-      <Loader />
       <BottomWave src="https://i.imgur.com/zP7qZyg.png" />
+      {loading && <Loader />}
     </Layout>
   );
 }

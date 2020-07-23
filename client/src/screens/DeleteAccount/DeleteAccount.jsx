@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { Redirect } from 'react-router-dom'
+import { deleteUser } from '../../services/users'
+import styled from "styled-components";
 import Layout from "../../components/shared/Layout/Layout";
 import Button from "../../components/shared/Button/Button";
 import Card from "../../components/shared/Card/Card";
-import styled from "styled-components";
-import { deleteUser } from '../../services/users'
-import { Redirect } from 'react-router-dom'
+import Loader from '../../components/shared/Loader/Loader'
 
 const ScreenDiv = styled.div`
   display: flex;
@@ -23,10 +24,13 @@ const ScreenDiv = styled.div`
 
 export default function DeleteAccount(props) {
   let [deleted, setDeleted] = useState(false)
+  let [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     await deleteUser(props.loggedIn)
+    setLoading(false)
     props.setLoggedIn(null)
     setDeleted(true)
   }
@@ -54,6 +58,7 @@ export default function DeleteAccount(props) {
           />
         </ScreenDiv>
       </Card>
+      {loading && <Loader />}
     </Layout>
   );
 }
