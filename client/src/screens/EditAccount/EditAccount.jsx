@@ -13,6 +13,7 @@ import MobileWave from '../../components/shared/MobileWave/MobileWave'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
+
 const FormContainer = styled.form`
   display: flex;
   flex-flow: column;

@@ -23,7 +23,7 @@ export default function Home(props) {
           imageUrl='https://i.imgur.com/aat01sL.png'
           color='#ffce51'
           bigText='Waste Watchers is a global recycling collective.'
-          smallText='Learn more about what we do and the values driving our organization.'
+          smallText='Learn more about what we do and the values driving our organization'
           buttonText='About Waste Watchers'
           buttonLink='/about'
         />
@@ -38,8 +38,8 @@ export default function Home(props) {
         <Jumbotron
           imageUrl='https://i.imgur.com/f1ytCY7.png'
           color='#235ae5'
-          bigText='The first step of your recycling journey starts here.'
-          smallText='All the recycling resources you need.'
+          bigText='The first step to your recycling journey starts here.'
+          smallText='All the recycling resources you need'
           buttonText='Join Us!'
           buttonLink='/signup'
         />
@@ -48,7 +48,7 @@ export default function Home(props) {
           color='#ff7373'
           quote='-Brian A., NYC'
           bigText={`"I feel bad for not participating in something so well designed."`}
-          smallText='Take a virtual tour of the Sims Municipal Recycling Center.'
+          smallText='Take a virtual tour of the Sims Municipal Recycling Center'
           buttonText='Start Now'
           buttonLink='/signup'
         />
