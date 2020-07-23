@@ -9,6 +9,7 @@ import Button from '../../components/shared/Button/Button'
 import PopUp from '../../components/shared/PopUp/PopUp'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
+import Loader from '../../components/shared/Loader/Loader'
 
 
 const FormContainer = styled.form`
@@ -37,6 +38,8 @@ export default function SignIn(props) {
   let [inputs, setInputs] = useState({ email: '', password: '' })
   let [submitted, setSubmitted] = useState(false)
   let [alert, setAlert] = useState(false)
+  let [visibleLoader, setVisibleLoader] = useState(false);
+
 
   const handleChange = e => {
     let value = e.target.value

@@ -103,7 +103,6 @@ export default function Progress(props) {
         <Legend />
         {userData && <Chart data={Object.values(userData.itemCategories)} />}
       </Breakdown>
-      <Loader />
       <BottomWave src="https://i.imgur.com/zP7qZyg.png" />
     </Layout>
   );
