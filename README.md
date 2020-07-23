@@ -34,9 +34,11 @@ Waste Watcher is a web and mobile application that makes recycling fun. It provi
 
 ## UXD Design Collaboration
 
+
+![Design](https://i.imgur.com/gkBRB6c.png)
 [Zeplin](https://app.zeplin.io/project/5f0e5672133b1a7efea78be1/dashboard?sid=5f0f134e1434157d8c52912c)
 
-## Schema
+## MongoDB Schema
 
 ```JS
 const mongoose = require('mongoose')
