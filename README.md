@@ -14,14 +14,31 @@ Waste Watcher is a web and mobile application that makes recycling fun. It provi
 
 [UXDI Trello](https://trello.com/b/MUBISn2p/waste-watchers-sei-uxdi)
 
-- Backend storing user information.
-- Well-designed frontend experience.
-- Ability to create / edit / delete account information.
+### Backend
+- Install dependecies such as MongoDB, Express, NodeJS, Nodemon, etc.
+- Set up backend file architecture
+- Build out the Schema
+- Import and connect files to make sure they perform CRUD functionality (ability to create / edit / delete account information on the backend)
+- Deploy to Heruko/MongoDB Atlas and test CRUD functionality in MongoDB Compass and Postman 
+
+### Front-End
+- Create a well-designed front-end experience.
+- Set up the front-end file architecture (components, images, services, and screens) and make sure files are connected to appropriate routes.
+- Use Styled Components for styling of all front-end screens and components.
+- Build out the ability to create, edit, and delete user account information on the front-end
+- Deploy to Netlify
+
 
 ## Post MVP
 
-- Ability to log recycled items.
-- Metrics page that shows total digital tree count and progress, plus statistics chart.
+- Create a functioning screen that tracks recycled items by allowing the user to log and submit items ot the database with a counter.
+- Create a metrics page that shows user progress with a progress bar.
+- Add functionality to the progress bar by allowing it to update as user submits data.
+- Create total digital tree count and update as user points increase.
+- Create statistics chart with D3 and connect it to user progress data.
+- Create and execute animated loader when user signs in, signs out, edits account information, submits updated data to account, deletes account.
+- Build pop ups in sync with App Design when 'User is Not Found' or "Account is Deleted" 
+
 
 ## Component Tree
 
