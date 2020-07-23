@@ -38,7 +38,7 @@ export default function SignIn(props) {
   let [inputs, setInputs] = useState({ email: '', password: '' })
   let [submitted, setSubmitted] = useState(false)
   let [alert, setAlert] = useState(false)
-  let [visibleLoader, setVisibleLoader] = useState(false);
+  let [showLoader, setShowLoader] = useState(false);
 
 
   const handleChange = e => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import UseSpring from 'react-spring'
+import { useSpring, animated } from 'react-spring'
 
 const SpinnerContainer = styled.div`
   width: 150px;
@@ -28,34 +28,18 @@ const Spinner = styled.div`
   }
 `;
 
-export default function Loader({ isLoading, children, ...props}) {
-  const [showLoader, setShowLoader] = useState(false);
-  const fadeOutProps = useSpring({ opacity: showLoader ? 1 : 0 });
-  const fadeInProps = useSpring({ opacity: showLoader ? 0 : 1})
-  
-
-  useEffect(() => {
-    if (isLoading) {
-      setShowLoader(true);
-    }
-
-    if (!isLoading && showLoader) {
-      const timeout = setTimeout(() => {
-        setShowLoader(false);
-      }, 400);
-
-      return () => {
-        clearTimeout(timeout);
-      };
-    }
-  }, [isLoading, showLoader]);
-
-  
-
+export default function Loader() {
+  const [isLoading, setIsLoading] = useState(false);
+  const contentProps = useSpring({
+    opacity: isLoading ? 1 : 0,
+    marginTop: isLoading ? 0 : -500 })
 
   return (
-    <SpinnerContainer>
-      <Spinner />
-    </SpinnerContainer>
+    <>
+      <button onClick={() => setIsLoading(a => !a)}>
+        Click here!
+      </button>
+      {!isLoading ? (<div className="Intro">Some Text</div>) : (<animated.div className="box" style={contentProps}><Spinner /></animated.div>)}
+      </>
   );
 }
