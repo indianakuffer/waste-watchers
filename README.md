@@ -9,7 +9,7 @@
   - [Front-End](#Front-End)
 - [Post MVP](#Post-MVP)
 - [Component Tree](#Component-Tree)
-- [UXDI Collaboration](#UXDI-Collaboration)
+- [UXDI Design Collaboration](#UXDI-Design-Collaboration)
 - [MongoDB Schema](#MongoDB-Schema)
 
 ## Overview
