@@ -8,13 +8,6 @@ import Chart from '../../components/Chart/Chart'
 import Legend from '../../components/Legend/Legend'
 import Loader from '../../components/shared/Loader/Loader'
 
-const TopWave = styled.img`
-  width: 100%;
-`
-const BottomWave = styled.img`
-  width: 100%;
-  transform: scaleY(-1) scaleX(-1);
-`
 const ProgressHeading = styled.div`
   font-size: 60px;
   font-weight: bold;
@@ -30,6 +23,19 @@ const HeadingUnderline = styled.div`
   background-color: #000000;
   margin-top: 20px;
   border-radius: 5px;
+`
+const ProgressText = styled.p`
+  font-size: 40px;
+  text-align: center;
+  span {
+    font-weight: bold;
+  }
+  @media only screen and (max-width: 768px) {
+    font-size: 25px;
+    &.so-far {
+      font-size: 40px;
+    }
+  }
 `
 const ProgressBar = styled.div`
   background-color: #dadada;
@@ -55,19 +61,6 @@ const ProgressBarColor = styled.div`
 const TreeImage = styled.img`
   max-width: 260px;
 `
-const ProgressText = styled.p`
-  font-size: 40px;
-  text-align: center;
-  span {
-    font-weight: bold;
-  }
-  @media only screen and (max-width: 768px) {
-    font-size: 25px;
-    &.so-far {
-      font-size: 40px;
-    }
-  }
-`
 const Breakdown = styled.div`
   display: flex;
   justify-content: space-evenly;
@@ -79,12 +72,21 @@ const Breakdown = styled.div`
     margin: 50px 0;
   }
 `
+const TopWave = styled.img`
+  width: 100%;
+`
+const BottomWave = styled.img`
+  width: 100%;
+  transform: scaleY(-1) scaleX(-1);
+`
 
 export default function Progress(props) {
+  //--------- States ---------//
   let [userData, setUserData] = useState(null)
   let [loading, setLoading] = useState(false)
   let [progressPercent, setProgressPercent] = useState(0)
 
+  //--------- Functions ---------//
   useEffect(() => {
     window.scrollTo(0, 0)
     const helper = async () => {
@@ -93,12 +95,14 @@ export default function Progress(props) {
       setLoading(false)
       setUserData(response)
       setProgressPercent(response.points % 100)
-    };
-    helper();
-  }, []);
+    }
+    helper()
+  }, [])
 
+  //--------- Redirects ---------//
   if (!props.loggedIn) return <Redirect to='/signin' />
 
+  //--------- Render ---------//
   return (
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <Jumbotron
@@ -113,14 +117,9 @@ export default function Progress(props) {
       <ProgressBar>
         <ProgressBarColor progressPercent={progressPercent} />
       </ProgressBar>
-      <ProgressText>
-        Only <span>{userData && 100 - (userData.points % 100)} points</span>{" "}
-          until your next tree!
-        </ProgressText>
+      <ProgressText>Only <span>{userData && 100 - (userData.points % 100)} points</span> until your next tree!</ProgressText>
       <TreeImage src="https://i.imgur.com/ztj0HxG.png" />
-      <ProgressText className='so-far'>
-        You've planted <span>{userData && `${Math.floor(userData.points / 100)} tree${Math.floor(userData.points / 100) === 1 ? '' : 's'}`}</span> so far!
-        </ProgressText>
+      <ProgressText className='so-far'>You've planted <span>{userData && `${Math.floor(userData.points / 100)} tree${Math.floor(userData.points / 100) === 1 ? '' : 's'}`}</span> so far!</ProgressText>
       <ProgressHeading>Recyclables Breakdown</ProgressHeading>
       <HeadingUnderline />
       <Breakdown >
@@ -135,5 +134,5 @@ export default function Progress(props) {
       <BottomWave src="https://i.imgur.com/zP7qZyg.png" />
       {loading && <Loader />}
     </Layout>
-  );
+  )
 }

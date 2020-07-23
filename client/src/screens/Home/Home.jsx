@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
 import Layout from '../../components/shared/Layout/Layout'
 import Jumbotron from '../../components/shared/Jumbotron/Jumbotron'
-import styled from 'styled-components'
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -16,6 +16,13 @@ const HomeContainer = styled.div`
 `
 
 export default function Home(props) {
+
+  //--------- Functions ---------//
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  //--------- Render ---------//
   return (
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <HomeContainer>
@@ -47,7 +54,7 @@ export default function Home(props) {
           imageUrl='https://i.imgur.com/b2PQ8oB.png'
           color='#ff7373'
           quote='-Brian A., NYC'
-          bigText={`"I feel bad for not participating in something so well designed."`}
+          bigText={`'I feel bad for not participating in something so well designed.'`}
           smallText='Take a virtual tour of the Sims Municipal Recycling Center'
           buttonText='Start Now'
           buttonLink='/signup'

@@ -52,5 +52,5 @@ export default function NavMenu(props) {
       </ButtonContainer>
       <InvisibleClose onClick={props.closeFunction} />
     </>
-  );
+  )
 }

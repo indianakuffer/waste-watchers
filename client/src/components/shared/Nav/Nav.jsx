@@ -75,11 +75,13 @@ const Hamburger = styled.button`
 `
 
 export default function Nav(props) {
+  //--------- States ---------//
   let [showAccountMenu, setShowAccountMenu] = useState(false)
   let [showNavMenu, setShowNavMenu] = useState(false)
   let [profileImg, setProfileImg] = useState(null)
   let [signedOut, setSignedOut] = useState(false)
 
+  //--------- Functions ---------//
   useEffect(() => {
     const helper = async (id) => {
       const response = await getUser(id)
@@ -93,8 +95,10 @@ export default function Nav(props) {
     setSignedOut(true)
   }
 
+  //--------- Redirects ---------//
   if (signedOut) return <Redirect to='/' />
 
+  //--------- Render ---------//
   return (
     <NavBar>
       <Hamburger onClick={() => setShowNavMenu(!showNavMenu)} />
@@ -132,5 +136,5 @@ export default function Nav(props) {
         </NavMenu>
       }
     </NavBar>
-  );
+  )
 }

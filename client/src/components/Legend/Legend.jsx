@@ -10,13 +10,6 @@ const Key = styled.div`
   align-items: center;
   margin-bottom: 13px;
 `
-const Text = styled.div`
-  font-size: 30px;
-  font-weight: 600;
-  @media only screen and (max-width: 768px) {
-    font-size: 20px;
-  }
-`
 const Circle = styled.div`
   background-color: ${props => props.color};
   height: 48px;
@@ -29,17 +22,18 @@ const Circle = styled.div`
     margin-right: 30px;
   }
 `
+const Text = styled.div`
+  font-size: 30px;
+  font-weight: 600;
+  @media only screen and (max-width: 768px) {
+    font-size: 20px;
+  }
+`
 
 export default function Legend() {
-  const keys = {
-    Metal: '#0085ff',
-    Glass: '#ffbb0d',
-    Plastic: '#ff7373',
-    Cartons: '#b79eff',
-    Paper: '#31c96e',
-    Cardboard: '#ffdd87'
-  }
+  const keys = { Metal: '#0085ff', Glass: '#ffbb0d', Plastic: '#ff7373', Cartons: '#b79eff', Paper: '#31c96e', Cardboard: '#ffdd87' }
 
+  //--------- Render ---------//
   return (
     <LegendContainer>
       {Object.keys(keys).map(key => {

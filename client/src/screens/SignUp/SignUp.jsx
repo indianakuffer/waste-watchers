@@ -25,19 +25,18 @@ const FormContainer = styled.form`
 `
 
 export default function SignUp(props) {
+  //--------- States ---------//
   let [inputs, setInputs] = useState({ email: '', password: '', confirm: '' })
   let [submitted, setSubmitted] = useState(false)
   let [alertAlreadyExists, setAlertAlreadyExists] = useState(false)
   let [alertNoMatch, setAlertNoMatch] = useState(false)
   let [loading, setLoading] = useState(false)
 
+  //--------- Functions ---------//
   const handleChange = e => {
     let value = e.target.value
     let name = e.target.name
-    setInputs({
-      ...inputs,
-      [name]: value
-    })
+    setInputs({ ...inputs, [name]: value })
   }
 
   const handleSubmit = async e => {
@@ -79,8 +78,10 @@ export default function SignUp(props) {
     setSubmitted(true)
   }
 
+  //--------- Redirects ---------//
   if (submitted) return <Redirect to='/' />
 
+  //--------- Render ---------//
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <MobileWave image='images/mobile-waves/signup-top.svg' />

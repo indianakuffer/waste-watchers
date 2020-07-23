@@ -6,7 +6,6 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   width: 100%;
 `
-
 const StyledButton = styled.button`
   background: ${props => props.color ? props.color : 'grey'};
   height: 45px;
@@ -26,7 +25,6 @@ const StyledButton = styled.button`
   text-decoration: none;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   transition: filter 0.2s ease-out;
-
   &:hover {
     filter: saturate(50%);
   }
