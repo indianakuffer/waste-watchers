@@ -96,7 +96,7 @@ export default function Nav(props) {
   }
 
   //--------- Redirects ---------//
-  if (signedOut) return <Redirect to='/' />
+  if (signedOut) return <Redirect to='/signin' />
 
   //--------- Render ---------//
   return (
