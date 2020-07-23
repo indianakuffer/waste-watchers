@@ -11,8 +11,11 @@ const FooterContainer = styled.footer`
   display: flex;
   justify-content: space-around;
   background-color: #dadada;
-  height: 261px;
-  padding-top: 40px;
+  padding: 40px 0px;
+  @media only screen and (max-width: 768px) {
+    flex-flow: column;
+    align-items: center;
+  }
 `
 const FooterCategory = styled.div`
   display: flex;
@@ -30,8 +33,10 @@ const FooterCategory = styled.div`
       text-decoration: underline;
     }
   }
+  @media only screen and (max-width: 768px) {
+    margin: 20px 0px;
+  }
 `
-
 const SocialIcons = styled.img`
 height: 25px;
 margin: 0px 5px;
@@ -43,7 +48,7 @@ display: inline;
 export default function Footer() {
   return (
     <FooterContainer>
-      <Logo />
+      <Logo mobile={true} />
       <FooterCategory>
         <div className='title'>Connect with Us</div>
         <SocialContainer>

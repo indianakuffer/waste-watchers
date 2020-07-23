@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import Button from "../shared/Button/Button";
-import styled from "styled-components";
-import { Redirect } from 'react-router-dom'
+import React from "react"
+import styled from "styled-components"
 
 const ButtonContainer = styled.div`
   background: #dadada;
@@ -10,13 +8,12 @@ const ButtonContainer = styled.div`
   align-items: center;
   flex-flow: column;
   z-index: 100;
-  height: 180px;
   width: 180px;
   position: absolute;
   padding: 20px;
+  padding-top: 40px;
   top: 0px;
   right: 0px;
-
   button {
     margin: 10px 0px;
   }
@@ -36,50 +33,24 @@ const CloseX = styled.button`
   background-repeat: no-repeat;
   background-position: center;
 `
+const InvisibleClose = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(1px);
+  z-index: 99;
+`
 
 export default function NavMenu(props) {
-  let [signedOut, setSignedOut] = useState(false)
-
-  const signOut = () => {
-    props.setLoggedIn(null)
-    setSignedOut(true)
-  }
-
-  if (signedOut) return <Redirect to='/' />
-
   return (
-    <ButtonContainer>
-      <CloseX className='x' onClick={props.toggleNavMenu} />
-      {props.loggedIn && <>
-        <Button
-          color="#5A83EC"
-          buttonText="Manage My Account"
-          buttonLink={`/account/${props.loggedIn}`}
-          fontSize='15px'
-        />
-        <Button
-          color="#FF7373"
-          buttonText="Sign Out"
-          onClick={signOut}
-          fontSize='15px'
-        />
-      </>
-      }
-      {!props.loggedIn && <>
-        <Button
-          color="#31C96E"
-          buttonText="Sign In"
-          buttonLink="/signin"
-          fontSize='15px'
-        />
-        <Button
-          color="#5A83EC"
-          buttonText="Create an Account"
-          buttonLink="/signup"
-          fontSize='15px'
-        />
-      </>
-      }
-    </ButtonContainer>
+    <>
+      <ButtonContainer className={props.className}>
+        <CloseX className='x' onClick={props.closeFunction} />
+        {props.children}
+      </ButtonContainer>
+      <InvisibleClose onClick={props.closeFunction} />
+    </>
   );
 }

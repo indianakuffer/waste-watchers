@@ -8,6 +8,7 @@ import Card from '../../components/shared/Card/Card'
 import Button from '../../components/shared/Button/Button'
 import PopUp from '../../components/shared/PopUp/PopUp'
 import Loader from '../../components/shared/Loader/Loader'
+import MobileWave from '../../components/shared/MobileWave/MobileWave'
 import envelopeImage from '../../images/input-icons/envelope.svg'
 import lockImage from '../../images/input-icons/lock.svg'
 
@@ -68,6 +69,7 @@ export default function SignIn(props) {
 
   return (
     <Layout waves={true} loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <MobileWave image='images/mobile-waves/signin-top.svg' />
       <Card>
         <h1>Welcome Back!</h1>
         <FormContainer>
@@ -98,6 +100,7 @@ export default function SignIn(props) {
           <Link to='signup'>Sign Up!</Link>
         </Prompt>
       </Card>
+      <MobileWave image='images/mobile-waves/signin-bottom.svg' />
       {alert &&
         <PopUp
           color='#df6565'

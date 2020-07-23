@@ -6,6 +6,7 @@ import Layout from "../../components/shared/Layout/Layout";
 import Button from "../../components/shared/Button/Button";
 import Card from "../../components/shared/Card/Card";
 import Loader from '../../components/shared/Loader/Loader'
+import MobileWave from "../../components/shared/MobileWave/MobileWave";
 
 const ScreenDiv = styled.div`
   display: flex;
@@ -36,9 +37,11 @@ export default function DeleteAccount(props) {
   }
 
   if (deleted) return <Redirect to='/' />
+  if (!props.loggedIn) return <Redirect to='/signin' />
 
   return (
     <Layout waves={true} wavesImg='https://i.imgur.com/lVYqloz.png' loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
+      <MobileWave image='images/mobile-waves/delete-top.svg' />
       <Card>
         <ScreenDiv>
           <h1>
@@ -48,7 +51,7 @@ export default function DeleteAccount(props) {
           <Button
             color="#5A83EC"
             buttonText="Cancel"
-            buttonLink={`/account/${props.loggedIn}`}
+            buttonLink={`/account`}
           />
           <Button
             color="#FF7373"
@@ -58,6 +61,7 @@ export default function DeleteAccount(props) {
           />
         </ScreenDiv>
       </Card>
+      <MobileWave image='images/mobile-waves/delete-bottom.svg' />
       {loading && <Loader />}
     </Layout>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Redirect } from 'react-router-dom'
 import { getUser, updateUser } from '../../services/users'
 import styled from 'styled-components'
 import itemList from '../../item-list.json'
@@ -71,6 +72,8 @@ export default function Logger(props) {
     const response = await updateUser(props.loggedIn, updateObject)
     setSubmitted(true)
   }
+
+  if (!props.loggedIn) return <Redirect to='/signin' />
 
   return (
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>

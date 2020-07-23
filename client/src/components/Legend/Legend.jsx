@@ -12,6 +12,10 @@ const Key = styled.div`
 `
 const Text = styled.div`
   font-size: 30px;
+  font-weight: 600;
+  @media only screen and (max-width: 768px) {
+    font-size: 20px;
+  }
 `
 const Circle = styled.div`
   background-color: ${props => props.color};
@@ -19,6 +23,11 @@ const Circle = styled.div`
   width: 48px;
   border-radius: 50%;
   margin-right: 17px;
+  @media only screen and (max-width: 768px) {
+    height: 35px;
+    width: 35px;
+    margin-right: 30px;
+  }
 `
 
 export default function Legend() {
@@ -34,7 +43,7 @@ export default function Legend() {
   return (
     <LegendContainer>
       {Object.keys(keys).map(key => {
-        return <Key>
+        return <Key key={key}>
           <Circle color={keys[key]} />
           <Text>{key}</Text>
         </Key>

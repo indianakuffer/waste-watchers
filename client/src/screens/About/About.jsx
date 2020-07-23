@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Jumbotron from "../../components/shared/Jumbotron/Jumbotron";
 import AboutTextBox from '../../components/AboutTextBox/AboutTextBox'
 
-
 const BlueWave = styled.img`
   width: 100%;
   z-index: -10;
@@ -19,7 +18,7 @@ export default function About(props) {
     <Layout loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn}>
       <Jumbotron
         className="jumbotron"
-        imageUrl="https://i.imgur.com/aat01sL.png"
+        imageUrl="https://i.imgur.com/TU6AYAV.jpg"
         color="#ffce51"
         bigText="We're reframing recycling."
         smallText="About Waste Watchers"
