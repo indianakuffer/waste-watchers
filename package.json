@@ -19,9 +19,9 @@
   },
   "homepage": "https://github.com/indianakuffer/waste-watchers#readme",
   "dependencies": {
-    "body-parser": "^1.20.1",
+    "body-parser": "^2.3.0",
     "cors": "^2.8.5",
-    "express": "^4.17.3",
+    "express": "^5.2.1",
     "mongoose": "^5.9.24",
     "morgan": "^1.10.0"
   },
